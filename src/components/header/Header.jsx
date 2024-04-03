@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
 import { useState } from "react";
+import { Carrito } from "../carrito/Carrito";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const user = JSON.parse(localStorage.getItem('usuario'))
   return (
     <header className="w-full bg-arena-green-950 rounded-xl mx-auto my-5">
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${isActive ? "pb-6" : ""}`}>
@@ -123,6 +125,9 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      {
+        user && <Carrito />
+      }
     </header>
   );
 };

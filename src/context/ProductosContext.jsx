@@ -51,6 +51,7 @@ export const ProductosProvider = ({children}) => {
             editarProducto,
             eliminarProducto,
             agregarCarrito,
+            eliminarCarrito,
             carrito,
             productos
         }}>
