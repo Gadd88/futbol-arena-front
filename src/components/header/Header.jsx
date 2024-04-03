@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
 import { useState } from "react";
 
+
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
   return (
@@ -52,9 +53,9 @@ export const Header = () => {
           </div>
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <Link
+              <Link 
                 className="rounded-md bg-arena-green-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                to="#"
+                to= "/login"
               >
                 Ingresar
               </Link>
@@ -96,33 +97,36 @@ export const Header = () => {
           } itesm-center justify-center w-full h-fit bg-arena-green-50 rounded-md mt-4 md:hidden transition-all overflow-hidden`}
         >
           <div className=" flex flex-col items-center justify-around w-full">
-              <Link
-                to="/"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Inicio
-              </Link>
-              <Link
-                to="/nosotros"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Quienes Somos
-              </Link>
-              <Link
-                to="/galeria"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Galeria
-              </Link>
-              <Link
-                to="/contacto"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Contacto
-              </Link>
+            <Link
+              to="/"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Inicio
+            </Link>
+            <Link
+              to="/nosotros"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Quienes Somos
+            </Link>
+            <Link
+              to="/galeria"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Galeria
+            </Link>
+            <Link
+              to="/contacto"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Contacto
+            </Link>
           </div>
         </div>
       </div>
+
+     
     </header>
+    
   );
 };
