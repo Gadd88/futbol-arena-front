@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import {Form, Modal} from 'react-bootstrap/Form';
+
+import Swal from "sweetalert2";
 
 export const Login = () => {
 
@@ -8,27 +9,54 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventdefault();
-    console.log(email + ""+ password)
+    try {
+      const user = usuarios.find(
+        (user) => user.email === email && user.password === password
+      );
+      if (user) {
+        Swal.fire({
+          title: "Bienvenido",
+          text: "Inicio de sesión exitoso",
+          icon: "success",
+          confirmButtonText: "Aceptar",
+          timer: 1500,
+        });
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/");
+        handleClose();
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "Usuario o contraseña incorrectos",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+          timer: 2000,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
 
   return (
    <>
-   <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Email</Form.Label>
-        <Form.Control 
+   
+   <div onSubmit={handleSubmit}>
+      <div className="mb-3" controlId="exampleForm.ControlInput1">
+        <h1>Email</h1>
+        <div
          type="email"
          name="email"
          value={email}
          onChange={(e)=>setEmail (e.target.value)}
          placeholder="Email"
          />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
-        <Form.Control 
+      </div>
+      <div className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <h1>Password</h1>
+        <div 
         
         type="password"
         name="password"
@@ -36,21 +64,13 @@ export const Login = () => {
         onChange={(e)=>setPassword (e.target.value)}
         placeholder="Password"/>
         
-        <Button>Iniciar Sesion</Button>
+        <button type="Submit">Iniciar Sesion</button>
         
          
-      </Form.Group>
-    </Form>
+      </div>
+    </div>
 
-    <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <Login />
-        </Modal.Body>
-      </Modal>
+   
    </>
   )
 }

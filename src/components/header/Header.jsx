@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
 import { useState } from "react";
+import { Portal } from "../portal/Portal";
 
 
 export const Header = () => {
@@ -53,12 +54,13 @@ export const Header = () => {
           </div>
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <Link 
+              <button
                 className="rounded-md bg-arena-green-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                to= "/login"
+                
               >
                 Ingresar
-              </Link>
+              </button>
+              
               <div className="hidden sm:flex">
                 <Link
                   className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-arena-green-900"
@@ -66,6 +68,7 @@ export const Header = () => {
                 >
                   Registrarse
                 </Link>
+                
               </div>
             </div>
             <div className="block md:hidden">
@@ -124,6 +127,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      <Portal show={show}/>
 
      
     </header>
