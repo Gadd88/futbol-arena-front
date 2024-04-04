@@ -57,7 +57,6 @@ export const Login = () => {
       <div className="mb-3" controlId="exampleForm.ControlTextarea1">
         <h1>Password</h1>
         <div 
-        
         type="password"
         name="password"
         value={password}

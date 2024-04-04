@@ -6,6 +6,7 @@ import { Portal } from "../portal/Portal";
 
 export const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const [show, setShow] = useState(false)
   return (
     <header className="w-full bg-arena-green-950 rounded-xl mx-auto my-5">
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${isActive ? "pb-6" : ""}`}>
@@ -56,7 +57,7 @@ export const Header = () => {
             <div className="sm:flex sm:gap-4">
               <button
                 className="rounded-md bg-arena-green-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                
+                onClick={()=> setShow(true)}
               >
                 Ingresar
               </button>
