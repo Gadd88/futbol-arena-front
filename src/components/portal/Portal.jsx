@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 
@@ -9,21 +9,24 @@ export const Portal = ({ show, setShow }) => {
     setShow(false);
   };
 
-  const formSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const userData = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-    await loginUsuario(userData);
-    setTimeout(() => {
-      setShowLogin(false);
-      navigate("/");
-    }, 1000);
+    localStorage.setItem("userData", JSON.stringify(user));
+    closeModal();
   };
-  if (!showLogin) return null;
 
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="relative">
@@ -35,13 +38,15 @@ export const Portal = ({ show, setShow }) => {
             <div className="text-center text-4xl font-medium">
               Iniciar Sesión
             </div>
-              <form className="space-y-10 flex flex-col" onSubmit={formSubmit}>
+              <form className="space-y-10 flex flex-col"  onSubmit={handleFormSubmit}>
                 <div className="mb-4 flex flex-col gap-6">
                   <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-arena-green-400">
                     <input
                       type="email"
                       placeholder="Email"
                       name="email"
+                      value={setUser.email}
+                      onChange={handleInputChange}
                       className="w-full border-none bg-transparent outline-none focus:outline-none"
                     />
                   </div>
@@ -51,6 +56,8 @@ export const Portal = ({ show, setShow }) => {
                       type="password"
                       name="password"
                       placeholder="Password"
+                      value={setUser.password}
+                      onChange={handleInputChange}
                       className="w-full border-none bg-transparent outline-none focus:outline-none"
                     />
                   </div>
