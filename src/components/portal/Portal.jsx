@@ -9,6 +9,22 @@ export const Portal = ({ show, setShow }) => {
     setShow(false);
   };
 
+  const formSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const userData = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    await loginUsuario(userData);
+    setTimeout(() => {
+      setShowLogin(false);
+      navigate("/");
+    }, 1000);
+  };
+  if (!showLogin) return null;
+
+
   return (
     <div className="relative">
       {show &&
@@ -19,7 +35,7 @@ export const Portal = ({ show, setShow }) => {
             <div className="text-center text-4xl font-medium">
               Iniciar Sesión
             </div>
-              <form className="space-y-10 flex flex-col">
+              <form className="space-y-10 flex flex-col" onSubmit={formSubmit}>
                 <div className="mb-4 flex flex-col gap-6">
                   <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-arena-green-400">
                     <input
