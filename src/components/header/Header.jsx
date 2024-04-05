@@ -128,7 +128,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <Portal show={show}/>
+      <Portal show={show} setShow={setShow}/>
 
      
     </header>
