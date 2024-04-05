@@ -1,22 +1,23 @@
 import React from 'react';
 import useRegisterForm from '../../hooks/useRegisterForm';
-export const Registro = () => {
+
+export const Register = () => {
   const register = () => {
-    //lógica para enviar los datos al backend
+    // Logic to send the data to the backend
     console.log('User registered:', inputs);
   };
 
   const { inputs, handleInputChange, handleSubmit } = useRegisterForm(register);
 
   return (
-    <div className="w-full mx-auto h-[100dvh] lg:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
+    <div className="w-full mx-auto h-[100vh] lg:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
         <input
           type="text"
           name="fullName"
           onChange={handleInputChange}
           value={inputs.fullName}
-          placeholder="Nombre completo"
+          placeholder="Full Name"
           className="p-2 border border-gray-300 text-gray-700"
         />
         <input
@@ -32,7 +33,7 @@ export const Registro = () => {
           name="phone"
           onChange={handleInputChange}
           value={inputs.phone}
-          placeholder="Teléfono"
+          placeholder="Phone"
           className="p-2 border border-gray-300 text-gray-700"
         />
         <input
@@ -48,15 +49,15 @@ export const Registro = () => {
           name="confirmPassword"
           onChange={handleInputChange}
           value={inputs.confirmPassword}
-          placeholder="Re ingreso Password"
+          placeholder="Confirm Password"
           className="p-2 border border-gray-300 text-gray-700"
         />
         <button type="submit" className="bg-blue-500 text-white p-2">
-          Registro
+          Register
         </button>
       </form>
     </div>
   );
 };
 
-export default Registro;
+export default Register;
