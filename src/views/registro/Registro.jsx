@@ -1,7 +1,7 @@
 import React from 'react';
 import useRegisterForm from '../../hooks/useRegisterForm';
 
-export const Register = () => {
+export const Registro = () => {
   const register = () => {
     // logica para el banckend
     console.log('Usuario registrado:', inputs);
@@ -18,7 +18,7 @@ export const Register = () => {
           onChange={handleInputChange}
           value={inputs.fullName}
           placeholder="Full Name"
-          className="p-2 border border-gray-300 text-gray-700"
+          className="p-3 border border-gray-300 text-gray-700 rounded-xl"
         />
         <input
           type="email"
@@ -26,7 +26,7 @@ export const Register = () => {
           onChange={handleInputChange}
           value={inputs.email}
           placeholder="Email"
-          className="p-2 border border-gray-300 text-gray-700"
+          className="p-3 border border-gray-300 text-gray-700 rounded-xl"
         />
         <input
           type="tel"
@@ -34,7 +34,7 @@ export const Register = () => {
           onChange={handleInputChange}
           value={inputs.phone}
           placeholder="Phone"
-          className="p-2 border border-gray-300 text-gray-700"
+          className="p-3 border border-gray-300 text-gray-700 rounded-xl"
         />
         <input
           type="password"
@@ -42,7 +42,7 @@ export const Register = () => {
           onChange={handleInputChange}
           value={inputs.password}
           placeholder="Password"
-          className="p-2 border border-gray-300 text-gray-700"
+          className="p-3 border border-gray-300 text-gray-700 rounded-xl"
         />
         <input
           type="password"
@@ -50,14 +50,14 @@ export const Register = () => {
           onChange={handleInputChange}
           value={inputs.confirmPassword}
           placeholder="Confirm Password"
-          className="p-2 border border-gray-300 text-gray-700"
+          className="p-3 border border-gray-300 text-gray-700 rounded-xl"
         />
-        <button type="submit" className="bg-green-700 text-white p-2">
-          Register
+        <button type="submit" className="bg-green-700 text-white p-3">
+          Registro
         </button>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default Registro;
