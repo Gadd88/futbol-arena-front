@@ -1,9 +1,9 @@
 import { Header } from "./components"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { Contacto, Error404, Galeria, Home, Nosotros, Registro } from "./views"
+import Footer from "./components/footer/Footer.jsx"
 
 function App() {
-
   return (
     <BrowserRouter>
       <Header />
@@ -15,6 +15,7 @@ function App() {
         <Route path='/registro' element={<Registro/>}/>
         <Route path='/*' element={<Error404/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

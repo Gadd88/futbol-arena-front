@@ -10,7 +10,7 @@ export const Register = () => {
   const { inputs, handleInputChange, handleSubmit } = useRegisterForm(register);
 
   return (
-    <div className="w-full mx-auto h-[100vh] bg-green-200 lg:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
+    <div className="w-full mx-auto h-[100vh] bg-green-200 xl:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
         <input
           type="text"
