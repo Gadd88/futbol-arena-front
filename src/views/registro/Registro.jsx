@@ -3,14 +3,14 @@ import useRegisterForm from '../../hooks/useRegisterForm';
 
 export const Register = () => {
   const register = () => {
-    // Logic to send the data to the backend
+    // logica para el banckend
     console.log('User registered:', inputs);
   };
 
   const { inputs, handleInputChange, handleSubmit } = useRegisterForm(register);
 
   return (
-    <div className="w-full mx-auto h-[100vh] lg:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
+    <div className="w-full mx-auto h-[100vh] bg-green-200 lg:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
         <input
           type="text"
@@ -52,7 +52,7 @@ export const Register = () => {
           placeholder="Confirm Password"
           className="p-2 border border-gray-300 text-gray-700"
         />
-        <button type="submit" className="bg-blue-500 text-white p-2">
+        <button type="submit" className="bg-green-700 text-white p-2">
           Register
         </button>
       </form>

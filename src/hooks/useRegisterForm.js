@@ -14,7 +14,7 @@ const useRegisterForm = (callback) => {
       event.preventDefault();
     }
     if (inputs.password === inputs.confirmPassword) {
-      callback();
+      console.log(inputs);
     } else {
       alert('Passwords do not match');
     }
