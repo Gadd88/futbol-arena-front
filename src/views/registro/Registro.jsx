@@ -4,7 +4,7 @@ import useRegisterForm from '../../hooks/useRegisterForm';
 export const Register = () => {
   const register = () => {
     // logica para el banckend
-    console.log('User registered:', inputs);
+    console.log('Usuario registrado:', inputs);
   };
 
   const { inputs, handleInputChange, handleSubmit } = useRegisterForm(register);
