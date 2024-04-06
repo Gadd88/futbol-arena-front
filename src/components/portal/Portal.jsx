@@ -14,7 +14,9 @@ export const Portal = ({ show, setShow }) => {
     localStorage.setItem("userData", JSON.stringify(user));
     closeModal();
   };
-
+  
+  
+  
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -22,11 +24,13 @@ export const Portal = ({ show, setShow }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
+    setUser((prevState) => ({
       ...prevState,
       [name]: value,
     }));
+    console.log(user)
   };
+  
 
   return (
     <div className="relative">
