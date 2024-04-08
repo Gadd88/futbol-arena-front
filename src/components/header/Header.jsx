@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
 import { useState } from "react";
-import { Portal } from "../portal/Portal";
+
+import { Login } from "../login/Login";
 
 
 export const Header = () => {
@@ -128,7 +129,7 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <Portal show={show} setShow={setShow}/>
+      <Login show={show} setShow={setShow}/>
 
      
     </header>
