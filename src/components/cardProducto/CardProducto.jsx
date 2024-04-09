@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { useProductos } from "../../hooks/useProductos";
-import { useEffect } from "react";
+import PropTypes from 'prop-types'
 
-export const CardProducto = ({ data }) => {
-  const { producto, detalle, precio, categoria, imagen, stock, producto_id } =
-    data;
+export const CardProducto = ( { data } ) => {
+  CardProducto.propTypes = {
+    data: PropTypes.object
+  }
 
+  const { producto, detalle, precio, categoria, imagen, producto_id } = data;
+
+  const user = JSON.parse(localStorage.getItem('user'));
   const { agregarCarrito, carrito } = useProductos();
 
   const enCarrito = (producto_id) => {
@@ -17,8 +21,8 @@ export const CardProducto = ({ data }) => {
   };
 
   return (
-    <article className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-80 relative overflow-hidden">
-      {enCarrito(data.producto_id) && (
+    <article className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-80 relative overflow-hidden min-h-[450px]">
+      {enCarrito(producto_id) && (
         <div className="p-3 bg-arena-green-200 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,26 +55,29 @@ export const CardProducto = ({ data }) => {
         <p className="mt-1 text-sm text-slate-400 font-semibold">{detalle}</p>
         <article className="mt-3 flex items-end justify-between">
           <p className="text-lg font-bold text-arena-green-600">${precio}</p>
-          <button
-            onClick={() => agregarCarrito(data)}
-            className="flex items-center space-x-1.5 rounded-lg bg-arena-green-500 px-4 py-1.5 text-white duration-100 hover:bg-arena-green-700"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="#000"
-              className="h-4 w-4"
+          {
+            user &&
+            <button
+              onClick={() => agregarCarrito(data)}
+              className="flex items-center space-x-1.5 rounded-lg bg-arena-green-500 px-4 py-1.5 text-white duration-100 hover:bg-arena-green-700"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-              />
-            </svg>
-            <span className="text-sm">Agregar</span>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#000"
+                className="h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                />
+              </svg>
+              <span className="text-sm">Agregar</span>
+            </button>
+          }
         </article>
       </section>
     </article>

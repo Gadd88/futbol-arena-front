@@ -1,6 +1,11 @@
 import { useCarrito } from "../../hooks/useCarrito";
+import PropTypes from 'prop-types'
 
 export const ProductoCarrito = ({ item }) => {
+  ProductoCarrito.propTypes = {
+    item: PropTypes.object
+  }
+
   const { eliminarCarrito } = useCarrito();
 
   const { producto_id, producto, precio, cantidad, imagen } = item;
