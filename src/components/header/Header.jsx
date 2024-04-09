@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
+
+import { Login } from "../login/Login";
+import { UserContext } from "../../context/UserContext";
+
 
 export const Header = () => {
-  const [isActive, setIsActive] = useState(false);
+  const {showLogin, setShowLogin, usuario, cerrarSesion} = useContext(UserContext)
+  const [isActive, setIsActive] = useState(false)
+
   return (
     <header className="w-full bg-arena-green-950 rounded-xl mx-auto my-5">
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${isActive ? "pb-6" : ""}`}>
@@ -51,22 +57,34 @@ export const Header = () => {
             </nav>
           </div>
           <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
-              <Link
-                className="rounded-md bg-arena-green-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                to="#"
-              >
-                Ingresar
-              </Link>
-              <div className="hidden sm:flex">
-                <Link
-                  className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-arena-green-900"
-                  to="/registro"
-                >
-                  Registrarse
-                </Link>
-              </div>
-            </div>
+            {
+              usuario.email
+              ? <div className="hidden sm:flex gap-4 place-content-center place-items-center">
+                  <Link to='/micuenta' className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow">
+                    Mi Cuenta
+                  </Link>
+                  <button className="bg-black text-white" onClick={cerrarSesion}>
+                    Cerrar Sesión
+                  </button>
+                </div>
+              :
+                <div className="sm:flex sm:gap-4">
+                  <button
+                    className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow"
+                    onClick={()=>setShowLogin(true)}
+                  >
+                    Ingresar
+                  </button>
+                  <div className="hidden sm:flex">
+                    <Link
+                      className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-arena-green-900"
+                      to="/registro"
+                    >
+                      Registrarse
+                    </Link>
+                  </div>
+                </div>
+            }
             <div className="block md:hidden">
               <button
                 className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
@@ -96,33 +114,35 @@ export const Header = () => {
           } itesm-center justify-center w-full h-fit bg-arena-green-50 rounded-md mt-4 md:hidden transition-all overflow-hidden`}
         >
           <div className=" flex flex-col items-center justify-around w-full">
-              <Link
-                to="/"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Inicio
-              </Link>
-              <Link
-                to="/nosotros"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Quienes Somos
-              </Link>
-              <Link
-                to="/galeria"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Galeria
-              </Link>
-              <Link
-                to="/contacto"
-                className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
-              >
-                Contacto
-              </Link>
+            <Link
+              to="/"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Inicio
+            </Link>
+            <Link
+              to="/nosotros"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Quienes Somos
+            </Link>
+            <Link
+              to="/galeria"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Galeria
+            </Link>
+            <Link
+              to="/contacto"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Contacto
+            </Link>
           </div>
         </div>
       </div>
+      <Login showLogin={showLogin} setShowLogin={setShowLogin}/>
     </header>
+    
   );
 };
