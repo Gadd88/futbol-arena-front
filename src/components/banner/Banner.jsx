@@ -17,15 +17,15 @@ export const Banner = () => {
 
     const scrollToImage = (direction, event) => {
         event.preventDefault();
-        if (direction === 'prev') {
-            setCurrentIndex(curr => curr === 0 ? data.length - 1 : curr - 1);
-        } else {
-            setCurrentIndex(curr => curr === data.length - 1 ? 0 : curr + 1);
-        }
+        const newIndex = direction === 'prev' ? (currentIndex === 0 ? data.length - 1 : currentIndex - 1) : (currentIndex === data.length - 1 ? 0 : currentIndex + 1);
+        setCurrentIndex(newIndex);
+        window.scrollTo(0, 0);
+        event.currentTarget.blur();
     };
 
     const goToSlide = (slideIndex) => {
         setCurrentIndex(slideIndex);
+        window.scrollTo(0, 0);
     };
 
     return (
