@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import { useUser } from "../hooks/useUser";
+import { useUser } from "../../hooks/useUser";
 
 const modalElement = document.getElementById("modalLogin");
 

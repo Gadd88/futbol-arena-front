@@ -53,6 +53,14 @@ export const Header = () => {
                     Galeria
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="text-white transition hover:text-arena-green-200"
+                    to="/reservas"
+                  >
+                    Reservas
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
@@ -119,6 +127,12 @@ export const Header = () => {
               className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
             >
               Inicio
+            </Link>
+            <Link
+              to="/reservas"
+              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+            >
+              Reservas
             </Link>
             <Link
               to="/nosotros"
