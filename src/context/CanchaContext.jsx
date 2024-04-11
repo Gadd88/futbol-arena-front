@@ -31,7 +31,7 @@ export const CanchaProvider = ({children}) => {
     }
 
     const getCanchas = async() => {
-        const response = await fetch('http://localhost:3001/api/canchas/lista')
+        const response = await fetch('https://futbol-arena-back.onrender.com/api/canchas/lista')
         const result = await response.json()
         setListaCanchas(result)
     }
@@ -49,8 +49,7 @@ export const CanchaProvider = ({children}) => {
     }
     
     const consultaApi = async(query) =>{
-        console.log(`http://localhost:3001/api/canchas?fecha_buscada=${query.fecha_buscada}&cancha_id=${query.cancha_id}`)
-        const response = await fetch(`http://localhost:3001/api/canchas?fecha_buscada=${query.fecha_buscada}&cancha_id=${query.cancha_id}`)
+        const response = await fetch(`https://futbol-arena-back.onrender.com/api/canchas?fecha_buscada=${query.fecha_buscada}&cancha_id=${query.cancha_id}`)
         const result = await response.json()
         setHorarios(result)
     }
