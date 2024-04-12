@@ -1,31 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../components/context/AuthContext';
 import useRegisterForm from '../../hooks/useRegisterForm';
 import banner from "../../assets/imagenBanner.jpg";
 
 export const Registro = () => {
-  const register = async (inputs) => {
-    try {
-      const response = await fetch('URL_DE_LA_API', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(inputs),
-      });
-      if (!response.ok) {
-        throw new Error('Error en el registro');
-      }
-      const data = await response.json();
-      console.log('Registro exitoso', data);
-      // Redirigir al usuario o mostrar mensaje de éxito
-    } catch (error) {
-      console.error('Error en el registro:', error);
-      // Manejar el error mostrando un mensaje al usuario
-    }
-  };
-
-  const { inputs, handleInputChange, handleSubmit, resetForm } = useRegisterForm(register);
-
+  
+  const { registerUser } = useContext(AuthContext);
+  const { inputs, handleInputChange, handleSubmit, resetForm } = useRegisterForm(registerUser);
+  
   return (
     <div className="container mx-auto h-screen bg-green-200 p-6 flex justify-center items-center rounded-xl">
     <div className="flex flex-row gap-4 w-full max-w-4xl">
@@ -39,7 +21,7 @@ export const Registro = () => {
                     name="fullName"
                     onChange={handleInputChange}
                     value={inputs.fullName}
-                    placeholder="Full Name"
+                    placeholder="Nombre Completo"
                     className="p-3 border border-gray-300 text-gray-700 rounded-xl"
                 />
                 <input
@@ -55,7 +37,7 @@ export const Registro = () => {
                     name="phone"
                     onChange={handleInputChange}
                     value={inputs.phone}
-                    placeholder="Phone"
+                    placeholder="Telefono"
                     className="p-3 border border-gray-300 text-gray-700 rounded-xl"
                 />
                 <input
@@ -63,7 +45,7 @@ export const Registro = () => {
                     name="password"
                     onChange={handleInputChange}
                     value={inputs.password}
-                    placeholder="Password"
+                    placeholder="Contraseña"
                     className="p-3 border border-gray-300 text-gray-700 rounded-xl"
                 />
                 <input
@@ -71,7 +53,7 @@ export const Registro = () => {
                     name="confirmPassword"
                     onChange={handleInputChange}
                     value={inputs.confirmPassword}
-                    placeholder="Confirm Password"
+                    placeholder="Confirmar Contraseña"
                     className="p-3 border border-gray-300 text-gray-700 rounded-xl"
                 />
                 {/* Botones */}
