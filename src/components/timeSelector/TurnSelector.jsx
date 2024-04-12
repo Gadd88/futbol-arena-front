@@ -20,7 +20,7 @@ export const TurnSelector = () => {
               </p>
               {
                 !horario.disponible &&
-              <div className="absolute -rotate-[30deg] bg-arena-green-300 p-2 bottom-5 w-28 flex justify-center items-center">Reservado</div>
+              <div className="absolute -rotate-[30deg] bg-arena-green-300/80 backdrop-blur-sm p-2 bottom-5 w-40 md:w-28 flex justify-center items-center">Reservado</div>
               }
             </div>
           ))
