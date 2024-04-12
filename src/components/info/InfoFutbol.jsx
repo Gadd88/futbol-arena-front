@@ -2,6 +2,7 @@ import React from "react";
 import Map from "../map/Map";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import calendar from "../../assets/calendar.svg";
+import clock from "../../assets/clock.svg"
 
 const InfoFutbol = () => {
   return (
@@ -10,33 +11,35 @@ const InfoFutbol = () => {
         Donde estamos:
       </h3>
       <article className="lg:grid lg:grid-cols-3 lg:place-content-center justify-center items-stretch">
-        <div>
+        <div >
           <Map />
         </div>
 
-        <div className="grid grid-rows-3 gap-4">
+        <div className="grid grid-rows-3 gap-4 flex justify-center p-10 bg-white border border-gray-200 rounded-lg shadow">
           <div className="flex justify-center">
-            <h3 className="text-arena-green-700 font-bold text-center">
+            <h3 className="text-arena-green-700 font-bold text-center text-3xl">
               {" "}
               Cuando abrimos?
             </h3>
           </div>
-          <div className="flex justify-center">
-            <img src={calendar} alt="" className="w-10 h-10" />
-            <h4 className="text-arena-green-700 font-bold text-center">
+          <div className="flex justify-center flex-col justify-center place-items-center">
+            <img src={calendar} alt="" className="w-10 h-10 text-center" />
+            <h4 className="text-arena-green-700 font-bold text-2xl">
               {" "}
               Todos los dias
             </h4>
           </div>
-          <div className="flex justify-center">
-            <h4 className="text-arena-green-700 font-bold text-center">
+          <div className="flex justify-center flex-col justify-center place-items-center">
+            <img src={clock} alt="" className="w-10 h-10 text-center" />
+            <h4 className="text-arena-green-700 font-bold text-center text-2xl">
               {" "}
               Horarios:{" "}
-            </h4>{" "}
+            </h4>
+            <h5 className="text-arena-green-700 font-bold text-center"> 10:00 hasta las 23:00  </h5>
           </div>
         </div>
 
-        <div></div>
+        <div className="grid grid-rows-3 gap-4 flex justify-center p-10 bg-white border border-gray-200 rounded-lg shadow"></div>
       </article>
     </section>
   );
