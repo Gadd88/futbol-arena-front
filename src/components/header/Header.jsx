@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
 import { useContext, useState } from "react";
-
-import { Login } from "../login/Login";
-import { UserContext } from "../../context/UserContext";
+import { Login, Carrito } from "../";
+import { UserContext } from "../../context/";
 
 
 export const Header = () => {
@@ -173,6 +172,10 @@ export const Header = () => {
             </div>
           </div>
         </div>
+        {
+          usuario.email && 
+          <Carrito />
+        }
       </div>
       <Login showLogin={showLogin} setShowLogin={setShowLogin}/>
     </header>
