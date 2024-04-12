@@ -35,22 +35,22 @@ const InfoFutbol = () => {
               {" "}
               Horarios:{" "}
             </h4>
-            <h5 className="text-arena-green-700 font-bold text-center"> 10:00 hasta las 23:00  </h5>
+            <h5 className="text-black font-bold text-center"> 10:00 hasta las 23:00  </h5>
           </div>
         </div>
 
         <div className="grid grid-rows-3 gap-4 flex justify-start p-10 bg-white border border-gray-200 rounded-lg shadow">
                 <div className="flex justify-start flex-row gap-5">
                     <img src={wp} alt="" className="w-10 h-10 text-center"/>
-                    <h4 className="text-arena-green-700 font-bold text-center"> Contactanos por Whatsapp: 381-4628299</h4>
+                    <h4 className="text-black font-bold text-center"> Contactanos por Whatsapp: 381-4628299</h4>
                 </div>
                 <div className="flex justify-start flex-row gap-5">
                     <img src={email} alt="" className="w-10 h-10 text-center"/>
-                    <h4 className="text-arena-green-700 font-bold text-center">Para eventos especiales y consultas: futbol_arena@gmail.com</h4>
+                    <h4 className="text-black font-bold text-center">Para eventos especiales y consultas: futbol_arena@gmail.com</h4>
                 </div>
                 <div className="flex justify-start flex-row gap-5">
                     <img src={location} alt="" className="w-10 h-10 text-center"/>
-                    <h4 className="text-arena-green-700 font-bold text-center">Visita nuestro complejo en: Av. Libertador 1000</h4>
+                    <h4 className="text-black font-bold text-center">Visita nuestro complejo en: Av. Libertador 1000</h4>
                 </div>
 
         </div>
