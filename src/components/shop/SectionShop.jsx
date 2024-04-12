@@ -1,6 +1,6 @@
-import { CardProducto } from "../cardProducto/CardProducto";
+import { CardProducto } from "../";
 import { Link } from "react-router-dom";
-import { useProductos } from "../../hooks/useProductos";
+import { useProductos } from "../../hooks/";
 
 export const SectionShop = () => {
 

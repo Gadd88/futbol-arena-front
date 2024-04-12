@@ -1,6 +1,8 @@
+import {useContext} from 'react'
 import { Link } from "react-router-dom";
-import { useProductos } from "../../hooks/useProductos";
+import { useProductos } from "../../hooks/";
 import PropTypes from 'prop-types'
+import { UserContext } from "../../context/";
 
 export const CardProducto = ( { data } ) => {
   CardProducto.propTypes = {
@@ -9,7 +11,8 @@ export const CardProducto = ( { data } ) => {
 
   const { producto, detalle, precio, categoria, imagen, producto_id } = data;
 
-  const user = JSON.parse(localStorage.getItem('user'));
+  const {usuario} = useContext(UserContext)
+
   const { agregarCarrito, carrito } = useProductos();
 
   const enCarrito = (producto_id) => {
@@ -56,7 +59,7 @@ export const CardProducto = ( { data } ) => {
         <article className="mt-3 flex items-end justify-between">
           <p className="text-lg font-bold text-arena-green-600">${precio}</p>
           {
-            user &&
+            usuario.email &&
             <button
               onClick={() => agregarCarrito(data)}
               className="flex items-center space-x-1.5 rounded-lg bg-arena-green-500 px-4 py-1.5 text-white duration-100 hover:bg-arena-green-700"
@@ -83,3 +86,4 @@ export const CardProducto = ( { data } ) => {
     </article>
   );
 };
+  

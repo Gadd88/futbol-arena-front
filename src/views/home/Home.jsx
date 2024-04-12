@@ -1,4 +1,4 @@
-import { SectionShop } from "../../components/shop/SectionShop"
+import { SectionShop } from "../../components/"
 
 export const Home = () => {
   return (
