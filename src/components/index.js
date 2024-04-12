@@ -1,1 +1,6 @@
 export * from './header/Header.jsx'
+export * from './fieldComps/FieldComps.jsx'
+export * from './footer/Footer.jsx'
+export * from './login/Login.jsx'
+export * from './reservasDate/DatePicker.jsx'
+export * from './timeSelector/TurnSelector.jsx'

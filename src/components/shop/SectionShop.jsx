@@ -7,7 +7,7 @@ export const SectionShop = () => {
   const {productos} = useProductos();
   
   return (
-    <section className=" py-5 bg-gray-100">
+    <section className="py-5 bg-gray-100 h-fit">
       <h2 className="text-black text-3xl font-bold mb-6">Los productos mas vendidos</h2>
       <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10 h-full">
         {
