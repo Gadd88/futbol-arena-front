@@ -9,7 +9,7 @@ export const SectionShop = () => {
   return (
     <section className="py-5 bg-gray-100 h-fit">
       <h2 className="text-black text-3xl font-bold mb-6">Los productos mas vendidos</h2>
-      <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10 h-full">
+      <div className="mx-auto sm:grid max-w-6xl flex items-center justify-start gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10 h-full overflow-x-scroll snap-mandatory snap-y sm:overflow-hidden">
         {
           productos.map((producto) => (
             <CardProducto 
