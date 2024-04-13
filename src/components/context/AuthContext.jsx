@@ -21,6 +21,9 @@ export const AuthProvider = ({ children }) => {
 
       const data = await response.json();
       setUser(data.user);
+
+      localStorage.setItem('user', JSON.stringify(data.user));
+
       console.log('Registro exitoso', data);
     } catch (error) {
       console.error('Error en el registro:', error);

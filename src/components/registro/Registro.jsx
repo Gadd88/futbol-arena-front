@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../components/context/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 import useRegisterForm from '../../hooks/useRegisterForm';
 import banner from "../../assets/imagenBanner.jpg";
 
