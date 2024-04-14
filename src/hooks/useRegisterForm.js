@@ -39,7 +39,7 @@ const useRegisterForm = (callback) => {
       return;
     }
 
-    // Si todas las validaciones son exitosas, procede con el callback
+    
     callback(inputs);
   };
 

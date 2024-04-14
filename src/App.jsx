@@ -1,8 +1,9 @@
 import { AuthProvider } from './components/context/AuthContext';
-import { Header } from "./components"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Contacto, Error404, Galeria, Home, Nosotros, Registro } from "./views"
-import Footer from "./components/footer/Footer.jsx"
+import { Header } from "./components";
+import  Registro  from "./components/registro/Registro.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Contacto, Error404, Galeria, Home, Nosotros} from "./views";
+import Footer from "./components/footer/Footer.jsx";
 
 function App() {
   return (

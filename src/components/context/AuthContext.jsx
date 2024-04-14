@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   const registerUser = async (userData) => {
     try {
-      const response = await fetch('http://localhost:3001/api/registro', {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
       const data = await response.json();
       setUser(data.user);
 
+      alert('¡Registro exitoso!');
       localStorage.setItem('user', JSON.stringify(data.user));
 
       console.log('Registro exitoso', data);
