@@ -4,12 +4,18 @@ import Footer from "./components/footer/Footer.jsx"
 import { UserProvider } from "./context/UserContext.jsx"
 import { CanchaProvider } from "./context/CanchaContext"
 import { Contacto, Error404, Galeria, Home, Nosotros, Registro, Reservas } from "./views"
+import { ToastContainer } from "react-toastify"
 
 function App() {
   return (
     <UserProvider>
       <CanchaProvider>
         <BrowserRouter>
+        <ToastContainer
+            autoClose={1500} 
+            position='top-center'
+            
+            />
           <Header />
           <Routes>
             <Route path="/" element={<Home/>}/>

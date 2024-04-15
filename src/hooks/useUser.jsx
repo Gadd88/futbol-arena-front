@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
+import { toast } from "react-toastify"
 
 export const useUser = () => {
     const navigate = useNavigate()
@@ -16,10 +17,17 @@ export const useUser = () => {
           email: user.email,
           password: user.password
         }
-        await loginUsuario(userData)
-        setTimeout(()=>{
+        try{
+          await toast.promise(loginUsuario(userData),
+        {
+          pending: 'Ingresando 🕐...',
+          success: 'A Jugar!! ⚽',
+          error: 'Falta Juez!! ❌ - Usuario y/o Contraseña incorrectos.'
+        })
           navigate('/')
-        }, 1000)
+        }catch(error){
+          toast.error(error.message)
+        }
       };
 
   return {
