@@ -30,10 +30,10 @@ export const Login = ({ showLogin, setShowLogin }) => {
     <div className="relative">
       {showLogin &&
         createPortal(
-          <div className="flex w-[96%] h-[32rem] sm:w-[30rem] items-center justify-around text-white rounded-md fixed top-[6.7rem] sm:top-[10rem] flex-col right-0 left-0 sm:right-[7rem] sm:left-[7rem] mx-auto backdrop-opacity-90 bg-black/75 backdrop-blur-md">
+          <div className="flex w-[96%] h-[30rem] sm:w-[25rem] items-center justify-around text-white rounded-md fixed top-[6.7rem] sm:top-[7rem] flex-col right-0 left-0 sm:right-[7rem] sm:left-[7rem] mx-auto backdrop-opacity-90 bg-black/85 backdrop-blur-md">
             <section className="flex w-full flex-col space-y-10 px-5 relative">
               <button className="bg-arena-green-400 rounded-sm absolute left-auto right-3 -top-4 " onClick={()=>setShowLogin(false)}>X</button>
-              <h2 className="text-center text-4xl font-medium">
+              <h2 className="text-center text-2xl font-medium">
                 Iniciar Sesión
               </h2>
               <form className="space-y-10 flex flex-col"  onSubmit={handleSubmit}>
@@ -70,10 +70,10 @@ export const Login = ({ showLogin, setShowLogin }) => {
             </section>
               <section
                 className="transform text-center font-semibold text-slate-200 duration-300 hover:text-gray-300">
-                  <Link to='#' className="text-arena-green-200">
+                  <Link to='#' className="text-arena-green-200 text-sm">
                     OLVIDASTE TU PASSWORD?
                   </Link>
-                <p className="text-center text-lg">
+                <p className="text-center text-sm">
                   Aún no tienes cuenta?
                   <Link
                     to="/registro"

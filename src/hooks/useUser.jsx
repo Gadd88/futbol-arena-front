@@ -1,11 +1,11 @@
 import { useContext, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
-import { toast } from "react-toastify"
+import { toast } from "sonner"
 
 export const useUser = () => {
     const navigate = useNavigate()
-    const { registrarUsuario, regResult, loginUsuario, usuarioToken } = useContext(UserContext)    
+    const { registrarUsuario, regResult, loginUsuario, usuarioToken, cerrarSesion } = useContext(UserContext)    
 
     const [user, setUser] = useState({
         email: "",
@@ -18,9 +18,9 @@ export const useUser = () => {
           password: user.password
         }
         try{
-          await toast.promise(loginUsuario(userData),
+          toast.promise(loginUsuario(userData),
         {
-          pending: 'Ingresando 🕐...',
+          loading: 'Ingresando 🕐...',
           success: 'A Jugar!! ⚽',
           error: 'Falta Juez!! ❌ - Usuario y/o Contraseña incorrectos.'
         })
@@ -30,6 +30,11 @@ export const useUser = () => {
         }
       };
 
+    const handleLogout = () => {
+      toast.error('Hasta luego...')
+      cerrarSesion()
+    }
+
   return {
     registrarUsuario,
     regResult,
@@ -37,6 +42,7 @@ export const useUser = () => {
     usuarioToken,
     handleLogin,
     setUser,
-    user
+    user,
+    handleLogout
   }
 }

@@ -1,7 +1,10 @@
 import { useContext, useState } from 'react';
 import { UserContext } from '../context/UserContext';
+import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
 
 export const useRegisterForm = () => {
+  const navigate = useNavigate()
   const initialState = {
     fullName: '',
     email: '',
@@ -41,8 +44,18 @@ export const useRegisterForm = () => {
       password: password,
       telefono: phone
     }
+    try{
+      toast.promise(registrarUsuario(newUser),
+      {
+        loading: 'Ingresando 🕐...',
+        success: 'A Jugar!! ⚽',
+        error: 'Falta Juez!! ❌ - Ocurrió un error, intenta de nuevo.'
+      })
+        navigate('/')
+    }catch(error){
+      toast.error('Falta Juez! Ocurrió un error, intenta de nuevo')
+    }
 
-    await registrarUsuario(newUser);
   };
 
   const handleInputChange = (event) => {

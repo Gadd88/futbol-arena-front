@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export const ProductosContext = createContext()
 
@@ -26,6 +27,7 @@ export const ProductosProvider = ({children}) => {
         if(productoIdx >= 0){
             const newCarrito = structuredClone(carrito)
             newCarrito[productoIdx].cantidad++
+            toast.success('Producto Agregado...')
             setCarrito(newCarrito)
         }else{
             producto.cantidad = 1
@@ -34,10 +36,10 @@ export const ProductosProvider = ({children}) => {
                 producto
             ])
         }
-        console.log(carrito)
     }
     const eliminarCarrito = (producto_id) => {
         const newCarrito = carrito.filter(item => item.producto_id !== producto_id)
+        toast.error('Producto eliminado')
         setCarrito(newCarrito)
     }
     

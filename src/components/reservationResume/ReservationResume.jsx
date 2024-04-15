@@ -1,6 +1,13 @@
-import React from "react";
+import { toast } from "sonner";
+
 
 export const ReservationResume = ({ reservation, cancelReservation }) => {
+  const user = JSON.parse(localStorage.getItem('usuario'))
+
+  if(!user){
+    toast.error('Debe iniciar sesión para reservar un turno')
+    return
+  }
   return (
     <article className="bg-arena-green-50 rounded-md shadow-md flex flex-col items-start justify-center text-arena-green-900 overflow-hidden absolute p-5">
       <h3 className="font-bold text-arena-green-950 mx-auto text-center ">

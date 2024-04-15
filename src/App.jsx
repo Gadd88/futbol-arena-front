@@ -4,19 +4,15 @@ import Footer from "./components/footer/Footer.jsx"
 import { UserProvider } from "./context/UserContext.jsx"
 import { CanchaProvider } from "./context/CanchaContext"
 import { Contacto, Error404, Galeria, Home, Nosotros, Registro, Reservas } from "./views"
-import { ToastContainer } from "react-toastify"
+import { Toaster } from "sonner"
 
 function App() {
   return (
     <UserProvider>
       <CanchaProvider>
         <BrowserRouter>
-        <ToastContainer
-            autoClose={1500} 
-            position='top-center'
-            
-            />
           <Header />
+          <Toaster position="top-center" visibleToasts={4} theme="dark" richColors duration={1000}/>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/nosotros" element={<Nosotros/>}/>

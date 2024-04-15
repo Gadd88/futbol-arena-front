@@ -1,6 +1,5 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 export const UserContext = createContext()
 
@@ -17,16 +16,12 @@ export const UserProvider = ({ children }) => {
 
     const registrarUsuario = async (user) => {
         try{
-            const response = await toast.promise(fetch(`${apiUrl}/registro`, {
+            const response = await fetch(`${apiUrl}/registro`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify(user)
-                }),{
-                    pending: 'Registrando 👌',
-                    success: 'Registro Exitoso!! ⚽',
-                    error: 'Falta Juez! ❌ - Ocurrió un error! '
                 })
             if(!response.ok){
                 throw new Error('Error en el registro')
@@ -42,7 +37,6 @@ export const UserProvider = ({ children }) => {
     }
 
     const loginUsuario = async (user) => {
-        // const response = await fetch('http://localhost:3001/api/login',{
         const response = await fetch(`${apiUrl}/login`, {
             method: 'POST',
             headers: {

@@ -3,11 +3,13 @@ import logo from "../../assets/futbolarenaTiny.png";
 import { useContext, useState } from "react";
 import { Login, Carrito } from "../";
 import { UserContext } from "../../context/";
+import { useUser } from "../../hooks";
 
 
 export const Header = () => {
-  const {showLogin, setShowLogin, usuario, cerrarSesion} = useContext(UserContext)
+  const {showLogin, setShowLogin, usuario} = useContext(UserContext)
   const [isActive, setIsActive] = useState(false)
+  const {handleLogout} = useUser()
 
   return (
     <header className="w-full bg-arena-green-950 rounded-xl mx-auto my-5">
@@ -70,7 +72,7 @@ export const Header = () => {
                   <Link to='/micuenta' className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow">
                     Mi Cuenta
                   </Link>
-                  <button className="bg-black text-white" onClick={cerrarSesion}>
+                  <button className="bg-black text-white" onClick={handleLogout}>
                     Cerrar Sesión
                   </button>
                 </div>
@@ -158,7 +160,7 @@ export const Header = () => {
                     <Link to='/micuenta' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
                       Mi Cuenta
                     </Link>
-                    <button className="bg-black text-white rounded-none w-1/2 h-full py-3" onClick={cerrarSesion}>
+                    <button className="bg-black text-white rounded-none w-1/2 h-full py-3" onClick={handleLogout}>
                       Cerrar Sesión
                     </button>
                   </div>
