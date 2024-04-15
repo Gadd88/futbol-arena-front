@@ -3,7 +3,7 @@ import React from "react";
 const AboutUsCards = () => {
   return (
     <section className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 m-3 mt-10 ">
-      <div className="container border border-2 rounded-lg content-center box-border h-200 w-100 p-4 border-4 justify-center">
+      <div className="container border border-2 rounded-lg content-center box-border h-200 w-100 p-4 justify-center">
         <div>
           <img
             src="https://picsum.photos/200/200"
