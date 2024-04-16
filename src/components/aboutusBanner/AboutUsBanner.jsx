@@ -1,30 +1,59 @@
 import React from "react";
 import complejo from "../../assets/complejo.jpg";
+import complejo2 from "../../assets/complejo2.jpg";
 
 const AboutUsBanner = () => {
   return (
-    <section className="grid lg:grid-cols-2 content-center items-center place-content-center">
-      <div>
-        <img src={complejo} alt="" className="rounded-lg" />
-      </div>
-      <div className="container p-7">
-        <h2 className="text-arena-green-700 font-bold text-center text-3xl mb-4">
-          {" "}
-          Sobre nosotros
-        </h2>
-        <p className="text-black font-semibold text-center text-l">
-          En un pequeño pueblo, un pequeño grupo de entusiastas creó un complejo
-          deportivo llamado Futbol Arena para fomentar la actividad física y el
-          espíritu deportivo. Construyeron un espacio único como punto de
-          encuentro para competir, compartir momentos y forjar amistades. Cada
-          ladrillo representaba un paso hacia su visión, con instalaciones de
-          primer nivel, tanto en lo deportivo como en lo recreativo. En la
-          inauguración, la emoción llenaba el aire, niños corrían, jóvenes
-          practicaban deportes y adultos revivían pasiones en las mesas del bar.
-          El complejo se convirtió en el corazón de la comunidad y del futbol,
-          donde los sueños se hacen realidad y reina el espíritu deportivo.
-        </p>
-      </div>
+    <section>
+      <article className="grid lg:grid-cols-2 content-center items-center place-content-center mb-5">
+        <div>
+          <img src={complejo} alt="" className="rounded-lg" />
+        </div>
+        <div className="container p-7">
+          <h2 className="text-arena-green-700 font-bold text-center text-3xl mb-4">
+            {" "}
+            NUESTA HISTORIA
+          </h2>
+          <p className="text-black font-semibold text-center text-l">
+            En un pequeño pueblo, un pequeño grupo de entusiastas creó un
+            complejo deportivo llamado Futbol Arena para fomentar la actividad
+            física y el espíritu deportivo. Construyeron un espacio único como
+            punto de encuentro para competir, compartir momentos y forjar
+            amistades. Cada ladrillo representaba un paso hacia su visión, con
+            instalaciones de primer nivel, tanto en lo deportivo como en lo
+            recreativo. En la inauguración, la emoción llenaba el aire, niños
+            corrían, jóvenes practicaban deportes y adultos revivían pasiones en
+            las mesas del bar. El complejo se convirtió en el corazón de la
+            comunidad y del futbol, donde los sueños se hacen realidad y reina
+            el espíritu deportivo.
+          </p>
+        </div>
+      </article>
+      <article className="grid lg:grid-cols-2 content-center items-center place-content-center">
+        <div className="container p-7">
+          <h2 className="text-arena-green-700 font-bold text-center text-3xl mb-4">
+            {" "}
+            NUESTRO COMPLEJO
+          </h2>
+          <p className="text-black font-semibold text-center text-l">
+            Sumérgete en nuestro e-commerce exclusivo donde encontrarás los
+            últimos productos relacionados con el fútbol, desde camisetas de tus
+            equipos favoritos hasta accesorios de entrenamiento de alta calidad.
+            ¿Quieres jugar un partido con tus amigos? ¡Reserva una de nuestras
+            canchas de fútbol de última generación! Disfruta de partidos
+            emocionantes mientras compartes momentos inolvidables en un ambiente
+            deportivo y amigable. Después del juego, relájate en nuestro bar
+            temático donde podrás disfrutar de bebidas refrescantes, snacks
+            deliciosos y compartir anécdotas futbolísticas con otros
+            aficionados. ¡Ven y vive la pasión por el fútbol en nuestro completo
+            complejo! ¡Te esperamos para que disfrutes de momentos inolvidables
+            con tus amigos y familiares!
+          </p>
+        </div>
+        <div>
+          <img src={complejo2} alt="" className="rounded-lg" />
+        </div>
+      </article>
     </section>
   );
 };
