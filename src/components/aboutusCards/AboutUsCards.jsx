@@ -1,4 +1,6 @@
 import React from "react";
+import github from "../../assets/github.svg";
+import linkedin from "../../assets/linkedin.svg";
 
 const AboutUsCards = () => {
   return (
@@ -20,6 +22,10 @@ const AboutUsCards = () => {
             no pude parar mas."
           </p>
         </div>
+        <div className="flex flex-row gap-3 mt-2 justify-end">
+          <img src={github} alt="" className="w-8 h-8  hover:bg-sky-700" />
+          <img src={linkedin} alt="" className="w-8 h-8  hover:bg-sky-700" />
+        </div>
       </div>
       <div className="flex flex-col border border-1 rounded-lg p-4 h-200 w-100 p-4 justify-items-center justify-center">
         <div className="flex justify-center justify-items-center">
@@ -37,6 +43,10 @@ const AboutUsCards = () => {
             "Despues de un largo dia de trabajo con el codigo, no hay nada como
             tomarse un rico cafe."
           </p>
+        </div>
+        <div className="flex flex-row gap-3 mt-2 justify-end">
+          <img src={github} alt="" className="w-8 h-8  hover:bg-sky-700" />
+          <img src={linkedin} alt="" className="w-8 h-8  hover:bg-sky-700" />
         </div>
       </div>
       <div className="flex flex-col border border-1 rounded-lg p-4 h-200 w-100 p-4 justify-items-center justify-center">
@@ -56,6 +66,10 @@ const AboutUsCards = () => {
             pagina web de futbol.."
           </p>
         </div>
+        <div className="flex flex-row gap-3 mt-2 justify-end">
+          <img src={github} alt="" className="w-8 h-8  hover:bg-sky-700" />
+          <img src={linkedin} alt="" className="w-8 h-8  hover:bg-sky-700" />
+        </div>
       </div>
       <div className="flex flex-col border border-1 rounded-lg p-4 h-200 w-100 p-4 justify-items-center justify-center">
         <div className="flex justify-center justify-items-center">
@@ -74,6 +88,10 @@ const AboutUsCards = () => {
             :)"
           </p>
         </div>
+        <div className="flex flex-row gap-3 mt-2 justify-end">
+          <img src={github} alt="" className="w-8 h-8 hover:bg-sky-700" />
+          <img src={linkedin} alt="" className="w-8 h-8 hover:bg-sky-700" />
+        </div>
       </div>
       <div className="flex flex-col border border-1 rounded-lg p-4 rounded-lg h-200 w-100 p-4 justify-items-center justify-center">
         <div className="flex justify-center justify-items-center">
@@ -90,6 +108,10 @@ const AboutUsCards = () => {
           <p className="text-gray-400 italic text-center text-l">
             "La programacion es mi pasion, me encanta el front-end!"
           </p>
+        </div>
+        <div className="flex flex-row gap-3 mt-2 justify-end">
+          <img src={github} alt="" className="w-8 h-8 hover:bg-sky-700" />
+          <img src={linkedin} alt="" className="w-8 h-8 hover:bg-sky-700" />
         </div>
       </div>
     </section>
