@@ -14,7 +14,7 @@ const AboutUsBanner = () => {
             {" "}
             NUESTA HISTORIA
           </h2>
-          <p className="text-black font-semibold text-center text-l">
+          <p className="text-black font-semibold text-center text-base leading-7">
             En un pequeño pueblo, un pequeño grupo de entusiastas creó un
             complejo deportivo llamado Futbol Arena para fomentar la actividad
             física y el espíritu deportivo. Construyeron un espacio único como
@@ -35,10 +35,10 @@ const AboutUsBanner = () => {
             {" "}
             NUESTRO COMPLEJO
           </h2>
-          <p className="text-black font-semibold text-center text-l">
-            Sumérgete en nuestro e-commerce exclusivo donde encontrarás los
-            últimos productos relacionados con el fútbol, desde camisetas de tus
-            equipos favoritos hasta accesorios de entrenamiento de alta calidad.
+          <p className="text-black font-semibold text-center text-base leading-7">
+            Sumérgete en nuestra tienda exclusiva donde encontrarás los últimos
+            productos relacionados con el fútbol, desde camisetas de tus equipos
+            favoritos hasta accesorios de entrenamiento de alta calidad.
             ¿Quieres jugar un partido con tus amigos? ¡Reserva una de nuestras
             canchas de fútbol de última generación! Disfruta de partidos
             emocionantes mientras compartes momentos inolvidables en un ambiente
