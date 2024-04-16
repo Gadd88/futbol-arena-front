@@ -5,7 +5,7 @@ import { toast } from "sonner"
 
 export const useUser = () => {
     const navigate = useNavigate()
-    const { registrarUsuario, regResult, loginUsuario, usuarioToken, cerrarSesion } = useContext(UserContext)    
+    const { registrarUsuario, regResult, loginUsuario, usuarioToken } = useContext(UserContext)    
 
     const [user, setUser] = useState({
         email: "",
@@ -17,22 +17,17 @@ export const useUser = () => {
           email: user.email,
           password: user.password
         }
-        try{
-          toast.promise(loginUsuario(userData),
-        {
-          loading: 'Ingresando 🕐...',
-          success: 'A Jugar!! ⚽',
-          error: 'Falta Juez!! ❌ - Usuario y/o Contraseña incorrectos.'
+        toast.promise(loginUsuario(userData),{
+          loading: 'Ingresando.. 🕐',
+          success: 'A jugar!! ⚽',
+          error: 'Falta Juez! ❌, ocurrió un error!'
         })
-          navigate('/')
-        }catch(error){
-          toast.error(error.message)
-        }
       };
 
     const handleLogout = () => {
       toast.error('Hasta luego...')
-      cerrarSesion()
+      localStorage.clear()
+      navigate(0)
     }
 
   return {

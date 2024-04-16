@@ -1,11 +1,6 @@
 import { Datepicker } from "flowbite-react";
-// import AirDatepicker from 'air-datepicker'
-// import 'air-datepicker/air-datepicker.css'
+export const DatePicker = ({handleDate}) => {
 
-import { useCancha } from "../../hooks/useCancha";
-export const DatePicker = () => {
-
-  const { handleDate } = useCancha()
   return (
     <section className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6">
       {/* <AirDatepicker /> */}

@@ -22,19 +22,19 @@ export const useRegisterForm = () => {
     const { fullName, email, phone, password, confirmPassword } = inputs;
 
     if (!fullName || !email || !password || !confirmPassword ||!phone) {
-      alert('Por favor, complete todos los campos');
+      toast.error('Por favor, complete todos los campos');
       return;
     }
     if (inputs.fullName.length < 4) {
-      alert('El nombre completo debe tener al menos 5 caracteres.');
+      toast.error('El nombre completo debe tener al menos 5 caracteres.');
       return;
     }
     if (inputs.password.length < 8) {
-      alert('La contraseña debe tener al menos 8 caracteres.');
+      toast.error('La contraseña debe tener al menos 8 caracteres.');
       return;
     }
     if (inputs.password !== inputs.confirmPassword) {
-      alert('Las contraseñas no coinciden');
+      toast.error('Las contraseñas no coinciden');
       return;
     }
 
@@ -44,18 +44,15 @@ export const useRegisterForm = () => {
       password: password,
       telefono: phone
     }
-    try{
-      toast.promise(registrarUsuario(newUser),
-      {
-        loading: 'Ingresando 🕐...',
-        success: 'A Jugar!! ⚽',
-        error: 'Falta Juez!! ❌ - Ocurrió un error, intenta de nuevo.'
-      })
-        navigate('/')
-    }catch(error){
-      toast.error('Falta Juez! Ocurrió un error, intenta de nuevo')
-    }
-
+    toast.promise(registrarUsuario(newUser),{
+      loading: 'Registrando usuario...',
+      success: ({usuario}) => {
+        toast.success(`Bienvenido a la comunidad de El Complejo! ${usuario.nombre}`)
+        setTimeout(()=>navigate('/'),1000)
+      },
+      error: 'Ocurrió un error'
+    })
+    
   };
 
   const handleInputChange = (event) => {

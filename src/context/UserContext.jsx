@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export const UserContext = createContext()
 
@@ -24,42 +25,42 @@ export const UserProvider = ({ children }) => {
                 body: JSON.stringify(user)
                 })
             if(!response.ok){
-                throw new Error('Error en el registro')
-            }
+                const result = await response.json()
+                throw new Error(result.message)
+            } 
             const result = await response.json()
             setRegResult({
                 message: result.message,
                 usuario: result.usuario
             })
+            return result
         }catch(err){
-            console.log(err)
+            throw new Error(err)
         }
     }
 
     const loginUsuario = async (user) => {
-        const response = await fetch(`${apiUrl}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-        if(!response.ok){
+        try{
+            const response = await fetch(`${apiUrl}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
             const result = await response.json()
-            console.log(result.message)
-            return
+            if(!response.ok){
+                throw new Error(result.message)
+            }
+            setUsuarioToken(result.token)
+            localStorage.setItem('token',result.token)
+            return result
+        }catch(err){
+            throw new Error(err)
         }
-        const result = await response.json()
-        setUsuarioToken(result.token)
-        localStorage.setItem('token',result.token)
+        
     }
-    const cerrarSesion = () => {
-        setTimeout(()=>{
-            localStorage.clear()
-            location.reload()
-
-        },500)
-    }
+    
     useEffect(()=>{
         if(usuarioToken.length>0){
             const user = jwtDecode(usuarioToken)
@@ -74,7 +75,6 @@ export const UserProvider = ({ children }) => {
             registrarUsuario,
             loginUsuario,
             setShowLogin,
-            cerrarSesion,
             regResult,
             usuarioToken,
             usuario,

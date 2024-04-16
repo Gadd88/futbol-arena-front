@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export const CanchaContext = createContext(null)
 
 
 export const CanchaProvider = ({children}) => {
-
     const [data, setData] = useState({
         fecha_buscada: '',
         cancha_id: ''
@@ -17,7 +17,7 @@ export const CanchaProvider = ({children}) => {
         reservation_date: '',
         reservation_time: '',
         reservation_field_id: '',
-        reservation_id:''
+        user_id: ''
     })
 
     const handleDate = (date) => {
@@ -25,6 +25,10 @@ export const CanchaProvider = ({children}) => {
         setData({
             ...data,
             fecha_buscada: newDate
+        })
+        setReservation({
+            ...reservation,
+            reservation_date: newDate
         })
     }
     const convertDate = (date) => {
@@ -47,49 +51,78 @@ export const CanchaProvider = ({children}) => {
         getCanchas()
     },[])
 
-    const handleConsulta = (ev) => {
+    const handleConsulta = async (ev) => {
+        const usuario = JSON.parse(localStorage.getItem('usuario')) || ''
+        if(usuario == '' || usuario == null) return toast.error('Debes Iniciar Sesión para reservar una cancha')
         setData({
             ...data,
             cancha_id: ev.target.id
         })
-        consultaApi(data)
-    }
-    
-    const consultaApi = async(query) =>{
-        const response = await fetch(`https://futbol-arena-back.onrender.com/api/canchas?fecha_buscada=${query.fecha_buscada}&cancha_id=${query.cancha_id}`)
-        const result = await response.json()
-        setHorarios(result)
-    }
-
-    const [timeSelected, setTimeSelected] = useState()
-
-    const selectedTime = (horario) => {
-        setTimeSelected(horario)
-        addReservation()
-    }
-
-    const addReservation = () => {
-        const [cancha] = listaCanchas.filter(cancha => cancha.cancha_id === data.cancha_id)
         setReservation({
-            reservation_id: crypto.randomUUID(),
-            reservation_date: data.fecha_buscada,
-            reservation_field_id: data.cancha_id,
-            reservation_time: timeSelected,
-            reservation_field_name: cancha.cancha_nombre
+            ...reservation,
+            reservation_field_id: ev.target.id,
+            user_id: usuario.user_id
         })
-        console.log(reservation)
+        await consultaApi(data)
+    }
+    const consultaApi = async(query) =>{
+        if(query.fecha_buscada != '' && query.cancha_id != ''){
+            const response = await fetch(`https://futbol-arena-back.onrender.com/api/canchas?fecha_buscada=${query.fecha_buscada}&cancha_id=${query.cancha_id}`)
+            const result = await response.json()
+            setHorarios(result)
+        }
+    }
+    const handleTime = (horario) => {
+        setReservation({
+            ...reservation,
+            reservation_time: horario
+        })
+    }
+    // setReservation({
+    //     reservation_date: data.fecha_buscada,
+    //     reservation_field_id: data.cancha_id,
+    //     reservation_time: timeSelected,
+    //     reservation_field_name: cancha.cancha_nombre,
+    //     user_id
+    // })
+
+    const addReservation = async (reservation) => {
+        // const [cancha] = listaCanchas.filter(cancha => cancha.cancha_id === data.cancha_id)
+        const newReservation = {
+            reservation_date: reservation.reservation_date,
+            reservation_field_id: reservation.reservation_field_id,
+            reservation_time: reservation.reservation_time.hora,
+            user_id: reservation.user_id
+        }
+        try{
+            const response = await fetch('https://futbol-arena-back.onrender.com/api/reservations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(newReservation)
+            })
+            if(!response.ok) {
+                const result = await response.json()
+                throw new Error(result.message)
+            }
+            const result = await response.json()
+            return result
+        }catch(error){
+            throw new Error(error)
+        }
     }
 
     return (
         <CanchaContext.Provider
             value={{
                 listaCanchas,
+                horarios,
+                reservation,
+                data,
                 handleDate,
                 handleConsulta,
-                horarios,
-                selectedTime,
-                reservation,
-                setReservation
+                handleTime,
+                setReservation,
+                addReservation
             }}>
             {children}
         </CanchaContext.Provider>
