@@ -19,7 +19,7 @@ export const ProductosProvider = ({children}) => {
     }
     const obtenerProductos = async () =>{
         const response = await axios.get('https://futbol-arena-back.onrender.com/api/products')
-        setProductos(response.data.sort((a,b)=>0.5 - Math.random()).slice(0,4))
+        setProductos(response.data)
     }
 
     const agregarCarrito = (producto) => {

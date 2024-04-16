@@ -69,9 +69,17 @@ export const Header = () => {
             {
               usuario.email
               ? <div className="hidden sm:flex gap-4 place-content-center place-items-center">
+                {
+                  usuario.isAdmin
+                  ?
+                  <Link to='/dashboard' className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow">
+                    Admin Dashboard
+                  </Link>
+                  :
                   <Link to='/micuenta' className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow">
                     Mi Cuenta
                   </Link>
+                }
                   <button className="bg-black text-white" onClick={handleLogout}>
                     Cerrar Sesión
                   </button>
@@ -157,9 +165,17 @@ export const Header = () => {
               {
                 usuario.email
                 ? <div className="flex place-content-center place-items-center w-full h-full overflow-hidden">
+                  {
+                    usuario.isAdmin
+                    ?
+                    <Link to='/dashboard' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
+                      Admin Dashboard
+                    </Link>
+                    :
                     <Link to='/micuenta' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
                       Mi Cuenta
                     </Link>
+                  }
                     <button className="bg-black text-white rounded-none w-1/2 h-full py-3" onClick={handleLogout}>
                       Cerrar Sesión
                     </button>

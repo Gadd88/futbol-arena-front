@@ -1,6 +1,11 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 
 export const Dashboard = () => {
+    const navigate = useNavigate()
+    const user = JSON.parse(localStorage.getItem('usuario')) || ''
+    if(!user?.isAdmin){
+        return navigate('/')
+    }
   return (
     // bg-[#f8f4f3]
     <section className="w-full flex items-start justify-center space-x-5">
@@ -44,6 +49,12 @@ export const Dashboard = () => {
                     <Link to="/dashboard/listaReservas" className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                         <i className='bx bx-archive mr-3 text-lg'></i>                
                         <span className="text-sm">Lista de Reservas</span>
+                    </Link>
+                </li>
+                <li className="mb-1 group">
+                    <Link to="/dashboard/listaProductos" className="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                        <i className='bx bx-archive mr-3 text-lg'></i>                
+                        <span className="text-sm">Lista de Productos</span>
                     </Link>
                 </li>
             </ul>
