@@ -1,6 +1,5 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
-import { toast } from "sonner";
 
 export const UserContext = createContext()
 
@@ -10,8 +9,8 @@ export const UserProvider = ({ children }) => {
         usuario:{},
     })
     const storageUser = JSON.parse(localStorage.getItem('usuario')) || {}
-    const [showLogin, setShowLogin] = useState(false);
-    const [usuario, setUsuario] = useState(storageUser)
+    const [showLogin, setShowLogin] = useState(storageUser);
+    const [usuario, setUsuario] = useState({})
     const [usuarioToken, setUsuarioToken] = useState('')
     const apiUrl='https://futbol-arena-back.onrender.com/api'
 
@@ -69,7 +68,6 @@ export const UserProvider = ({ children }) => {
         }
     },[usuarioToken])
 
-
     return(
         <UserContext.Provider value={{
             registrarUsuario,
@@ -78,7 +76,8 @@ export const UserProvider = ({ children }) => {
             regResult,
             usuarioToken,
             usuario,
-            showLogin
+            showLogin,
+            setUsuario
         }}>
             { children }
         </UserContext.Provider>

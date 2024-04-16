@@ -3,6 +3,8 @@ import { toast } from "sonner";
 
 export const CanchaContext = createContext(null)
 
+const apiLocalReservas = 'http://localhost:3001/api/reservations'
+const apiRenderReservas = 'https://futbol-arena-back.onrender.com/api/reservations'
 
 export const CanchaProvider = ({children}) => {
     const [data, setData] = useState({
@@ -78,13 +80,6 @@ export const CanchaProvider = ({children}) => {
             reservation_time: horario
         })
     }
-    // setReservation({
-    //     reservation_date: data.fecha_buscada,
-    //     reservation_field_id: data.cancha_id,
-    //     reservation_time: timeSelected,
-    //     reservation_field_name: cancha.cancha_nombre,
-    //     user_id
-    // })
 
     const addReservation = async (reservation) => {
         // const [cancha] = listaCanchas.filter(cancha => cancha.cancha_id === data.cancha_id)
@@ -95,7 +90,7 @@ export const CanchaProvider = ({children}) => {
             user_id: reservation.user_id
         }
         try{
-            const response = await fetch('https://futbol-arena-back.onrender.com/api/reservations', {
+            const response = await fetch(apiLocalReservas, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(newReservation)

@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import cancha from "../../assets/cancha1.jpg";
 import { useCancha } from "../../hooks/useCancha";
 
 export const FieldComps = ({handleConsulta}) => {

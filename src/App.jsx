@@ -1,9 +1,9 @@
-import { Header } from "./components"
+import { FormCancha, FormProducto, Header, ListaCanchas, ListaProductos, ListaReservas, ListaUsuarios } from "./components"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Footer from "./components/footer/Footer.jsx"
 import { UserProvider } from "./context/UserContext.jsx"
 import { CanchaProvider } from "./context/CanchaContext"
-import { Contacto, Error404, Galeria, Home, Nosotros, Registro, Reservas } from "./views"
+import { Contacto, DashboardAdmin, Error404, Galeria, Home, Nosotros, Registro, Reservas } from "./views"
 import { Toaster } from "sonner"
 
 function App() {
@@ -19,8 +19,15 @@ function App() {
             <Route path='/galeria' element={<Galeria/>}/>
             <Route path='/contacto' element={<Contacto/>}/>
             <Route path='/registro' element={<Registro/>}/>
-            <Route path='/*' element={<Error404/>}/>
-            <Route path='/reservas' element={<Reservas/>}/>
+            <Route path='/dashboard' element={<DashboardAdmin/>}>
+              <Route path="/dashboard/listaUsuarios" element={<ListaUsuarios/>}/>
+              <Route path="/dashboard/listaCanchas" element={<ListaCanchas/>}/>
+              <Route path="/dashboard/listaProductos" element={<ListaProductos/>}/>
+              <Route index path="/dashboard/listaReservas" element={<ListaReservas/>}/>
+              <Route path="/dashboard/agregarProducto" element={<FormProducto/>}/>
+              <Route path="/dashboard/agregarCancha" element={<FormCancha/>}/>
+            </Route>
+            <Route path='/dashboard/reservas' element={<Reservas/>}/>
             <Route path='/*' element={<Error404/>}/>
           </Routes>
           <Footer/>
