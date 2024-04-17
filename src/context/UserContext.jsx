@@ -52,7 +52,9 @@ export const UserProvider = ({ children }) => {
                 throw new Error(result.message)
             }
             setUsuarioToken(result.token)
-            localStorage.setItem('token',result.token)
+            const usuarioDecode = jwtDecode(result.token)
+            localStorage.setItem('token',JSON.stringify(result.token))
+            localStorage.setItem('usuario',JSON.stringify(usuarioDecode))
             return result
         }catch(err){
             throw new Error(err)
@@ -61,10 +63,9 @@ export const UserProvider = ({ children }) => {
     }
     
     useEffect(()=>{
-        if(usuarioToken.length>0){
-            const user = jwtDecode(usuarioToken)
-            setUsuario(user)
-            localStorage.setItem('usuario', JSON.stringify(user))
+        const sesionUser = JSON.parse(localStorage.getItem('usuario'))
+        if(sesionUser){
+            setUsuario(sesionUser)
         }
     },[usuarioToken])
 

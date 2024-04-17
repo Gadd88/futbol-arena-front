@@ -27,7 +27,7 @@ function App() {
               <Route path="/dashboard/agregarProducto" element={<FormProducto/>}/>
               <Route path="/dashboard/agregarCancha" element={<FormCancha/>}/>
             </Route>
-            <Route path='/dashboard/reservas' element={<Reservas/>}/>
+            <Route path='/reservas' element={<Reservas/>}/>
             <Route path='/*' element={<Error404/>}/>
           </Routes>
           <Footer/>

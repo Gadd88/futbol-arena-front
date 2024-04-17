@@ -1,30 +1,18 @@
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import { useUser } from "../../hooks/useUser";
+import { useUser } from "../../hooks/";
+import { useEffect } from "react";
 
 const modalElement = document.getElementById("modalLogin");
 
 export const Login = ({ showLogin, setShowLogin }) => {
 
-  const { handleLogin, setUser, user } = useUser()
-  
-  
+  const { handleLogin, handleInputChange, user, usuario } = useUser()
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    handleLogin(user)
-    setTimeout(()=>{
-      setShowLogin(false)
-    },1000)
-  }
-  
+  useEffect(()=>{
+    if(usuario) setShowLogin(false)
+    
+  },[usuario])  
 
   return (
     <div className="relative">
@@ -36,7 +24,7 @@ export const Login = ({ showLogin, setShowLogin }) => {
               <h2 className="text-center text-2xl font-medium">
                 Iniciar Sesión
               </h2>
-              <form className="space-y-10 flex flex-col"  onSubmit={handleSubmit}>
+              <form className="space-y-10 flex flex-col"  onSubmit={(e)=>handleLogin(e,user)}>
                 <div className="mb-4 flex flex-col gap-10">
                   <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-arena-green-400">
                     <input
