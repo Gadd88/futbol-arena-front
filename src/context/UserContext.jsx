@@ -9,9 +9,10 @@ export const UserProvider = ({ children }) => {
         usuario:{},
     })
     const storageUser = JSON.parse(localStorage.getItem('usuario')) || {}
-    const [showLogin, setShowLogin] = useState(storageUser);
-    const [usuario, setUsuario] = useState({})
-    const [usuarioToken, setUsuarioToken] = useState('')
+    const storageToken = localStorage.getItem('token') || ''
+    const [usuario, setUsuario] = useState(storageUser)
+    const [usuarioToken, setUsuarioToken] = useState(storageToken)
+    const [showLogin, setShowLogin] = useState(false);
     const apiUrl='https://futbol-arena-back.onrender.com/api'
 
     const registrarUsuario = async (user) => {
@@ -53,7 +54,7 @@ export const UserProvider = ({ children }) => {
             }
             setUsuarioToken(result.token)
             const usuarioDecode = jwtDecode(result.token)
-            localStorage.setItem('token',JSON.stringify(result.token))
+            localStorage.setItem('token',result.token)
             localStorage.setItem('usuario',JSON.stringify(usuarioDecode))
             return result
         }catch(err){
@@ -74,11 +75,11 @@ export const UserProvider = ({ children }) => {
             registrarUsuario,
             loginUsuario,
             setShowLogin,
+            setUsuario,
             regResult,
             usuarioToken,
             usuario,
             showLogin,
-            setUsuario
         }}>
             { children }
         </UserContext.Provider>

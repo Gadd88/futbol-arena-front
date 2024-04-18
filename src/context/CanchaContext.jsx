@@ -106,6 +106,38 @@ export const CanchaProvider = ({children}) => {
         }
     }
 
+    const crearCancha = async(cancha, token) =>{
+        // https://futbol-arena-back.onrender.com/api/canchas
+        try{
+            const response = await fetch('https://futbol-arena-back.onrender.com/api/canchas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(cancha)
+            })
+            const result = await response.json()
+            console.log(result)
+        }catch(error){
+            throw new Error(error)
+        }
+    }
+
+    const eliminarCancha = async(cancha_id, isAdmin) => {
+        try{
+            const response = await fetch(`http://localhost:3001/api/canchas/${cancha_id}`,{
+                method:'DELETE',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({"isAdmin":isAdmin})
+            })
+            const result = await response.json()
+            console.log(result)
+        }catch(error){
+            throw new Error(error)
+        }
+    }
+
     return (
         <CanchaContext.Provider
             value={{
@@ -117,7 +149,11 @@ export const CanchaProvider = ({children}) => {
                 handleConsulta,
                 handleTime,
                 setReservation,
-                addReservation
+                addReservation,
+                crearCancha,
+                eliminarCancha,
+                setListaCanchas,
+                getCanchas
             }}>
             {children}
         </CanchaContext.Provider>

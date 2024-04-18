@@ -5,7 +5,7 @@ import gh from "./icons/gh.svg";
 import ig from "./icons/ig.svg";
 import { Link } from 'react-router-dom'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="relative bg-arena-green-950 rounded-xl my-5 p-6">
       <article className="container mx-auto">
@@ -81,4 +81,3 @@ const Footer = () => {
   );
 };
 
-export default Footer;

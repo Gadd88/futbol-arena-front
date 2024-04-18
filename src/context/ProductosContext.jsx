@@ -7,14 +7,26 @@ export const ProductosContext = createContext()
 export const ProductosProvider = ({children}) => {
     const [productos, setProductos] = useState([])
     const [carrito, setCarrito] = useState([])
-
     const agregarProducto = async () =>{
 
     }
     const editarProducto = async () =>{
 
     }
-    const eliminarProducto = async () =>{
+    const eliminarProducto = async (prod_id, token) =>{
+        try {
+            const response = await fetch(`http://localhost:3001/api/products/${prod_id}`,{
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            const result = await response.json()
+            console.log(result)
+        } catch (error) {
+            throw new Error(error)
+        }
 
     }
     const obtenerProductos = async () =>{
@@ -54,6 +66,7 @@ export const ProductosProvider = ({children}) => {
             eliminarProducto,
             agregarCarrito,
             eliminarCarrito,
+            obtenerProductos,
             carrito,
             productos
         }}>

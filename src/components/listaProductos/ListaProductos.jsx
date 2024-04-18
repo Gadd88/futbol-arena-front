@@ -1,47 +1,51 @@
-import { useEffect, useState } from "react"
-import { getProducts } from "../../utils/getProducts"
+import { useContext } from "react"
 import { useProductos } from "../../hooks"
+import { UserContext } from "../../context/UserContext"
 
 export const ListaProductos = () => {
 
-  // const [productos, setProductos] = useState([])
+  
+  const {productos, handleDelete, handleEditar} = useProductos()
 
-  const {productos} = useProductos()
-
-
-  const eliminarProducto = (producto_id) => {
+  const {usuarioToken} = useContext(UserContext)
+  
+  const editarProducto = (producto_id) => {
     console.log(producto_id)
   }
 
   return (
-    <section className="border-4 border-red-800 h-screen w-full p-10 space-y-10">
+    <section className="h-screen w-full p-8 space-y-10">
         <h1 className="text-arena-green-950 font-semibold">Lista de Productos</h1>
 
-        <table className="w-full text-black rounded-md bg-gray-50" >
+        <table className="w-full text-black rounded-md bg-gray-50 table-auto overflow-hidden border-separate border-spacing-y-5 border-spacing-x-3" >
           <thead>
-            <tr>
-              <th className="">Producto</th>
-              <th className="">Categoria</th>
-              <th className="">Precio</th>
-              <th className="">Stock</th>
-              <th className="">Acción</th>
+            <tr className="">
+              <th className="w-4/12">Producto</th>
+              <th className="w-2/12">Categoria</th>
+              <th className="w-2/12">Precio</th>
+              <th className="w-1/12">Stock</th>
+              <th className="w-2/12">Editar</th>
+              <th className="w-1/12">Eliminar</th>
             </tr>
           </thead>
           <tbody>
             {
               productos.length > 0
               ? productos.map(producto => (
-                <tr key={producto.producto_id}>
-                  <td className="">{producto.producto}</td>
-                  <td className="">{producto.categoria}</td>
+                <tr key={producto.producto_id} className="cursor-pointer hover:font-semibold">
+                  <td className="text-start">{producto.producto}</td>
+                  <td className="text-start">{producto.categoria.toUpperCase()}</td>
                   <td className="">{producto.precio}</td>
                   <td className="">{producto.stock}</td>
                   <td className="">
-                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>eliminarProducto(producto.producto_id)}>Eliminar</button>
+                    <button className="bg-cyan-300 font-bold text-white hover:bg-cyan-500" onClick={()=>editarProducto(producto.producto_id)}>Editar</button>
+                  </td>
+                  <td className="">
+                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>handleDelete(producto.producto_id, usuarioToken)}>X</button>
                   </td>
                 </tr>
               ))
-              : <tr><td colSpan={5}>No hay usuarios registrados</td></tr>
+              : <tr><td colSpan={5}>No hay productos cargados</td></tr>
             }
           </tbody>
         </table>

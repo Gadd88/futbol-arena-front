@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const useCancha = () => {
     const navigate = useNavigate()
-    const { handleDate, listaCanchas, handleConsulta, horarios, handleTime, reservation, setReservation, data, addReservation } = useContext(CanchaContext)
+    const { handleDate, listaCanchas, handleConsulta, horarios, handleTime, reservation, setReservation, data, addReservation, crearCancha, eliminarCancha, setListaCanchas, getCanchas } = useContext(CanchaContext)
 
     const cancelReservation = () => {
       setReservation({
@@ -26,6 +26,26 @@ export const useCancha = () => {
         error: 'Ocurrió un error'
       })
     }
+    const handleSubmit = async (e, token) => {
+      e.preventDefault()
+      const formData = new FormData(e.target)
+  
+      const nuevaCancha = {
+        cancha_nombre: formData.get('cancha_nombre'),
+        cancha_detalle: formData.get('cancha_detalle'),
+      }
+      
+      await crearCancha(nuevaCancha, token)
+      await getCanchas()
+      
+    }
+
+    const handleDelete = async(id,user) => {
+      const { isAdmin } = user
+      await eliminarCancha(id, isAdmin)
+      const newListaCanchas = listaCanchas.filter(cancha => cancha.cancha_id != id)
+      setListaCanchas(newListaCanchas)
+    }
 
   return {
     handleDate,
@@ -34,8 +54,11 @@ export const useCancha = () => {
     horarios,
     handleTime,
     reservation,
-    cancelReservation,
     data,
+    eliminarCancha,
+    cancelReservation,
+    handleDelete,
+    handleSubmit,
     sendReservation
   }
 }

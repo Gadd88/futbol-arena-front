@@ -18,12 +18,12 @@ export const ListaReservas = () => {
   }
 
   return (
-    <div className="border-4 border-red-800 h-screen w-full p-10">
+    <div className="h-screen w-full p-10 space-y-10">
         <h1 className="text-arena-green-950 font-semibold">Lista de Reservas Activas</h1>
 
-        <table className="w-full text-black rounded-md bg-gray-50 p-5" >
+        <table className="w-full text-black rounded-md bg-gray-50 p-5 border-separate border-spacing-3 table-fixed" >
           <thead>
-            <tr>
+            <tr className="">
               <th className="">Fecha</th>
               <th className="">Hora</th>
               <th className="">Cancha</th>
@@ -34,10 +34,10 @@ export const ListaReservas = () => {
             {
               reservas.length > 0
               ? reservas?.map(reserva =>  (
-                  <tr key={reserva.reservation_id}>
-                    <td className="">{reserva.reservation_date}</td>
+                  <tr key={reserva.reservation_id} className="cursor-pointer hover:font-semibold">
+                    <td className="text-start">{reserva.reservation_date}</td>
                     <td className="">{reserva.reservation_time}</td>
-                    <td className="">{reserva.cancha_nombre}</td>
+                    <td className="text-center">{reserva.cancha_nombre}</td>
                     <td className="">
                       <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>eliminar(reserva.reservation_id)}>Eliminar</button>
                     </td>
