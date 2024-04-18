@@ -1,26 +1,30 @@
-import { useProductoImg } from "../../hooks";
+import { useContext } from "react";
+import { useProductoImg, useProductos } from "../../hooks";
+import { UserContext } from "../../context/UserContext";
 
 export const FormProducto = () => {
-
+  const {usuarioToken} = useContext(UserContext)
   const { productoBlob, productoCloudData, handleProductoFile} = useProductoImg()
-
-  console.log(productoCloudData)
+  const {handleSubmit, error} = useProductos()
 
   return (
     <div className="h-screen rounded-md bg-arena-green-50 space-y-5 p-10">
         <h1 className="font-semibold text-arena-green-950 text-5xl">El Complejo</h1>
         <p className="text-arena-green-800 font-semibold ">Administra tus Productos</p>
         <div className="flex flex-col w-full bg-gray-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
-            <form className="flex flex-col gap-4 justify-center w-full ">
+            <form onSubmit={(e)=>handleSubmit(e,usuarioToken, productoCloudData)} className="flex flex-col gap-4 justify-center w-full ">
+              {
+                error && <p className="bg-red-400 font-semibold p-5 rounded-md">Todos los campos son obligatorios</p>
+              }
                 {/* Inputs del formulario*/}
                 <input
                     type="text"
-                    name="producto_nombre"
+                    name="producto"
                     placeholder="Producto"
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
                 <input
-                    name="producto_detalle"
+                    name="detalle"
                     placeholder="Detalle de producto"
                     cols={30}
                     rows={5}

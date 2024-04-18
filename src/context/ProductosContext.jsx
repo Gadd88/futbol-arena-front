@@ -7,8 +7,22 @@ export const ProductosContext = createContext()
 export const ProductosProvider = ({children}) => {
     const [productos, setProductos] = useState([])
     const [carrito, setCarrito] = useState([])
-    const agregarProducto = async () =>{
-
+    
+    const agregarProducto = async (producto, token) =>{
+        try {
+            const response = await fetch('http://localhost:3001/api/products',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(producto)
+            })
+            const result = await response.json()
+            console.log(result)
+        } catch (error) {
+            throw new Error(error)
+        }
     }
     const editarProducto = async () =>{
 
