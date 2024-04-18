@@ -126,7 +126,7 @@ export const CanchaProvider = ({children}) => {
 
     const eliminarCancha = async(cancha_id, isAdmin) => {
         try{
-            const response = await fetch(`http://localhost:3001/api/canchas/${cancha_id}`,{
+            const response = await fetch(`https://futbol-arena-back.onrender.com/api/canchas/${cancha_id}`,{
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({"isAdmin":isAdmin})

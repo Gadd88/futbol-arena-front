@@ -7,10 +7,10 @@ export const ProductosContext = createContext()
 export const ProductosProvider = ({children}) => {
     const [productos, setProductos] = useState([])
     const [carrito, setCarrito] = useState([])
-    
+
     const agregarProducto = async (producto, token) =>{
         try {
-            const response = await fetch('http://localhost:3001/api/products',{
+            const response = await fetch('https://futbol-arena-back.onrender.com/api/products',{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export const ProductosProvider = ({children}) => {
     }
     const eliminarProducto = async (prod_id, token) =>{
         try {
-            const response = await fetch(`http://localhost:3001/api/products/${prod_id}`,{
+            const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${prod_id}`,{
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
