@@ -90,7 +90,7 @@ export const CanchaProvider = ({children}) => {
             user_id: reservation.user_id
         }
         try{
-            const response = await fetch(apiLocalReservas, {
+            const response = await fetch(apiRenderReservas, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(newReservation)
