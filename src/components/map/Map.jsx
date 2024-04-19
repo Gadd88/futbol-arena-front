@@ -1,4 +1,3 @@
-import React from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -14,7 +13,7 @@ const iconUbication = new L.icon({
   popupAnchor: [-3, -76],
 });
 
-const Map = () => {
+export const Map = () => {
   return (
     <div>
       <MapContainer
@@ -36,5 +35,3 @@ const Map = () => {
     </div>
   );
 };
-
-export default Map;

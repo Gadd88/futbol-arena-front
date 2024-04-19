@@ -15,7 +15,7 @@ export const Carrito = () => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="h-8 w-8 text-white"
+            className="h-8 w-8 text-text-200"
           >
             <path
               strokeLinecap="round"
@@ -30,13 +30,16 @@ export const Carrito = () => {
         {
             isActive &&
             createPortal(
-                <div className="p-5 absolute top-10 left-0 right-0 mx-auto w-96 bg-black/80 backdrop-blur-sm z-20 rounded-lg flex flex-col items-end gap-4">
-                    <button className="py-1 px-3 bg-green-400 font-bold text-white rounded-sm" onClick={()=>setIsActive(false)}>X</button>
+                <div className="p-5 absolute top-10 left-0 right-0 mx-auto w-96 bg-bg-100/95 border-b-4 border-b-accent-200 border-r-4 border-r-accent-200 drop-shadow-md backdrop-blur-sm z-20 rounded-lg flex flex-col items-end gap-4">
+                  <div className="flex justify-between items-center w-full">
+                    <h2 className="text-text-100 font-bold">Tus Productos</h2>
+                      <button className="py-1 px-3 bg-accent-200 font-bold text-white rounded-sm" onClick={()=>setIsActive(false)}>X</button>
+                  </div>
                     {
                         carrito.length > 0
                         ?   <>
-                                <table className="">
-                                    <thead className="shadow-xl border-green-300 rounded-xl border-2">
+                                <table className="table-auto border-separate border-spacing-y-5 ">
+                                    <thead className="rounded-xl bg-bg-300 border-spacing-5">
                                         <tr className="">
                                             <th className="w-1/6"></th>
                                             <th className="w-2/6">Producto</th>
@@ -56,7 +59,7 @@ export const Carrito = () => {
                                         }
                                     </tbody>
                                 </table>
-                                <button className="text-base px-4 py-2 rounded font-bold cursor-pointer bg-arena-green-700 text-arena-200">
+                                <button className="text-base px-4 py-2 rounded font-bold cursor-pointer bg-accent-100 hover:bg-primary-100 text-arena-200">
                                     Pagar ${totalCarrito}
                                 </button>
                             </>

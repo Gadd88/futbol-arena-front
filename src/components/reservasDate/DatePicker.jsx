@@ -1,4 +1,5 @@
 import { Datepicker } from "flowbite-react";
+import { theme } from "./pickerTheme";
 export const DatePicker = ({handleDate}) => {
 
   return (
@@ -6,6 +7,7 @@ export const DatePicker = ({handleDate}) => {
       <h2 className="text-text-200 font-bold text-center">Selecciona una fecha</h2>
         <Datepicker 
           id='date'
+          theme={theme}
           className="flex justify-center items-center"
           language="es-AR"
           labelTodayButton="Hoy"
