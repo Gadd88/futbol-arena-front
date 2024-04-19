@@ -1,7 +1,9 @@
 import { useCancha } from "../../hooks";
 
-export const ReservationResume = () => {
-  const {sendReservation, reservation, cancelReservation} = useCancha()
+export const ReservationResume = ({reservation}) => {
+  const {sendReservation, cancelReservation, listaCanchas} = useCancha()
+  
+  const cancha = listaCanchas.find(cancha => cancha.cancha_id === reservation.reservation_field_id) 
   
   return (
     <article className="bg-arena-green-50 rounded-md shadow-md flex flex-col items-start justify-center text-arena-green-900 overflow-hidden absolute p-5">
@@ -21,7 +23,7 @@ export const ReservationResume = () => {
       <p>
         Cancha:{" "}
         <span className="font-semibold">
-          {reservation.reservation_field_name}
+          {cancha.cancha_nombre}
         </span>
       </p>
       <div className="w-full h-full mt-5">

@@ -24,9 +24,9 @@ export const ListaCanchas = () => {
               listaCanchas.length > 0
               ? listaCanchas.map(cancha => (
                 <tr key={cancha.cancha_id}>
-                  <td className="text-start">{cancha.cancha_nombre}</td>
-                  <td className="">{cancha.cancha_detalle}</td>
-                  <td className="">
+                  <td className="cursor-default text-start">{cancha.cancha_nombre}</td>
+                  <td className="cursor-default ">{cancha.cancha_detalle}</td>
+                  <td className="cursor-default ">
                     <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>handleDelete(cancha.cancha_id,usuario)}>Eliminar</button>
                   </td>
                 </tr>

@@ -2,7 +2,7 @@ import React from "react";
 import complejo from "../../assets/complejo.jpg";
 import complejo2 from "../../assets/complejo2.jpg";
 
-const AboutUsBanner = () => {
+export const AboutUsBanner = () => {
   return (
     <section>
       <article className="grid lg:grid-cols-2 content-center items-center place-content-center mb-5">
@@ -10,11 +10,11 @@ const AboutUsBanner = () => {
           <img src={complejo} alt="" className="rounded-lg" />
         </div>
         <div className="container p-7">
-          <h2 className="text-arena-green-700 font-bold text-center text-3xl mb-4">
+          <h2 className="text-text-200 font-bold text-end text-3xl mb-4">
             {" "}
             NUESTA HISTORIA
           </h2>
-          <p className="text-black font-semibold text-center text-base leading-7">
+          <p className="text-black font-semibold text-start text-base leading-7">
             En un pequeño pueblo, un pequeño grupo de entusiastas creó un
             complejo deportivo llamado Futbol Arena para fomentar la actividad
             física y el espíritu deportivo. Construyeron un espacio único como
@@ -31,11 +31,11 @@ const AboutUsBanner = () => {
       </article>
       <article className="grid lg:grid-cols-2 content-center items-center place-content-center">
         <div className="container p-7">
-          <h2 className="text-arena-green-700 font-bold text-center text-3xl mb-4">
+          <h2 className="text-text-200 font-bold text-end text-3xl mb-4">
             {" "}
             NUESTRO COMPLEJO
           </h2>
-          <p className="text-black font-semibold text-center text-base leading-7">
+          <p className="text-black font-semibold text-start text-base leading-7">
             Sumérgete en nuestra tienda exclusiva donde encontrarás los últimos
             productos relacionados con el fútbol, desde camisetas de tus equipos
             favoritos hasta accesorios de entrenamiento de alta calidad.
@@ -57,5 +57,3 @@ const AboutUsBanner = () => {
     </section>
   );
 };
-
-export default AboutUsBanner;

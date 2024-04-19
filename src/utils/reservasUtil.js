@@ -25,7 +25,7 @@ export const eliminarReserva = async (id,user) =>{
         user_id: user_id,
         isAdmin: isAdmin
     }
-    const response = await fetch(`http://localhost:3001/api/reservations/${id}`,{
+    const response = await fetch(`https://futbol-arena-back.onrender.com/api/reservations/${id}`,{
         method: 'DELETE',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(userData)
