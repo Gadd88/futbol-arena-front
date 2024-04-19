@@ -10,7 +10,7 @@ export const AboutUsBanner = () => {
           <img src={complejo} alt="" className="rounded-lg" />
         </div>
         <div className="container p-7">
-          <h2 className="text-arena-green-700 font-bold text-end text-3xl mb-4">
+          <h2 className="text-text-200 font-bold text-end text-3xl mb-4">
             {" "}
             NUESTA HISTORIA
           </h2>
@@ -31,7 +31,7 @@ export const AboutUsBanner = () => {
       </article>
       <article className="grid lg:grid-cols-2 content-center items-center place-content-center">
         <div className="container p-7">
-          <h2 className="text-arena-green-700 font-bold text-end text-3xl mb-4">
+          <h2 className="text-text-200 font-bold text-end text-3xl mb-4">
             {" "}
             NUESTRO COMPLEJO
           </h2>

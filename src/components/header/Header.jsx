@@ -12,25 +12,25 @@ export const Header = () => {
   const {handleLogout} = useUser()
 
   return (
-    <header className="w-full bg-arena-green-950 rounded-xl mx-auto my-5">
+    <header className="w-full bg-bg-200 rounded-xl mx-auto my-5">
       <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${isActive ? "pb-6" : ""}`}>
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
-            <Link className="block text-teal-600" to="/">
+            <Link className="block text-text-100" to="/">
               <span className="sr-only">Inicio</span>
               <img
                 src={logo}
                 alt="logo futbol arena"
-                className="w-20 bg-arena-green-50 rounded-full"
+                className="w-20 bg-slate-50 rounded-full"
               />
             </Link>
           </div>
           <div className="hidden md:block">
             <nav aria-label="Global">
-              <ul className="flex items-center gap-6 text-sm">
+              <ul className="flex items-center gap-6 text-lg">
                 <li>
                   <Link
-                    className="text-white transition hover:text-arena-green-200"
+                    className="text-text-200 transition hover:text-text-100"
                     to="/nosotros"
                   >
                     Quienes Somos
@@ -39,7 +39,7 @@ export const Header = () => {
 
                 <li>
                   <Link
-                    className="text-white transition hover:text-arena-green-200"
+                    className="text-text-200 transition hover:text-text-100"
                     to="/contacto"
                   >
                     Contacto
@@ -48,7 +48,7 @@ export const Header = () => {
 
                 <li>
                   <Link
-                    className="text-white transition hover:text-arena-green-200"
+                    className="text-text-200 transition hover:text-text-100"
                     to="/galeria"
                   >
                     Galeria
@@ -56,7 +56,7 @@ export const Header = () => {
                 </li>
                 <li>
                   <Link
-                    className="text-white transition hover:text-arena-green-200"
+                    className="text-text-200 transition hover:text-text-100"
                     to="/reservas"
                   >
                     Reservas
@@ -72,7 +72,7 @@ export const Header = () => {
                 {
                   usuario.isAdmin
                   ?
-                  <Link to='/dashboard' className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow">
+                  <Link to='/dashboard' className="rounded-md bg-primary-100 px-5 py-2.5 text-sm font-medium text-text-100 shadow">
                     Admin Dashboard
                   </Link>
                   :
