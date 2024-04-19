@@ -17,12 +17,11 @@ export const useProductos = () => {
             producto: formData.get('producto'),
             detalle: formData.get('detalle'),
             precio: formData.get('precio'),
-            stock: formData.get('stock'),
             categoria: formData.get('categoria'),
             imagen: productoCloudData.url,
         }
-        const {producto, detalle, precio, stock, categoria, imagen} = newProducto
-        if(!producto || !detalle || !precio || !stock || !categoria || !imagen) {
+        const {producto, detalle, precio, categoria, imagen} = newProducto
+        if(!producto || !detalle || !precio | !categoria || !imagen) {
             setError(true)
             setTimeout(()=>{
                 setError(false)

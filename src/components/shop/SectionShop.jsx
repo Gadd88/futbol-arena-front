@@ -1,12 +1,13 @@
 import { CardProducto } from "../";
 import { Link } from "react-router-dom";
 import { useProductos } from "../../hooks/";
+import { useMemo } from "react";
 
 export const SectionShop = () => {
 
   const {productos} = useProductos();
   
-  const productosMuestra = productos.sort((a,b)=>0.5 - Math.random()).slice(0,4)
+  const productosMuestra = useMemo(() => productos.sort((a,b)=>0.5 - Math.random()).slice(0,4), [productos]) 
   return (
     <section className="py-5 h-fit">
       <h2 className="text-black text-3xl font-bold mb-6">Los productos mas vendidos</h2>
@@ -19,7 +20,7 @@ export const SectionShop = () => {
           ))
         }
       </div>
-      <Link className="bg-accent-100 p-3 rounded-xl flex w-fit justify-end ml-auto mr-5">Ver más &#x27A1;</Link>
+      <Link className="bg-primary-100 p-3 rounded-xl flex w-fit justify-end ml-auto mr-5">Ver más &#x27A1;</Link>
     </section>
   );
 };

@@ -8,7 +8,7 @@ export const FormProducto = () => {
   const {handleSubmit, error} = useProductos()
 
   return (
-    <div className="h-screen rounded-md bg-arena-green-50 space-y-5 p-10">
+    <div className="h-screen rounded-md bg-primary-200 space-y-5 p-10">
         <h1 className="font-semibold text-arena-green-950 text-5xl">El Complejo</h1>
         <p className="text-arena-green-800 font-semibold ">Administra tus Productos</p>
         <div className="flex flex-col w-full bg-gray-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
@@ -31,13 +31,12 @@ export const FormProducto = () => {
                     style={{resize: "none"}}
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
-                <input type="text" name="categoria" placeholder="Categoria" className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"/>
                 <div className="flex gap-2 justify-between">
-                  <label className="text-black font-semibold" htmlFor="precio">Precio
-                    <input type="number" name="precio" className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"/>
+                  <label htmlFor="categoria" className="text-black font-semibold">Categoria
+                    <input type="text" name="categoria" placeholder="Categoria" className="p-3 ms-5 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"/>
                   </label>
-                  <label className="text-black font-semibold" htmlFor="stock">Stock
-                    <input type="number" name="stock" className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"/>
+                  <label className="text-black font-semibold" htmlFor="precio">Precio
+                    <input type="number" name="precio" className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 ms-5 rounded-md"/>
                   </label>
                 </div>
                 <input type="file" name="imagen" accept='image/png image/jpg image/jpeg' placeholder="Imagen" className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md" onChange={(e)=>handleProductoFile(e)}/>

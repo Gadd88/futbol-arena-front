@@ -87,7 +87,7 @@ export const Header = () => {
               :
                 <div className="sm:flex sm:gap-4">
                   <button
-                    className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow"
+                    className="rounded-md bg-primary-300 px-5 py-2.5 text-sm font-medium text-white shadow"
                     onClick={()=>setShowLogin(true)}
                   >
                     Ingresar
