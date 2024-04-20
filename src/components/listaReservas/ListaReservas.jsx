@@ -18,7 +18,7 @@ export const ListaReservas = () => {
   }
 
   return (
-    <div className="h-screen w-full p-10 space-y-10">
+    <div className="h-screen w-full p-10 space-y-10 overflow-scroll">
         <h1 className="text-arena-green-950 font-semibold">Lista de Reservas Activas</h1>
 
         <table className="w-full text-black rounded-md bg-gray-50 p-5 border-separate border-spacing-3 table-fixed" >
@@ -37,13 +37,13 @@ export const ListaReservas = () => {
                   <tr key={reserva.reservation_id} className="cursor-pointer hover:font-semibold">
                     <td className="text-start">{reserva.reservation_date}</td>
                     <td className="">{reserva.reservation_time}</td>
-                    <td className="text-center">{reserva.cancha_nombre}</td>
+                    <td className="text-center">{reserva.reservation_field_name}</td>
                     <td className="">
                       <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>eliminar(reserva.reservation_id)}>Eliminar</button>
                     </td>
                   </tr>
                 ))
-              : <tr><td colSpan={5}>No hay usuarios registrados</td></tr>
+              : <tr><td colSpan={5}>No hay reservas registradas</td></tr>
             }
           </tbody>
         </table>

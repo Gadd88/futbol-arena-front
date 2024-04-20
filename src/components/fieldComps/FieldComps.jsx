@@ -1,8 +1,16 @@
+import {useContext} from 'react'
+import { CanchaContext } from "../../context";
 import { useCancha } from "../../hooks/useCancha";
 
 export const FieldComps = ({handleConsulta}) => {
 
-  const {listaCanchas, data} = useCancha()
+  const {listaCanchas, reservation} = useCancha()
+  const {consultaApi} = useContext(CanchaContext)
+
+  const handleClick = async (ev) => {
+    await handleConsulta(ev)
+    await consultaApi()
+  }
 
   return (
       <section className="w-full max-w-sm p-4 bg-bg-300 rounded-lg shadow sm:p-6">
@@ -10,7 +18,7 @@ export const FieldComps = ({handleConsulta}) => {
           Selecciona tu cancha
         </h2>
         {
-          data?.fecha_buscada != ''
+          reservation?.reservation_date != ''
           ?
             <ul className="my-4 space-y-3">
               {
@@ -19,7 +27,7 @@ export const FieldComps = ({handleConsulta}) => {
                 <li className="flex items-center p-3 text-base font-bold rounded-lg bg-primary-100 text-text-100 hover:bg-primary-200 active:bg-arena-green-100 group hover:shadow cursor-pointer"
                   key={cancha.cancha_id}
                   id={cancha.cancha_id}
-                  onClick={handleConsulta}>
+                  onClick={(ev)=>handleClick(ev)}>
                   {cancha.cancha_nombre}
                 </li>
 

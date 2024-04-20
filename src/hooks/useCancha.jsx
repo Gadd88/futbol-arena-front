@@ -1,27 +1,31 @@
 import { useContext } from 'react'
 import { CanchaContext } from '../context/CanchaContext'
 import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../context'
 
 export const useCancha = () => {
-    const navigate = useNavigate()
-    const { handleDate, listaCanchas, handleConsulta, horarios, handleTime, reservation, setReservation, data, addReservation, crearCancha, eliminarCancha, setListaCanchas, getCanchas } = useContext(CanchaContext)
+    const { handleDate, listaCanchas, handleConsulta, horarios, handleTime, reservation, setReservation, addReservation, crearCancha, eliminarCancha, setListaCanchas, getCanchas } = useContext(CanchaContext)
+    const {getUserData} = useContext(UserContext)
 
     const cancelReservation = () => {
       setReservation({
-        reservation_date: '',
-        reservation_time:'',
-        reservation_field_id:'',
-        reservation_field_name:'',
-        user_id: ''
+        ...reservation,
+        reservation_time:''
       })
     }
     const sendReservation = async (data) => {
-      toast.promise(addReservation(data),{
+      await toast.promise(addReservation(data),{
         loading: 'Reservando...',
-        success: (data) => {
+        success: async (data) => {
           toast.success(data.message)
-          navigate(0)
+          await getUserData(reservation.user_id)
+          setReservation({
+            ...reservation,
+            reservation_time:'',
+            reservation_time_id:'',
+            reservation_field_id:'',
+            reservation_field_name:'',
+          })
         },
         error: 'Ocurrió un error'
       })
@@ -54,7 +58,6 @@ export const useCancha = () => {
     horarios,
     handleTime,
     reservation,
-    data,
     eliminarCancha,
     cancelReservation,
     handleDelete,

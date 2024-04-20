@@ -60,7 +60,12 @@ export const UserProvider = ({ children }) => {
         }catch(err){
             throw new Error(err)
         }
-        
+    }
+
+    const getUserData = async(id) => {
+        const response = await fetch(`http://localhost:3001/api/users/${id}`)
+        const result = await response.json()
+        localStorage.setItem('usuario', JSON.stringify(result))
     }
     
     useEffect(()=>{
@@ -74,6 +79,7 @@ export const UserProvider = ({ children }) => {
         <UserContext.Provider value={{
             registrarUsuario,
             loginUsuario,
+            getUserData,
             setShowLogin,
             setUsuario,
             regResult,

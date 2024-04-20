@@ -2,14 +2,14 @@ import { useCancha } from "../../hooks";
 
 export const TurnSelector = ({handleTime}) => {
 
-  const {horarios, data} = useCancha()
+  const {horarios, reservation} = useCancha()
 
   return (
     <section className="w-full max-w-sm p-4 bg-bg-300 rounded-lg shadow sm:p-6">
       <h2 className="text-text-100 font-bold mb-4">Horarios Disponibles</h2>
       <article className="flex md:flex-wrap items-center justify-start md:justify-center w-full gap-1 overflow-auto">
         {
-          data?.cancha_id != '' && horarios.length > 0
+          reservation?.reservation_field_id != '' && horarios.length > 0
           ?
             horarios.map(horario => (
               <div 
@@ -22,7 +22,7 @@ export const TurnSelector = ({handleTime}) => {
                 </p>
                 {
                   !horario.disponible &&
-                <div className="absolute -rotate-[30deg] bg-accent-100/80 backdrop-blur-sm p-2 bottom-5 w-40 md:w-28 flex justify-center items-center">Reservado</div>
+                <div className="absolute -rotate-[30deg] bg-text-200/80 text-white backdrop-blur-sm p-2 bottom-5 w-40 md:w-28 flex justify-center items-center">Reservado</div>
                 }
               </div>
           ))
