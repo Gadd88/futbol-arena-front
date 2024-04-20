@@ -17,7 +17,6 @@ function App() {
             <Route path='/galeria' element={<Galeria/>}/>
             <Route path='/contacto' element={<Contacto/>}/>
             <Route path='/registro' element={<Registro/>}/>
-            <Route path='/*' element={<Error404/>}/>
             <Route path='/reservas' element={<Reservas/>}/>
             <Route path='/*' element={<Error404/>}/>
           </Routes>
