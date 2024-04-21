@@ -8,13 +8,13 @@ export const ListaCanchas = () => {
   const {usuario} = useContext(UserContext)
 
   return (
-    <section className="h-screen w-full p-10 space-y-10">
-        <h1 className="text-arena-green-950 font-semibold">Lista de Canchas Activas</h1>
+    <section className="h-full w-full p-3 md:p-10 space-y-10">
+        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Canchas Activas</h1>
 
-        <table className="w-full text-black rounded-md bg-gray-50 border-separate border-spacing-5" >
+        <table className="w-full text-black rounded-md bg-gray-50 border-separate md:border-spacing-5 border-spacing-1" >
           <thead className="">
             <tr className="">
-              <th className="">Nombre de Cancha</th>
+              <th className="">Cancha</th>
               <th className="">Detalle</th>
               <th className="">Acción</th>
             </tr>
@@ -27,7 +27,7 @@ export const ListaCanchas = () => {
                   <td className="cursor-default text-start">{cancha.cancha_nombre}</td>
                   <td className="cursor-default ">{cancha.cancha_detalle}</td>
                   <td className="cursor-default ">
-                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>handleDelete(cancha.cancha_id,usuario)}>Eliminar</button>
+                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>handleDelete(cancha.cancha_id,usuario)}>X</button>
                   </td>
                 </tr>
               ))

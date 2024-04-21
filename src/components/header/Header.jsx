@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
 import { useContext, useState } from "react";
-import { Login, Carrito } from "../";
+import { Login, Carrito, DrawerMobile } from "../";
 import { UserContext } from "../../context/";
 import { useUser } from "../../hooks";
 
@@ -10,6 +10,7 @@ export const Header = () => {
   const {showLogin, setShowLogin, usuario} = useContext(UserContext)
   const [isActive, setIsActive] = useState(false)
   const {handleLogout} = useUser()
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="w-full bg-bg-200 rounded-xl mx-auto my-5">
@@ -37,14 +38,14 @@ export const Header = () => {
                   </Link>
                 </li>
 
-                <li>
+                {/* <li>
                   <Link
                     className="text-text-200 transition hover:text-text-100"
                     to="/contacto"
                   >
                     Contacto
                   </Link>
-                </li>
+                </li> */}
 
                 <li>
                   <Link
@@ -68,43 +69,46 @@ export const Header = () => {
           <div className="flex items-center gap-4">
             {
               usuario.email
-              ? <div className="hidden sm:flex gap-4 place-content-center place-items-center">
-                {
-                  usuario.isAdmin
-                  ?
-                  <Link to='/dashboard' className="rounded-md bg-primary-100 px-5 py-2.5 text-sm font-medium text-text-100 shadow">
-                    Admin Dashboard
+              ? usuario.isAdmin
+                ? <Link to='/dashboard' className="hidden lg:block rounded-md bg-arena-green-400 p-2 text-sm font-medium text-white shadow">
+                    Administrador
                   </Link>
-                  :
-                  <Link to='/micuenta' className="rounded-md bg-arena-green-400 px-5 py-2.5 text-sm font-medium text-white shadow">
-                    Mi Cuenta
-                  </Link>
-                }
-                  <button className="bg-black text-white" onClick={handleLogout}>
-                    Cerrar Sesión
-                  </button>
-                </div>
-              :
-                <div className="sm:flex sm:gap-4">
-                  <button
-                    className="rounded-md bg-primary-300 px-5 py-2.5 text-sm font-medium text-white shadow"
-                    onClick={()=>setShowLogin(true)}
-                  >
-                    Ingresar
-                  </button>
-                  <div className="hidden sm:flex">
-                    <Link
-                      className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-arena-green-900"
-                      to="/registro"
-                    >
-                      Registrarse
+                : <div className="hidden md:flex gap-2 place-content-center place-items-center">
+                    <Link to='/micuenta' className="rounded-md bg-arena-green-400 p-2 text-sm font-medium text-white shadow">
+                      Mi Cuenta
                     </Link>
+                    <button className="bg-primary-200 text-text-200 font-semibold p-2" onClick={handleLogout}>
+                      Cerrar Sesión
+                    </button>
+                    </div>
+                :
+                  <div className="sm:flex sm:gap-4">
+                    <button
+                      className="rounded-md bg-primary-300 px-5 py-2.5 text-sm font-medium text-white shadow"
+                      onClick={()=>setShowLogin(true)}
+                    >
+                      Ingresar
+                    </button>
+                    <div className="hidden sm:flex">
+                      <Link
+                        className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-arena-green-900"
+                        to="/registro"
+                      >
+                        Registrarse
+                      </Link>
+                    </div>
                   </div>
-                </div>
             }
-            <div className="block md:hidden">
+            <div className="lg:hidden flex items-center gap-2">
+            {
+              usuario.isAdmin 
+              &&  
+                <button className="px-3 py-1.5 rounded-md bg-accent-100 text-text-200 font-bold lg:hidden ms-auto" onClick={()=>setIsOpen(true)}>
+                  Admin
+                </button> || null
+            }
               <button
-                className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+                className="md:hidden rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
                 onClick={() => setIsActive(!isActive)}
               >
                 <svg
@@ -133,43 +137,43 @@ export const Header = () => {
           <div className=" flex flex-col items-center justify-around w-full h-full overflow-hidden">
             <Link
               to="/"
-              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
             >
               Inicio
             </Link>
             <Link
               to="/reservas"
-              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
             >
               Reservas
             </Link>
             <Link
               to="/nosotros"
-              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
             >
               Quienes Somos
             </Link>
             <Link
               to="/galeria"
-              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded border-b-[1px] border-b-arena-green-800 w-full"
+              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
             >
               Galeria
             </Link>
-            <Link
+            {/* <Link
               to="/contacto"
               className="px-4 h-full leading-[3rem] text-arena-green-900 rounded w-full"
             >
               Contacto
-            </Link>
-            <div className="flex items-center gap-4 justify-center w-full h-full overflow-hidden">
+            </Link> */}
+            <div className="flex items-center gap-4 justify-center w-full h-full overflow-hidden rounded-b-md">
               {
-                usuario.email
+                usuario.email 
                 ? <div className="flex place-content-center place-items-center w-full h-full overflow-hidden">
                   {
                     usuario.isAdmin
                     ?
                     <Link to='/dashboard' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
-                      Admin Dashboard
+                      Administrador
                     </Link>
                     :
                     <Link to='/micuenta' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
@@ -191,11 +195,14 @@ export const Header = () => {
           </div>
         </div>
         {
-          usuario.email && 
-          <Carrito />
+          usuario.email &&
+          <div className="w-fit flex justify-center items-center me-0 ms-auto">
+            <Carrito />
+          </div> 
         }
       </div>
       <Login showLogin={showLogin} setShowLogin={setShowLogin}/>
+      <DrawerMobile isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>
     
   );

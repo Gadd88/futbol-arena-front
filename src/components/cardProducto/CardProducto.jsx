@@ -24,7 +24,7 @@ export const CardProducto = ( { data } ) => {
   };
 
   return (
-    <article className="rounded-xl bg-bg-300 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-80 snap-center min-w-52 relative overflow-hidden sm:min-h-[450px]">
+    <article className="rounded-xl bg-bg-300 p-3 shadow-md hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-80 snap-center min-w-52 relative overflow-hidden h-[370px]">
       {enCarrito(producto_id) && (
         <div className="p-3 bg-accent-100 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
           <svg
@@ -43,19 +43,18 @@ export const CardProducto = ( { data } ) => {
           </svg>
         </div>
       )}
-      <Link to="#">
-        <figure className="relative flex items-end overflow-hidden rounded-xl">
-          <img src={imagen} alt="Futbol arena foto producto" />
-        </figure>
-      </Link>
-      <section className="mt-1 p-2 text-start">
-        <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-bg-300 p-1 px-3 shadow-sm my-1 cursor-default">
+      
+      <figure className="relative flex items-end overflow-hidden rounded-xl h-1/2 shadow-md">
+        <img src={imagen} className='w-full h-full object-fill' alt="Futbol arena foto producto" />
+      </figure>
+      <section className="mt-1 p-2 text-start h-1/2 flex flex-col justify-between">
+        <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-bg-100 p-1 px-3 shadow-sm my-1 cursor-default">
           <span className="text-sm text-text-200 font-bold">
             {categoria.toUpperCase()}
           </span>
         </div>
-        <h2 className="text-text-100 font-semibold">{producto}</h2>
-        <p className="mt-1 text-sm text-text-200 font-semibold">{detalle}</p>
+        <h2 className="text-text-100 font-bold">{producto}</h2>
+        <p className="mt-1 text-sm text-gray-800 font-semibold">{detalle}</p>
         <article className="mt-3 flex items-end justify-between">
           <p className="text-lg font-bold text-primary-300">${precio}</p>
           {
