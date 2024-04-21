@@ -6,7 +6,7 @@ export const Carrito = () => {
   const { carrito, totalCarrito, isActive, setIsActive } = useCarrito();
 
   return (
-    <section className="flex justify-end me-10 my-2 pb-2">
+    <section className="my-2">
       <article className="flex items-center justify-center flex-col">
         <p className="relative scale-75 cursor-pointer" onClick={()=>setIsActive(!isActive)}>
           <svg

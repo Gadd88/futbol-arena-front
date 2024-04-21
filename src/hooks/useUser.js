@@ -38,7 +38,9 @@ export const useUser = () => {
     const handleLogout = () => {
       toast.error('Hasta luego...')
       localStorage.clear()
-      navigate(0)
+      setTimeout(()=>{
+        navigate(0)
+      },1000)
     }
 
   return {

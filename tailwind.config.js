@@ -1,4 +1,4 @@
-// import flowbite from 'flowbite-react'
+import flowbite from 'flowbite-react'
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -32,12 +32,26 @@ export default {
         "bg-100":"#DFFF00",
         "bg-200":"#d4f500",
         "bg-300":"#bde400",
-            
+        // "primary-100":"#de283b",
+        // "primary-200":"#ff6366",
+        // "primary-300":"#ffccc4",
+        // "accent-100":"#25b1bf",
+        // "accent-200":"#005461",
+        // "text-100":"#1a1a1a",
+        // "text-200":"#404040",
+        // "bg-100":"#ffffff",
+        // "bg-200":"#f5f5f5",
+        // "bg-300":"#cccccc",
+          
       }
     },
     
   },
   plugins: [
-    // flowbite,
+    flowbite,
   ],
 }
+
+
+
+  

@@ -1,7 +1,7 @@
 export const ServiciosCards = ({ title, description, image }) => {
   return (
       <article
-        className="h-[300px] min-w-[400px] w-[400px] overflow-hidden rounded-sm p-5 bg-bg-300"
+        className="h-[300px] min-w-[400px] w-[400px] overflow-hidden rounded-lg p-5 bg-bg-300"
       >
         <figure className="w-full h-full relative rounded-md overflow-hidden">
           <img

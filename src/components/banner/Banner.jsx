@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { data } from "../../assets/bannerPictures/data.js";
+import { data } from "../../../public/bannerPictures/data.js";
 
 export const Banner = () => {
     const listRef = useRef();

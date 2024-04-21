@@ -1,9 +1,13 @@
 import { useContext, useState } from 'react'
 import { ProductosContext } from '../context/ProductosContext'
+import { UserContext } from '../context'
+import { useNavigate } from 'react-router-dom'
 
 export const useProductos = () => {
+    const navigate = useNavigate()
     const [error, setError] = useState(false)
     const {productos, agregarCarrito, carrito, eliminarProducto, obtenerProductos, agregarProducto} = useContext(ProductosContext)
+    const {usuarioToken} = useContext(UserContext)
 
     const handleDelete = async (id, token) => {
         await eliminarProducto(id, token)
@@ -30,10 +34,25 @@ export const useProductos = () => {
         }
         await agregarProducto(newProducto, token)
         obtenerProductos()
+        navigate(0)
     }
 
-    const handleEditar = async () => {
-
+    const handleEditar = async (id, producto) => {
+        try{
+            const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type':'application/json',
+                    Authorization: `Bearer ${usuarioToken}`
+                },
+                body:JSON.stringify(producto)
+            })
+            const result = await response.json()
+            await obtenerProductos()
+            return result
+        }catch(error){
+            throw new Error(error)
+        }
     }
 
     return {
