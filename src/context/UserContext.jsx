@@ -9,9 +9,10 @@ export const UserProvider = ({ children }) => {
         usuario:{},
     })
     const storageUser = JSON.parse(localStorage.getItem('usuario')) || {}
-    const [showLogin, setShowLogin] = useState(false);
+    const storageToken = localStorage.getItem('token') || ''
     const [usuario, setUsuario] = useState(storageUser)
-    const [usuarioToken, setUsuarioToken] = useState('')
+    const [usuarioToken, setUsuarioToken] = useState(storageToken)
+    const [showLogin, setShowLogin] = useState(false);
     const apiUrl='https://futbol-arena-back.onrender.com/api'
 
     const registrarUsuario = async (user) => {
@@ -22,67 +23,69 @@ export const UserProvider = ({ children }) => {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify(user)
-            })
-            if(response.status==400){
+                })
+            if(!response.ok){
                 const result = await response.json()
-                alert(result.message)
-                return
-            }
+                throw new Error(result.message)
+            } 
             const result = await response.json()
             setRegResult({
                 message: result.message,
                 usuario: result.usuario
             })
+            return result
         }catch(err){
-            console.log(err)
+            throw new Error(err)
         }
     }
 
     const loginUsuario = async (user) => {
-        // const response = await fetch('http://localhost:3001/api/login',{
-        const response = await fetch(`${apiUrl}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-        if(!response.ok) return console.log('error')
-        if(response.status==400){
+        try{
+            const response = await fetch(`${apiUrl}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
             const result = await response.json()
-            alert(result.message)
-            return
+            if(!response.ok){
+                throw new Error(result.message)
+            }
+            setUsuarioToken(result.token)
+            const usuarioDecode = jwtDecode(result.token)
+            localStorage.setItem('token',result.token)
+            localStorage.setItem('usuario',JSON.stringify(usuarioDecode))
+            return result
+        }catch(err){
+            throw new Error(err)
         }
-        const result = await response.json()
-        setUsuarioToken(result.token)
-        localStorage.setItem('token',result.token)
     }
-    const cerrarSesion = () => {
-        setTimeout(()=>{
-            localStorage.clear()
-            location.reload()
 
-        },500)
+    const getUserData = async(id) => {
+        const response = await fetch(`http://localhost:3001/api/users/${id}`)
+        const result = await response.json()
+        localStorage.setItem('usuario', JSON.stringify(result))
     }
+    
     useEffect(()=>{
-        if(usuarioToken.length>0){
-            const user = jwtDecode(usuarioToken)
-            setUsuario(user)
-            localStorage.setItem('usuario', JSON.stringify(user))
+        const sesionUser = JSON.parse(localStorage.getItem('usuario'))
+        if(sesionUser){
+            setUsuario(sesionUser)
         }
     },[usuarioToken])
-
 
     return(
         <UserContext.Provider value={{
             registrarUsuario,
             loginUsuario,
+            getUserData,
             setShowLogin,
-            cerrarSesion,
+            setUsuario,
             regResult,
             usuarioToken,
             usuario,
-            showLogin
+            showLogin,
         }}>
             { children }
         </UserContext.Provider>

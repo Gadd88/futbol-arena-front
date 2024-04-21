@@ -1,0 +1,29 @@
+import {useState, useEffect} from 'react'
+import { eliminarReserva, getReservations } from '../utils/reservasUtil';
+import { useUser } from './useUser';
+
+export const useReservas = () => {
+    const [reservas, setReservas] = useState([]);
+    const usuarioId = JSON.parse(localStorage.getItem('usuario'))?.user_id || ''
+    const {usuario} = useUser()
+    
+    const getReservas = () => {
+        getReservations()
+        .then(result => setReservas(result))
+    }
+
+    const handleDelete = async(reserva_id) => {
+        await eliminarReserva(reserva_id, usuario)
+        getReservas()
+    }
+    useEffect(()=>{
+        getReservas()
+    },[])
+
+    const reservasUser = reservas.filter(reserva => reserva.user_id === usuarioId)
+
+    return {
+        reservasUser,
+        handleDelete
+    }
+}
