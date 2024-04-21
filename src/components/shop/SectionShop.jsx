@@ -20,7 +20,7 @@ export const SectionShop = () => {
           ))
         }
       </div>
-      <Link className="bg-primary-100 p-3 rounded-xl flex w-fit justify-end ml-auto mr-5">Ver más &#x27A1;</Link>
+      <Link to='/ecommerce' className="bg-primary-100 p-3 rounded-xl flex w-fit justify-end ml-auto mr-5">Ver más &#x27A1;</Link>
     </section>
   );
 };

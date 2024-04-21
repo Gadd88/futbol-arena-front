@@ -19,7 +19,7 @@ export const DrawerMobile = ({ isOpen, setIsOpen }) => {
           id="drawer-navigation"
           className={`${
             isOpen ? "" : "-translate-x-full"
-          } fixed top-0 left-0 z-40 h-full border-4 border-red-500 p-4 overflow-hidden transition-transform  bg-bg-200 w-64`}
+          } fixed top-0 left-0 z-40 h-full p-4 overflow-hidden transition-transform  bg-bg-200 w-64`}
           aria-labelledby="drawer-navigation-label"
         >
           <h5

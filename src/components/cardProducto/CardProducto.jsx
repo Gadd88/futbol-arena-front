@@ -61,7 +61,7 @@ export const CardProducto = ( { data } ) => {
             usuario.email &&
             <button
               onClick={() => agregarCarrito(data)}
-              className="flex items-center space-x-1.5 rounded-lg bg-accent-100 px-4 py-1.5 text-text-200 font-semibold duration-100 hover:bg-primary-200"
+              className="flex items-center space-x-1.5 rounded-lg bg-accent-100 px-2 py-1.5 text-text-200 font-semibold duration-100 hover:bg-primary-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

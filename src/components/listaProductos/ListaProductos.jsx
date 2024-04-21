@@ -20,10 +20,10 @@ export const ListaProductos = () => {
     setShowModal(true)
   }
   return (
-    <section className="h-screen w-full p-2 md:p-8 space-y-10">
+    <section className="h-screen w-full p-2 md:p-8 space-y-10 overflow-y-scroll snap-y">
         <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Productos</h1>
 
-        <table className="w-full text-black rounded-md bg-gray-50 table-auto overflow-hidden border-separate border-spacing-y-5 border-spacing-x-3 text-xs sm:text-base" >
+        <table className="w-full text-black rounded-md bg-gray-50 table-auto overflow-y-scroll border-separate border-spacing-y-5 border-spacing-x-3 text-xs sm:text-base" >
           <thead>
             <tr className="">
               <th className="w-5/12">Producto</th>

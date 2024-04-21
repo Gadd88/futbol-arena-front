@@ -1,8 +1,10 @@
 import { useContext, useState } from 'react'
 import { ProductosContext } from '../context/ProductosContext'
 import { UserContext } from '../context'
+import { useNavigate } from 'react-router-dom'
 
 export const useProductos = () => {
+    const navigate = useNavigate()
     const [error, setError] = useState(false)
     const {productos, agregarCarrito, carrito, eliminarProducto, obtenerProductos, agregarProducto} = useContext(ProductosContext)
     const {usuarioToken} = useContext(UserContext)
@@ -32,6 +34,7 @@ export const useProductos = () => {
         }
         await agregarProducto(newProducto, token)
         obtenerProductos()
+        navigate(0)
     }
 
     const handleEditar = async (id, producto) => {
