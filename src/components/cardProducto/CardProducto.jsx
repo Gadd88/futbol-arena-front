@@ -44,8 +44,8 @@ export const CardProducto = ( { data } ) => {
         </div>
       )}
       
-      <figure className="relative flex items-end overflow-hidden rounded-xl h-1/2 shadow-md">
-        <img src={imagen} className='w-full h-full object-fill' alt="Futbol arena foto producto" />
+      <figure className="relative flex items-end overflow-hidden rounded-xl h-1/2 shadow-md bg-white">
+        <img src={imagen} className='w-full h-full object-contain aspect-square' alt="Futbol arena foto producto" />
       </figure>
       <section className="mt-1 p-2 text-start h-1/2 flex flex-col justify-between">
         <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-bg-100 p-1 px-3 shadow-sm my-1 cursor-default">

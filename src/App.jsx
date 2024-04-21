@@ -1,8 +1,9 @@
 import { FormCancha, FormProducto, Header, ListaCanchas, ListaProductos, ListaReservas, ListaUsuarios, Footer } from "./components"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { CanchaProvider, ProductosProvider, UserProvider } from "./context"
-import { Contacto, DashboardAdmin, Ecommerce, Error404, Galeria, Home, Nosotros, Registro, Reservas } from "./views"
+import { Contacto, DashboardAdmin, Ecommerce, Error404, Galeria, Home, MiCuenta, Nosotros, Registro, Reservas } from "./views"
 import { Toaster } from "sonner"
+import PrivateRoute from "./routes/PrivateRoute"
 
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
               <Route path='/contacto' element={<Contacto/>}/>
               <Route path='/ecommerce' element={<Ecommerce/>}/>
               <Route path='/registro' element={<Registro/>}/>
-              <Route path='/dashboard' element={<DashboardAdmin/>}>
+              <Route path='/micuenta' element={<PrivateRoute><MiCuenta/>
+                </PrivateRoute>}/>
+              <Route path='/dashboard' element={<PrivateRoute><DashboardAdmin/></PrivateRoute>}>
                 <Route path="/dashboard/listaUsuarios" element={<ListaUsuarios/>}/>
                 <Route path="/dashboard/listaCanchas" element={<ListaCanchas/>}/>
                 <Route path="/dashboard/listaProductos" element={<ListaProductos/>}/>

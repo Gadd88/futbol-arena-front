@@ -23,7 +23,6 @@ export const ListaUsuarios = () => {
               <th className="">Nombre</th>
               <th className="hidden md:block">Email</th>
               <th className="">Teléfono</th>
-              <th className="">N° Reservas</th>
               <th className="">Eliminar</th>
             </tr>
           </thead>
@@ -35,7 +34,6 @@ export const ListaUsuarios = () => {
                   <td className="text-start">{user.nombre}</td>
                   <td className="text-start hidden md:block">{user.email}</td>
                   <td className="">{user.telefono}</td>
-                  <td className="">{user.reservas.length}</td>
                   <td className="">
                     <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>eliminarUsuario(user.user_id)}>X</button>
                   </td>
