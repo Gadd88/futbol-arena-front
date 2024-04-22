@@ -24,7 +24,7 @@ export const CardProducto = ( { data } ) => {
   };
 
   return (
-    <article className="rounded-xl bg-bg-300 p-3 shadow-md hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-80 snap-center min-w-52 relative overflow-hidden h-[370px]">
+    <article className="rounded-xl bg-bg-100 p-3 shadow-md hover:shadow-xl lg:hover:scale-105 duration-300 max-w-80 snap-center min-w-52 relative overflow-hidden h-[370px]">
       {enCarrito(producto_id) && (
         <div className="p-3 bg-accent-100 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
           <svg

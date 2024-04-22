@@ -1,9 +1,14 @@
 import { createPortal } from "react-dom";
 import { useCarrito } from "../../hooks/useCarrito";
 import { ProductoCarrito } from "../productoCarrito/ProductoCarrito";
+import { useCancha } from "../../hooks/useCancha";
 
 export const Carrito = () => {
-  const { carrito, totalCarrito, isActive, setIsActive } = useCarrito();
+  const { carrito, totalCarrito, isActive, setIsActive, handlePay, setSelect } = useCarrito();
+  const {listaCanchas} = useCancha()
+  const handleChange = (e) => {
+    setSelect(e.target.value)
+  }
 
   return (
     <section className="my-2">
@@ -30,16 +35,16 @@ export const Carrito = () => {
         {
             isActive &&
             createPortal(
-                <div className="p-5 absolute top-10 left-0 right-0 mx-auto w-96 bg-bg-100/95 border-b-4 border-b-accent-200 border-r-4 border-r-accent-200 drop-shadow-md backdrop-blur-sm z-20 rounded-lg flex flex-col items-end gap-4">
+                <div className="p-5 absolute top-10 left-0 right-0 mx-auto w-11/12 sm:w-96 bg-arena-green-100 border-b-4 border-b-[#121212] border-r-4 border-r-[#121212] shadow-lg z-20 rounded-lg flex flex-col items-end gap-4">
                   <div className="flex justify-between items-center w-full">
                     <h2 className="text-text-100 font-bold">Tus Productos</h2>
-                      <button className="py-1 px-3 bg-accent-200 font-bold text-white rounded-sm" onClick={()=>setIsActive(false)}>X</button>
+                      <button className="py-1 px-3 bg-[#121212] font-bold text-white rounded-sm" onClick={()=>setIsActive(false)}>X</button>
                   </div>
                     {
                         carrito.length > 0
                         ?   <>
                                 <table className="table-auto border-separate border-spacing-y-5 ">
-                                    <thead className="rounded-xl bg-bg-300 border-spacing-5">
+                                    <thead className="rounded-xl bg-accent-100 border-spacing-5">
                                         <tr className="">
                                             <th className="w-1/6"></th>
                                             <th className="w-2/6">Producto</th>
@@ -59,9 +64,22 @@ export const Carrito = () => {
                                         }
                                     </tbody>
                                 </table>
-                                <button className="text-base px-4 py-2 rounded font-bold cursor-pointer bg-accent-100 hover:bg-primary-100 text-arena-200">
-                                    Pagar ${totalCarrito}
-                                </button>
+                                <article className="flex justify-between w-full">
+                                  <select className="rounded" name="entrega" id="entrega" onChange={handleChange} defaultValue='barra'>
+                                    <option value="barra" className="font-bold">Retiro por barra</option>
+                                    <optgroup label="Entrega en cancha">
+                                      {
+                                        listaCanchas.map(cancha => (
+                                          <option key={cancha.cancha_id} value={cancha.cancha_nombre}>
+                                            {cancha.cancha_nombre}
+                                          </option>))
+                                      }
+                                    </optgroup>
+                                  </select>
+                                  <button onClick={handlePay} className="text-base px-4 py-2 rounded font-bold cursor-pointer bg-accent-100 hover:bg-primary-100 text-arena-200">
+                                      Pagar ${totalCarrito}
+                                  </button>
+                                </article>
                             </>
                         : <p className="text-center border-2 border-arena-green-200 block w-full">No tiene elementos en su carrito </p>
                     }

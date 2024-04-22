@@ -68,7 +68,7 @@ export const Dashboard = () => {
               Cerrar Sesión
             </button>
         </article>
-        <article className="w-screen mx-auto lg:w-2/3 bg-primary-200 min-h-screen transition-all rounded-lg" id="admin-content">
+        <article className="w-screen mx-auto lg:w-2/3 bg-arena-green-100 min-h-screen transition-all rounded-lg" id="admin-content">
             <Outlet />
         </article>
     </section>

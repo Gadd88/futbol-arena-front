@@ -44,13 +44,13 @@ export const Footer = () => {
                 </Link>
                 <Link
                   className="text-text-200 hover:text-text-200 font-semibold text-sm lg:text-lg"
-                  to="/contacto"
+                  to="/*"
                 >
                   Contáctanos
                 </Link>
                 <Link
                   className="text-text-200 hover:text-text-200 font-semibold text-sm lg:text-lg"
-                  to="#"
+                  to="/*"
                 >
                   + Información
                 </Link>

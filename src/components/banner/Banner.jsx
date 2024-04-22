@@ -17,28 +17,28 @@ export const Banner = () => {
 
     return (
         <>
-            <div className="w-full h-[400px] overflow-hidden rounded-md relative p-5">
-                <div className="absolute top-1/2 left-8 text-4xl text-white cursor-pointer" onClick={(event) => scrollToImage('prev', event)}>&#8656;</div>
+            <section className="w-full overflow-hidden rounded-md relative p-5">
+                <article className="absolute top-[40%] lg:top-[50%] z-30 left-10 text-4xl text-white cursor-pointer" onClick={(event) => scrollToImage('prev', event)}>&#8249;</article>
 
-                <div className="absolute top-1/2 right-8 text-4xl text-white cursor-pointer" onClick={(event) => scrollToImage('next', event)} >&#8658;</div>
+                <article className="absolute top-[40%] right-10 lg:top-[50%] z-30 text-4xl text-white cursor-pointer" onClick={(event) => scrollToImage('next', event)} >&#8250;</article>
 
-                <div className="w-full h-full" ref={listRef}>
+                <article className="w-full h-full md:max-h-80 overflow-hidden rounded-md" ref={listRef}>
                     {
                         data.map((item, idx) => (
-                            <figure key={item.id} className={`${idx === currentIndex ? 'block' : 'hidden'} h-full w-full rounded-md overflow-hidden`}>
-                                <img className="w-full h-full object-stretch" src={item.imgUrl} alt={`banner-${item.id}`} />
+                            <figure key={item.id} className={`${idx === currentIndex ? 'block' : 'hidden'} h-fit w-full rounded-md overflow-hidden aspect-video`}>
+                                <img className="w-full object-cover aspect-video rounded-md lg:-translate-y-36" src={item.imgUrl} alt={`banner-${item.id}`} />
                             </figure>
                         ))
                     }
-                </div>
-                <div className="flex justify-center items-center absolute bottom-10 left-0 right-0 mx-auto">
+                </article>
+                <article className="flex justify-center items-center absolute bottom-5 left-0 right-0 mx-auto">
                     {
                         data.map((_, idx) => (
-                            <div key={idx} className={`${idx === currentIndex ? 'bg-accent-100' : 'bg-text-200'} my-2 mx-1 cursor-pointer text-center w-4 h-4 rounded-full`} onClick={() => goToSlide(idx)}></div>
+                            <p key={idx} className={`${idx === currentIndex ? 'bg-accent-100' : 'bg-text-200'} my-2 mx-1 cursor-pointer text-center w-4 h-4 rounded-full`} onClick={() => goToSlide(idx)}></p>
                         ))
                     }
-                </div>
-            </div>
+                </article>
+            </section>
         </>
     );
 }

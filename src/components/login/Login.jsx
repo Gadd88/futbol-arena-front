@@ -18,7 +18,7 @@ export const Login = ({ showLogin, setShowLogin }) => {
     <div className="relative">
       {showLogin &&
         createPortal(
-          <div className="flex w-[96%] h-[30rem] sm:w-[25rem] items-center justify-around text-white rounded-md fixed top-[6.7rem] sm:top-[7rem] flex-col right-0 left-0 sm:right-[7rem] sm:left-[7rem] mx-auto backdrop-opacity-90 bg-black/85 backdrop-blur-md">
+          <div className="flex w-[96%] h-[30rem] sm:w-[25rem] items-center justify-around text-white rounded-md fixed top-[6.7rem] sm:top-[7rem] flex-col right-0 left-0 sm:right-[7rem] sm:left-[7rem] mx-auto backdrop-opacity-90 bg-black/85 backdrop-blur-md z-[99999]">
             <section className="flex w-full flex-col space-y-10 px-5 relative">
               <button className="bg-arena-green-400 rounded-sm absolute left-auto right-3 -top-4 " onClick={()=>setShowLogin(false)}>X</button>
               <h2 className="text-center text-2xl font-medium">

@@ -3,6 +3,8 @@ import { useProductos } from "../../hooks"
 import { UserContext } from "../../context/UserContext"
 import { LogoReservas } from "../drawer/iconos"
 import { ProductoModal } from "../productoModal/ProductoModal"
+import { Table } from 'flowbite-react'
+import { listaTheme } from "./listaTheme"
 
 export const ListaProductos = () => {
 
@@ -21,38 +23,35 @@ export const ListaProductos = () => {
   }
   return (
     <section className="h-screen w-full p-2 md:p-8 space-y-10 overflow-y-scroll snap-y">
-        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Productos</h1>
-
-        <table className="w-full text-black rounded-md bg-gray-50 table-auto overflow-y-scroll border-separate border-spacing-y-5 border-spacing-x-3 text-xs sm:text-base" >
-          <thead>
-            <tr className="">
-              <th className="w-5/12">Producto</th>
-              <th className="w-2/12">Categoria</th>
-              <th className="w-2/12">Precio</th>
-              <th className="w-2/12">Editar</th>
-              <th className="w-1/12">Eliminar</th>
-            </tr>
-          </thead>
-          <tbody>
+        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl mt-10">Lista de Productos</h1>
+        <Table striped theme={listaTheme} className="w-full text-black rounded-md table-auto overflow-y-scroll text-xs sm:text-base p-1" >
+          <Table.Head>
+              <Table.HeadCell className="w-5/12">Producto</Table.HeadCell>
+              <Table.HeadCell className="w-3/12">Categoria</Table.HeadCell>
+              <Table.HeadCell className="w-2/12">Precio</Table.HeadCell>
+              <Table.HeadCell className="w-1/12">Editar</Table.HeadCell>
+              <Table.HeadCell className="w-1/12">Eliminar</Table.HeadCell>
+          </Table.Head>
+          <Table.Body>
             {
               productos.length > 0
               ? productos.map(producto => (
-                <tr key={producto.producto_id} className="cursor-pointer hover:font-semibold">
-                  <td className="text-start">{producto.producto}</td>
-                  <td className="text-center">{producto.categoria.toUpperCase()}</td>
-                  <td className="">${producto.precio}</td>
-                  <td className="">
-                    <button className="bg-cyan-300 font-bold text-white hover:bg-cyan-500" onClick={()=>editarProducto(producto)}><LogoReservas/></button>
-                  </td>
-                  <td className="">
-                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>handleDelete(producto.producto_id, usuarioToken)}>X</button>
-                  </td>
-                </tr>
+                <Table.Row key={producto.producto_id} className="cursor-pointer hover:font-semibold">
+                  <Table.Cell className="font-semibold">{producto.producto}</Table.Cell>
+                  <Table.Cell className="font-thin tracking-tighter">{producto.categoria.toUpperCase()}</Table.Cell>
+                  <Table.Cell className="font-semibold">${producto.precio}</Table.Cell>
+                  <Table.Cell className="text-center">
+                    <button className="bg-cyan-300 font-bold text-white hover:bg-cyan-500 p-1 sm:p-3" onClick={()=>editarProducto(producto)}><LogoReservas/></button>
+                  </Table.Cell>
+                  <Table.Cell className="text-center">
+                    <button className="bg-red-500 font-bold text-white hover:bg-red-700 px-3" onClick={()=>handleDelete(producto.producto_id, usuarioToken)}>X</button>
+                  </Table.Cell>
+                </Table.Row>
               ))
-              : <tr><td colSpan={5}>No hay productos cargados</td></tr>
+              : <Table.Row><Table.Cell colSpan={5}>No hay productos cargados</Table.Cell></Table.Row>
             }
-          </tbody>
-        </table>
+          </Table.Body>
+        </Table>
             {
               showModal &&
               <ProductoModal producto={producto} closeModal={closeModal} />

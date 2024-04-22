@@ -17,7 +17,7 @@ export const ListaUsuarios = () => {
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">
         <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Usuarios Activos</h1>
-        <table className="max-w-full mx-auto text-black rounded-md bg-gray-50 border-separate md:border-spacing-5 sm:border-spacing-2 overflow-x-auto" >
+        <table className="max-w-full mx-auto text-black rounded-md bg-gray-50 table-auto w-full px-2 border-spacing-y-5 border-separate md:border-spacing-5 sm:border-spacing-2 overflow-x-auto" >
           <thead>
             <tr>
               <th className="">Nombre</th>
@@ -33,7 +33,7 @@ export const ListaUsuarios = () => {
                 <tr key={user.user_id}>
                   <td className="text-start">{user.nombre}</td>
                   <td className="text-start hidden md:block">{user.email}</td>
-                  <td className="">{user.telefono}</td>
+                  <td className="text-start">{user.telefono}</td>
                   <td className="">
                     <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>eliminarUsuario(user.user_id)}>X</button>
                   </td>

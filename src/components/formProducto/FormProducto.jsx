@@ -8,10 +8,10 @@ export const FormProducto = () => {
   const {handleSubmit, error} = useProductos()
 
   return (
-    <div className="h-full rounded-md bg-primary-200 space-y-5 p-10">
+    <div className="h-full rounded-md bg-arena-green-100 space-y-5 p-10">
         <h1 className="font-semibold text-arena-green-950 text-5xl">El Complejo</h1>
         <p className="text-arena-green-800 font-semibold ">Administra tus Productos</p>
-        <div className="flex flex-col w-full bg-gray-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
+        <div className="flex flex-col w-full bg-bg-100 rounded-md p-5 h-fit justify-center space-y-10 items-center">
             <form onSubmit={(e)=>handleSubmit(e,usuarioToken, productoCloudData)} className="flex flex-col items-center gap-4 justify-center w-full">
               {
                 error && <p className="bg-red-400 font-semibold p-5 rounded-md">Todos los campos son obligatorios</p>

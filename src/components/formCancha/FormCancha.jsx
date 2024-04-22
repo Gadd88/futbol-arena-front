@@ -8,10 +8,10 @@ export const FormCancha = () => {
   const {handleSubmit} = useCancha()
 
   return (
-    <div className="h-screen rounded-md bg-primary-200 space-y-5 p-10">
+    <div className="h-screen rounded-md bg-arena-green-100 space-y-5 p-10">
         <h1 className="font-semibold text-arena-green-950 text-5xl">El Complejo</h1>
         <p className="text-arena-green-800 font-semibold ">Administra tus Canchas</p>
-        <div className="flex flex-col w-full bg-bg-300 rounded-md p-5 h-fit justify-center space-y-10 items-center">
+        <div className="flex flex-col w-full bg-bg-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
             <form onSubmit={(e)=> handleSubmit(e,usuarioToken)} className="flex flex-col gap-4 justify-center w-full ">
                 {/* Inputs del formulario*/}
                 <input

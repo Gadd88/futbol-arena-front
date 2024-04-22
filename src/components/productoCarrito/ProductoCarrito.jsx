@@ -30,7 +30,7 @@ export const ProductoCarrito = ({ item }) => {
       </td>
       <td className="w-1/6">
         <div
-          className="hover:bg-red-200 rounded-full cursor-pointer text-red-700 w-2/4 p-1"
+          className="hover:bg-red-200 rounded-full cursor-pointer text-red-700 w-3/4 p-1"
           onClick={() => eliminarCarrito(producto_id)}
         >
           <svg

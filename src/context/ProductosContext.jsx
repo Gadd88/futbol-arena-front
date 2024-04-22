@@ -24,9 +24,6 @@ export const ProductosProvider = ({children}) => {
             throw new Error(error)
         }
     }
-    const editarProducto = async () =>{
-
-    }
     const eliminarProducto = async (prod_id, token) =>{
         try {
             const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${prod_id}`,{
@@ -76,11 +73,11 @@ export const ProductosProvider = ({children}) => {
     return (
         <ProductosContext.Provider value={{
             agregarProducto,
-            editarProducto,
             eliminarProducto,
             agregarCarrito,
             eliminarCarrito,
             obtenerProductos,
+            setCarrito,
             carrito,
             productos
         }}>
