@@ -11,28 +11,26 @@ export const ProductoCarrito = ({ item }) => {
   const { producto_id, producto, precio, cantidad, imagen } = item;
 
   return (
-    <tr>
+    <tr className="">
       <td className="w-1/6">
         <figure className="p-2 w-14 h-14">
           <img src={imagen} alt="img product" />
         </figure>
       </td>
       <td className="w-2/6 text-start">
-        <div className="flex-auto text-sm w-32">
-          <p className="font-bold">{producto}</p>
-        </div>
+          <p className="font-semibold">{producto}</p>
       </td>
       <td className="w-1/6">
-        <div className="flex flex-col w-18 font-medium items-end">
+        <p className=" w-18 font-medium">
           ${precio}
-        </div>
+        </p>
       </td>
       <td className="w-1/6">
-        <p className="text-white">{cantidad}</p>
+        <p className="text-text-200">{cantidad}</p>
       </td>
-      <td className="w-1/6 leading-4">
+      <td className="w-1/6">
         <div
-          className="hover:bg-red-200 rounded-full cursor-pointer text-red-700 w-full p-1"
+          className="hover:bg-red-200 rounded-full cursor-pointer text-red-700 w-3/4 p-1"
           onClick={() => eliminarCarrito(producto_id)}
         >
           <svg

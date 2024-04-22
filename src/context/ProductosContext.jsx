@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export const ProductosContext = createContext()
 
@@ -7,18 +8,41 @@ export const ProductosProvider = ({children}) => {
     const [productos, setProductos] = useState([])
     const [carrito, setCarrito] = useState([])
 
-    const agregarProducto = async () =>{
-
+    const agregarProducto = async (producto, token) =>{
+        try {
+            const response = await fetch('https://futbol-arena-back.onrender.com/api/products',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(producto)
+            })
+            const result = await response.json()
+            console.log(result)
+        } catch (error) {
+            throw new Error(error)
+        }
     }
-    const editarProducto = async () =>{
-
-    }
-    const eliminarProducto = async () =>{
+    const eliminarProducto = async (prod_id, token) =>{
+        try {
+            const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${prod_id}`,{
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            const result = await response.json()
+            console.log(result)
+        } catch (error) {
+            throw new Error(error)
+        }
 
     }
     const obtenerProductos = async () =>{
         const response = await axios.get('https://futbol-arena-back.onrender.com/api/products')
-        setProductos(response.data.sort((a,b)=>0.5 - Math.random()).slice(0,4))
+        setProductos(response.data)
     }
 
     const agregarCarrito = (producto) => {
@@ -26,6 +50,7 @@ export const ProductosProvider = ({children}) => {
         if(productoIdx >= 0){
             const newCarrito = structuredClone(carrito)
             newCarrito[productoIdx].cantidad++
+            toast.success('Producto Agregado...')
             setCarrito(newCarrito)
         }else{
             producto.cantidad = 1
@@ -34,10 +59,10 @@ export const ProductosProvider = ({children}) => {
                 producto
             ])
         }
-        console.log(carrito)
     }
     const eliminarCarrito = (producto_id) => {
         const newCarrito = carrito.filter(item => item.producto_id !== producto_id)
+        toast.error('Producto eliminado')
         setCarrito(newCarrito)
     }
     
@@ -48,10 +73,11 @@ export const ProductosProvider = ({children}) => {
     return (
         <ProductosContext.Provider value={{
             agregarProducto,
-            editarProducto,
             eliminarProducto,
             agregarCarrito,
             eliminarCarrito,
+            obtenerProductos,
+            setCarrito,
             carrito,
             productos
         }}>
