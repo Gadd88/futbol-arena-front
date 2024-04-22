@@ -6,7 +6,7 @@ import fotoBar from "../../assets/fotoBar.png";
 
 export const Servicios = () => {
   return (
-    <section className="p-10 space-y-10">
+    <section className="space-y-10 p-5 sm:p-10 bg-bg-100 rounded-md">
       <h2 className="text-3xl font-semibold text-text-100">Servicios</h2>
       <article className="grid grid-cols-1 grid-rows-2 sm:grid-cols-2 lg:grid-cols-2 gap-4 text-sm place-items-center mx-auto">
         <ServiciosCards

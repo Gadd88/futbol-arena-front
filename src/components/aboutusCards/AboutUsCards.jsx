@@ -1,9 +1,9 @@
-import github from "../../assets/github.svg";
-import linkedin from "../../assets/linkedin.svg";
+import gitlogo from "../../assets/github.svg";
+import linlogo from "../../assets/linkedin.svg";
 import { Link } from "react-router-dom";
 
 
-export const AboutUsCards = ({nombre, texto}) => {
+export const AboutUsCards = ({nombre, texto, github, linkedin}) => {
   return (
       <article className="flex flex-col bg-arena-green-50 p-4 rounded-lg h-96 w-full justify-start ">
         <figure className="flex justify-center justify-items-center">
@@ -21,11 +21,11 @@ export const AboutUsCards = ({nombre, texto}) => {
           </p>
         </div>
         <div className="flex flex-row gap-3 mt-auto justify-evenly">
-          <Link to="https://github.com/gadd88">
-            <img src={github} alt="" className="w-8 h-8 hover:scale-[1.5]" />
+          <Link to={github}>
+            <img src={gitlogo} alt="" className="w-8 h-8 hover:scale-[1.5]" />
           </Link>
-          <Link to="https://ar.linkedin.com/in/matias-saade">
-            <img src={linkedin} alt="" className="w-8 h-8 hover:scale-[1.5]" />
+          <Link to={linkedin}>
+            <img src={linlogo} alt="" className="w-8 h-8 hover:scale-[1.5]" />
           </Link>
         </div>
       </article>
