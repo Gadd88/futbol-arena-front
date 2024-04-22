@@ -1,11 +1,10 @@
-import React from "react";
 import complejo from "../../assets/complejo.jpg";
 import complejo2 from "../../assets/complejo2.jpg";
 
 export const AboutUsBanner = () => {
   return (
     <section>
-      <article className="grid lg:grid-cols-2 content-center items-center place-content-center mb-5">
+      <article className="grid lg:grid-cols-2 content-center items-center place-content-center mb-5 bg-bg-100 p-1 sm:p-5 rounded-md shadow-md">
         <div>
           <img src={complejo} alt="" className="rounded-lg" />
         </div>
@@ -29,7 +28,7 @@ export const AboutUsBanner = () => {
           </p>
         </div>
       </article>
-      <article className="grid lg:grid-cols-2 content-center items-center place-content-center">
+      <article className="grid lg:grid-cols-2 content-center items-center place-content-center p-1 sm:p-5 bg-bg-100 rounded-md shadow-md">
         <div className="container p-7">
           <h2 className="text-text-200 font-bold text-end text-3xl mb-4">
             {" "}

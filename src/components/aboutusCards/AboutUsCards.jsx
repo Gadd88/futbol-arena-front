@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const AboutUsCards = ({nombre, texto}) => {
   return (
-      <article className="flex flex-col bg-bg-100 p-4 rounded-lg h-200 w-100 justify-start ">
+      <article className="flex flex-col bg-arena-green-50 p-4 rounded-lg h-96 w-full justify-start ">
         <figure className="flex justify-center justify-items-center">
           <img
             src="https://picsum.photos/200/200"

@@ -1,22 +1,22 @@
 export const groupInfo = [
     {
         nombre: 'Matias Saade',
-        texto: "Gracias Javascript 🤣."
+        texto: "Luke! Yo soy tu padre!."
     },
     {
         nombre: 'Joaquin Reyes',
-        texto: "Despues de un largo dia de trabajo con el codigo, no hay nada como tomarse un rico cafe."
+        texto: "Del café al código. Y viceversa."
     },
     {
         nombre: 'Gabriela Monteros',
-        texto: "Tuve que elegir entre el futbol o la programacion, asi que hice una página web de futbol.."
+        texto: "Ideas en movimiento, proyecto con sentimiento."
     },
     {
         nombre: 'Pablo Moyano',
-        texto: "No me pude decidir por uno de los dos, asi que me hice FullStack :)"
+        texto: "Programando con estilo, debugueando con café"
     },
     {
         nombre: 'Enzo Castro',
-        texto: "La programacion es mi pasion, me encanta el front-end!"
+        texto: "De bugs y errores, pan de cada día."
     },
 ]

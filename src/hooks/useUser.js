@@ -1,11 +1,11 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
 import { toast } from "sonner"
 
 export const useUser = () => {
     const navigate = useNavigate()
-    const { registrarUsuario, regResult, loginUsuario, usuarioToken, usuario, setShowLogin } = useContext(UserContext)    
+    const { registrarUsuario, regResult, loginUsuario, usuarioToken, usuario, setShowLogin, getUserData } = useContext(UserContext)    
 
     const [user, setUser] = useState({
         email: "",
@@ -52,6 +52,7 @@ export const useUser = () => {
     usuario,
     handleLogin,
     handleInputChange,
+    getUserData,
     setUser,
     handleLogout
   }

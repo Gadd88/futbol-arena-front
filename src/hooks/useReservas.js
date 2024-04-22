@@ -5,7 +5,7 @@ import { useUser } from './useUser';
 export const useReservas = () => {
     const [reservas, setReservas] = useState([]);
     const usuarioId = JSON.parse(localStorage.getItem('usuario'))?.user_id || ''
-    const {usuario} = useUser()
+    const {usuario, getUserData} = useUser()
     
     const getReservas = () => {
         getReservations()
@@ -14,6 +14,7 @@ export const useReservas = () => {
 
     const handleDelete = async(reserva_id) => {
         await eliminarReserva(reserva_id, usuario)
+        await getUserData(usuario.user_id)
         getReservas()
     }
     useEffect(()=>{

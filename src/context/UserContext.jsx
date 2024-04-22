@@ -63,8 +63,9 @@ export const UserProvider = ({ children }) => {
     }
 
     const getUserData = async(id) => {
-        const response = await fetch(`http://localhost:3001/api/users/${id}`)
+        const response = await fetch(`https://futbol-arena-back.onrender.com/api/users/${id}`)
         const result = await response.json()
+        setUsuario(result)
         localStorage.setItem('usuario', JSON.stringify(result))
     }
     

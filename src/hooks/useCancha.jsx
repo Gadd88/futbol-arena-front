@@ -14,7 +14,7 @@ export const useCancha = () => {
       })
     }
     const sendReservation = async (data) => {
-      await toast.promise(addReservation(data),{
+      toast.promise(addReservation(data),{
         loading: 'Reservando...',
         success: async (data) => {
           toast.success(data.message)
