@@ -24,7 +24,7 @@ export const FieldComps = ({handleConsulta}) => {
               {
                 listaCanchas.length > 0 &&
                 listaCanchas?.map(cancha => (
-                <li className="flex items-center p-3 text-base font-bold rounded-lg bg-primary-100 text-text-100 hover:bg-primary-200 active:bg-arena-green-100 group hover:shadow cursor-pointer"
+                <li className="flex items-center p-3 text-base font-bold rounded-lg bg-primary-100 text-text-100 hover:bg-accent-100 active:bg-arena-green-100 group hover:shadow cursor-pointer"
                   key={cancha.cancha_id}
                   id={cancha.cancha_id}
                   onClick={(ev)=>handleClick(ev)}>

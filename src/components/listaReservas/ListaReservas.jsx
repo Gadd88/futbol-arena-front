@@ -19,8 +19,8 @@ export const ListaReservas = () => {
 
   return (
     <div className="h-full w-full p-2 md:p-10 space-y-10 overflow-scroll">
-        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Reservas Activas</h1>
-        <table className="w-full text-black rounded-md bg-gray-50 p-5 border-separate md:border-spacing-3 border-spacing-1 table-fixed" >
+        <h1 className="text-text-100 font-semibold text-2xl md:text-5xl">Lista de Reservas Activas</h1>
+        <table className="w-full text-text-200 rounded-md bg-gray-50 p-5 border-separate md:border-spacing-3 border-spacing-1 table-fixed" >
           <thead>
             <tr className="">
               <th className="">Fecha</th>

@@ -9,9 +9,9 @@ export const ListaCanchas = () => {
 
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">
-        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Canchas Activas</h1>
+        <h1 className="text-text-100 font-semibold text-2xl md:text-5xl">Lista de Canchas Activas</h1>
 
-        <table className="w-full text-black rounded-md bg-gray-50 border-separate md:border-spacing-5 border-spacing-1" >
+        <table className="w-full text-text-200 rounded-md bg-gray-50 border-separate md:border-spacing-5 border-spacing-1" >
           <thead className="">
             <tr className="">
               <th className="">Cancha</th>

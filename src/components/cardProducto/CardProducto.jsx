@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useProductos } from "../../hooks/";
 import PropTypes from 'prop-types'
 import { UserContext } from "../../context/";
+import { Button } from '../button/Button';
 
 export const CardProducto = ( { data } ) => {
   CardProducto.propTypes = {
@@ -24,7 +25,7 @@ export const CardProducto = ( { data } ) => {
   };
 
   return (
-    <article className="rounded-xl bg-bg-100 p-3 shadow-md hover:shadow-xl lg:hover:scale-105 duration-300 max-w-80 snap-center min-w-52 relative overflow-hidden h-[370px]">
+    <article className="rounded-xl bg-bg-100 p-3 shadow-md hover:shadow-xl lg:hover:scale-105 duration-300 max-w-80 snap-center min-w-52 w-52 relative overflow-hidden h-[370px]">
       {enCarrito(producto_id) && (
         <div className="p-3 bg-accent-100 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
           <svg
@@ -61,7 +62,7 @@ export const CardProducto = ( { data } ) => {
             usuario.email &&
             <button
               onClick={() => agregarCarrito(data)}
-              className="flex items-center space-x-1.5 rounded-lg bg-accent-100 px-2 py-1.5 text-text-200 font-semibold duration-100 hover:bg-primary-200"
+              className="flex items-center space-x-1.5 rounded-lg bg-primary-100 px-2 py-1.5 text-text-100 font-semibold duration-100 hover:text-text-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

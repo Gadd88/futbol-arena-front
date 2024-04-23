@@ -23,8 +23,8 @@ export const ListaProductos = () => {
   }
   return (
     <section className="h-screen w-full p-2 md:p-8 space-y-10 overflow-y-scroll snap-y">
-        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl mt-10">Lista de Productos</h1>
-        <Table striped theme={listaTheme} className="w-full text-black rounded-md table-auto overflow-y-scroll text-xs sm:text-base p-1" >
+        <h1 className="text-text-100 font-semibold text-2xl md:text-5xl mt-10">Lista de Productos</h1>
+        <Table striped theme={listaTheme} className="w-full text-text-200 rounded-md table-auto overflow-y-scroll text-xs sm:text-base p-1" >
           <Table.Head>
               <Table.HeadCell className="w-5/12">Producto</Table.HeadCell>
               <Table.HeadCell className="w-3/12">Categoria</Table.HeadCell>

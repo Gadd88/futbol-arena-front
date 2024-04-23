@@ -16,8 +16,8 @@ export const ListaUsuarios = () => {
 
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">
-        <h1 className="text-arena-green-950 font-semibold text-2xl md:text-5xl">Lista de Usuarios Activos</h1>
-        <table className="max-w-full mx-auto text-black rounded-md bg-gray-50 table-auto w-full px-2 border-spacing-y-5 border-separate md:border-spacing-5 sm:border-spacing-2 overflow-x-auto" >
+        <h1 className="text-text-100 font-semibold text-2xl md:text-5xl">Lista de Usuarios Activos</h1>
+        <table className="max-w-full mx-auto text-text-200 rounded-md bg-gray-50 table-auto w-full px-2 border-spacing-y-5 border-separate md:border-spacing-5 sm:border-spacing-2 overflow-x-auto" >
           <thead>
             <tr>
               <th className="">Nombre</th>

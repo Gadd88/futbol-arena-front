@@ -13,7 +13,7 @@ export const InfoFutbol = () => {
           <Map />
         <div className="flex flex-col items-center justify-around space-y-5 p-5 bg-white border border-gray-200 rounded-lg shadow h-80 md:h-96">
           <div className="flex justify-center">
-            <h3 className="text-arena-green-700 font-semibold text-center text-xl">
+            <h3 className="text-accent-200 font-semibold text-center text-xl">
               {" "}
               Cuando abrimos?
             </h3>

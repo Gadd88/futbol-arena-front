@@ -3,7 +3,7 @@ import { groupInfo } from "../../components/aboutusCards/aboutUsTexts";
 
 export const Nosotros = () => {
   return (
-    <main className="w-full mx-auto max-w-6xl rounded-xl overflow-hidden p-5 bg-arena-green-100">
+    <main className="w-full mx-auto max-w-6xl rounded-xl overflow-hidden p-5 bg-bg-100">
       <section className="rounded-md" >
         <AboutUsBanner />
         <article className="my-10 bg-bg-200 p-5 rounded-md shadow-lg">

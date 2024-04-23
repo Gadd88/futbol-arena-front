@@ -35,10 +35,10 @@ export const Carrito = () => {
         {
             isActive &&
             createPortal(
-                <div className="p-5 absolute top-10 left-0 right-0 mx-auto w-11/12 sm:w-96 bg-arena-green-100 border-b-4 border-b-[#121212] border-r-4 border-r-[#121212] shadow-lg z-20 rounded-lg flex flex-col items-end gap-4">
+                <div className="p-5 absolute top-10 left-0 right-0 mx-auto w-11/12 sm:w-96 bg-accent-100 border-b-4 border-b-[#121212] border-r-4 border-r-[#121212] shadow-lg z-20 rounded-lg flex flex-col items-end gap-4">
                   <div className="flex justify-between items-center w-full">
                     <h2 className="text-text-100 font-bold">Tus Productos</h2>
-                      <button className="py-1 px-3 bg-[#121212] font-bold text-white rounded-sm" onClick={()=>setIsActive(false)}>X</button>
+                      <button className="py-1 px-3 bg-[#121212] font-bold hover:bg-accent-200 text-white rounded-sm" onClick={()=>setIsActive(false)}>X</button>
                   </div>
                     {
                         carrito.length > 0
@@ -81,7 +81,7 @@ export const Carrito = () => {
                                   </button>
                                 </article>
                             </>
-                        : <p className="text-center border-2 border-arena-green-200 block w-full">No tiene elementos en su carrito </p>
+                        : <p className="text-center border-2 border-accent-200 block w-full">No tiene elementos en su carrito </p>
                     }
                 </div>
                 , document.body

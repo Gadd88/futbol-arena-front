@@ -3,7 +3,7 @@ import marcoCelu from '../../../public/img/marcoCelular.svg'
 import futbol1 from '../../../public/img/futbol1.png'
 export const Banner2 = () => {
   return (
-    <section className='h-full p-5 w-full flex items-center justify-center flex-col md:flex-row bg-primary-100 rounded-md'>
+    <section className='h-full p-5 w-full flex items-center justify-center flex-col md:flex-row bg-primary-200 rounded-md'>
         <article className='md:w-2/3 flex flex-wrap items-center justify-center gap-2'>
             <figure className='w-80 md:max-w-sm relative'>
                 <img src={brush} alt="brush" className='-rotate-12' />

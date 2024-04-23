@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useProductoImg, useProductos } from "../../hooks";
 import { UserContext } from "../../context/UserContext";
+import { Button } from "../button/Button";
 
 export const FormProducto = () => {
   const {usuarioToken} = useContext(UserContext)
@@ -8,10 +9,10 @@ export const FormProducto = () => {
   const {handleSubmit, error} = useProductos()
 
   return (
-    <div className="h-full rounded-md bg-arena-green-100 space-y-5 p-10">
-        <h1 className="font-semibold text-arena-green-950 text-5xl">El Complejo</h1>
-        <p className="text-arena-green-800 font-semibold ">Administra tus Productos</p>
-        <div className="flex flex-col w-full bg-bg-100 rounded-md p-5 h-fit justify-center space-y-10 items-center">
+    <div className="h-full rounded-md bg-bg-100 space-y-5 p-3 py-10 md:p-10">
+        <h1 className="font-semibold text-text-100 text-5xl">El Complejo</h1>
+        <p className="text-text-200 font-semibold ">Administra tus Productos</p>
+        <div className="flex flex-col w-full bg-bg-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
             <form onSubmit={(e)=>handleSubmit(e,usuarioToken, productoCloudData)} className="flex flex-col items-center gap-4 justify-center w-full">
               {
                 error && <p className="bg-red-400 font-semibold p-5 rounded-md">Todos los campos son obligatorios</p>
@@ -68,12 +69,14 @@ export const FormProducto = () => {
               </div>
                 {/* Botones */}
                 <div className="flex gap-4 mt-5">
-                    <button type="submit" className="bg-arena-green-300 hover:bg-arena-green-500 text-white p-3 flex-1">
+                    {/* <button type="submit" className="bg-arena-green-300 hover:bg-arena-green-500 text-white p-3 flex-1">
                         Agregar
                     </button>
                     <button type="button" className="bg-black hover:bg-white hover:text-black text-white p-3 flex-1">
                         Borrar Formulario
-                    </button>
+                    </button> */}
+                    <Button type='submit' mode='accent' text='Agregar Cancha'/>
+                    <Button type='button' mode='' text='Borrar Formulario'/>
                 </div>
             </form>
         </div>

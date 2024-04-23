@@ -18,7 +18,7 @@ export const Dashboard = () => {
   return (
     // bg-[#f8f4f3]
     <section className="w-full flex items-start justify-center lg:space-x-5">
-        <article className="hidden lg:block lg:w-1/3 h-screen bg-bg-100 p-4 z-50 rounded-lg" id="sidebar">
+        <article className="hidden lg:block lg:w-1/3 h-screen bg-primary-100 p-4 z-50 rounded-lg" id="sidebar">
             <Link to="/" className="flex items-center pb-4 border-b border-b-gray-800">
                 <h2 className="font-bold text-2xl text-black">FÚTBOL <span className="bg-arena-green-400 text-white px-2 rounded-md">ARENA</span></h2>
             </Link>
@@ -68,7 +68,7 @@ export const Dashboard = () => {
               Cerrar Sesión
             </button>
         </article>
-        <article className="w-screen mx-auto lg:w-2/3 bg-arena-green-100 min-h-screen transition-all rounded-lg" id="admin-content">
+        <article className="w-screen mx-auto lg:w-2/3 bg-bg-200 min-h-screen transition-all rounded-lg" id="admin-content">
             <Outlet />
         </article>
     </section>

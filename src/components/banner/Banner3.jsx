@@ -7,7 +7,7 @@ export const Banner3 = () => {
         <article className='md:w-2/3 flex flex-wrap items-center justify-center md:gap-10'>
             <figure className='w-full md:max-w-sm relative'>
                 <img src={marcoVerde} alt="marcoVerde" className='min-h-36' />
-                <figcaption className='absolute font-semibold text-gray-100 top-[20%] text-start left-5 right-0 mx-auto h-full w-11/12 text-sm'>Administra las reservas de tu complejo deportivo o cancha desde un solo lugar, una sola plataforma segura, olvídate de llamadas insistentes y mensajes de texto.</figcaption>
+                <figcaption className='absolute font-semibold text-gray-100 top-[30%] text-start left-5 right-0 mx-auto h-full w-11/12 text-sm'>Reservá tu cancha desde cualquier lugar, plataforma 100% segura, olvídate de llamadas y mensajes de texto.</figcaption>
             </figure>
             <figure className='max-w-[220px] relative'>
                 <img src={marcoVerde} alt="marcoVerde" className='rotate-6 h-32' />
