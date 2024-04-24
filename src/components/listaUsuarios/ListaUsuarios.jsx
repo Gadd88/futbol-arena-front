@@ -13,7 +13,8 @@ export const ListaUsuarios = () => {
   const eliminarUsuario = (user_id) => {
     console.log(user_id)
   }
-
+  const listaUsuarios = users.filter(user => user.isAdmin == false)
+  
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">
         <h1 className="text-text-100 font-semibold text-2xl md:text-5xl">Lista de Usuarios Activos</h1>
@@ -28,8 +29,8 @@ export const ListaUsuarios = () => {
           </thead>
           <tbody>
             {
-              users.length > 0
-              ? users.map(user => (
+              listaUsuarios.length > 0
+              ? listaUsuarios.map(user => (
                 <tr key={user.user_id}>
                   <td className="text-start">{user.nombre}</td>
                   <td className="text-start hidden md:block">{user.email}</td>
