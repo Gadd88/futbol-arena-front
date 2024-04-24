@@ -16,7 +16,7 @@ export const TurnSelector = ({handleTime}) => {
                 key={horario.turnoId}
                 id={horario.turnoId}
                 onClick={() => handleTime(horario)}
-                className="bg-primary-100 min-w-32 md:min-w-20 md:w-20 h-20 flex items-center justify-center rounded-xl shadow cursor-pointer relative overflow-hidden hover:bg-accent-100">
+                className={`bg-primary-100 min-w-32 md:min-w-20 md:w-20 h-20 flex items-center justify-center rounded-xl shadow cursor-pointer relative overflow-hidden hover:bg-accent-100 ${!horario.disponible && 'cursor-not-allowed'}`}>
                 <p className="mb-1 font-semibold text-gray-700">
                   {horario.hora}
                 </p>

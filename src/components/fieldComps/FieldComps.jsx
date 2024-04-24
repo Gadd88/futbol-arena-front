@@ -1,6 +1,7 @@
 import {useContext} from 'react'
 import { CanchaContext } from "../../context";
 import { useCancha } from "../../hooks/useCancha";
+import { toast } from 'sonner';
 
 export const FieldComps = ({handleConsulta}) => {
 
@@ -9,7 +10,11 @@ export const FieldComps = ({handleConsulta}) => {
 
   const handleClick = async (ev) => {
     await handleConsulta(ev)
-    await consultaApi()
+    toast.promise(consultaApi(),{
+      loading: 'Cargando turnos..',
+      success: 'Todo Ok ⚽',
+      error: 'Falta Juez! '
+    })
   }
 
   return (
@@ -17,26 +22,25 @@ export const FieldComps = ({handleConsulta}) => {
         <h2 className="mb-3 text-base font-bold text-text-200">
           Selecciona tu cancha
         </h2>
-        {
-          reservation?.reservation_date != ''
-          ?
-            <ul className="my-4 space-y-3">
-              {
-                listaCanchas.length > 0 &&
-                listaCanchas?.map(cancha => (
-                <li className="flex items-center p-3 text-base font-bold rounded-lg bg-primary-100 text-text-100 hover:bg-accent-100 active:bg-arena-green-100 group hover:shadow cursor-pointer"
-                  key={cancha.cancha_id}
-                  id={cancha.cancha_id}
-                  onClick={(ev)=>handleClick(ev)}>
-                  {cancha.cancha_nombre}
-                </li>
+            {
+              reservation?.reservation_date != ''
+              ?
+                <ul className="my-4 space-y-3">
+                  {
+                    listaCanchas.length > 0 &&
+                    listaCanchas?.map(cancha => (
+                    <li className="flex items-center p-3 text-base font-bold rounded-lg bg-primary-100 text-text-100 hover:bg-accent-100 active:bg-arena-green-100 group hover:shadow cursor-pointer"
+                      key={cancha.cancha_id}
+                      id={cancha.cancha_id}
+                      onClick={(ev)=>handleClick(ev)}>
+                      {cancha.cancha_nombre}
+                    </li>
 
-                ))
-              }
-            </ul>
-          : <p className="font-bold text-text-200">Debe seleccionar una fecha</p>
-
-        }
+                    ))
+                  }
+                </ul>
+              : <p className="font-bold text-text-200">Debe seleccionar una fecha</p>
+            }
       </section>
   );
 };

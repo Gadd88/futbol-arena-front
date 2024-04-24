@@ -49,7 +49,7 @@ export const CardProducto = ( { data } ) => {
         <img src={imagen} className='w-full h-full object-contain aspect-square' alt="Futbol arena foto producto" />
       </figure>
       <section className="mt-1 p-2 text-start h-1/2 flex flex-col justify-between">
-        <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-bg-100 p-1 px-3 shadow-sm my-1 cursor-default">
+        <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-accent-100 p-1 px-3 shadow-sm my-1 cursor-default">
           <span className="text-sm text-text-200 font-bold">
             {categoria.toUpperCase()}
           </span>

@@ -75,8 +75,8 @@ export const FormProducto = () => {
                     <button type="button" className="bg-black hover:bg-white hover:text-black text-white p-3 flex-1">
                         Borrar Formulario
                     </button> */}
-                    <Button type='submit' mode='accent' text='Agregar Cancha'/>
-                    <Button type='button' mode='' text='Borrar Formulario'/>
+                    <Button type='submit' mode='accent' text='Agregar Producto'/>
+                    <Button type='reset' mode='' text='Borrar Formulario'/>
                 </div>
             </form>
         </div>

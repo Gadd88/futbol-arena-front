@@ -7,7 +7,7 @@ export const Banner2 = () => {
         <article className='md:w-2/3 flex flex-wrap items-center justify-center gap-2'>
             <figure className='w-80 md:max-w-sm relative'>
                 <img src={brush} alt="brush" className='-rotate-12' />
-                <figcaption className='absolute font-semibold text-gray-100 top-[22%] text-start left-5 right-0 mx-auto h-full w-9/12 text-sm'>No más cruces de reservas, con nuestra app seleccionaras el deporte, cancha y horas disponibles, no volverá a ocurrir 2 reservas a la misma hora.</figcaption>
+                <figcaption className='absolute font-semibold text-gray-100 top-[22%] text-start left-5 right-0 mx-auto h-full w-9/12 text-sm'>No más cruces de reservas, con nuestra app seleccionaras la cancha y horas disponibles, no volverá a ocurrir 2 reservas a la misma hora.</figcaption>
             </figure>
             <figure className='max-w-[220px] relative'>
                 <img src={brush} alt="brush" className='rotate-12' />

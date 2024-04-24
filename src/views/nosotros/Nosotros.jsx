@@ -11,7 +11,7 @@ export const Nosotros = () => {
           <article className="grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-4 m-5 md:m-10 ">
             {
               groupInfo.map((integrante, idx) => (
-                <AboutUsCards key={idx} nombre={integrante.nombre} texto={integrante.texto} github={integrante.github} linkedin={integrante.linkedin}/>
+                <AboutUsCards key={idx} nombre={integrante.nombre} texto={integrante.texto} github={integrante.github} linkedin={integrante.linkedin} imagen={integrante.imagen}/>
 
               ))
             }

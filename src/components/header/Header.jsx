@@ -50,9 +50,9 @@ export const Header = () => {
                 <li>
                   <Link
                     className="text-text-200 transition hover:text-text-100"
-                    to="/galeria"
+                    to="/ecommerce"
                   >
-                    Galeria
+                    Tienda
                   </Link>
                 </li>
                 <li>
@@ -84,7 +84,7 @@ export const Header = () => {
                 :
                   <div className="sm:flex sm:gap-4">
                     <button
-                      className="rounded-md bg-primary-300 px-5 py-2.5 text-sm font-medium text-white shadow"
+                      className="rounded-md bg-accent-200 px-5 py-2.5 text-sm font-medium text-white shadow"
                       onClick={()=>setShowLogin(true)}
                     >
                       Ingresar
@@ -132,32 +132,32 @@ export const Header = () => {
         <div
           className={`${
             isActive ? "flex" : "hidden"
-          } items-start justify-center w-full h-80 bg-arena-green-50 rounded-md space-y-4 mt-4 md:hidden transition-all `}
+          } items-start justify-center w-full h-80 bg-bg-100 rounded-md space-y-4 mt-4 md:hidden transition-all `}
         >
           <div className=" flex flex-col items-center justify-around w-full h-full overflow-hidden">
             <Link
               to="/"
-              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
+              className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Inicio
             </Link>
             <Link
               to="/reservas"
-              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
+              className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Reservas
             </Link>
             <Link
               to="/nosotros"
-              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
+              className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Quienes Somos
             </Link>
             <Link
-              to="/galeria"
-              className="px-4 h-full flex items-center justify-center text-arena-green-900 rounded border-b-2 border-b-bg-200 w-full"
+              to="/ecommerce"
+              className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
-              Galeria
+              Tienda
             </Link>
             {/* <Link
               to="/contacto"
@@ -172,11 +172,11 @@ export const Header = () => {
                   {
                     usuario.isAdmin
                     ?
-                    <Link to='/dashboard' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
+                    <Link to='/dashboard' className="rounded-none bg-accent-100 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
                       Administrador
                     </Link>
                     :
-                    <Link to='/micuenta' className="rounded-none bg-arena-green-400 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
+                    <Link to='/micuenta' className="rounded-none bg-accent-100 py-3 text-sm font-medium text-white shadow w-1/2 h-full flex items-center justify-center">
                       Mi Cuenta
                     </Link>
                   }
@@ -185,7 +185,7 @@ export const Header = () => {
                     </button>
                   </div>
                 :  <Link
-                      className="rounded-none bg-arena-green-200 px-5 py-2.5 text-sm font-medium text-arena-green-900 w-full h-full flex justify-center items-center rounded-b-lg"
+                      className="rounded-none bg-bg-300 px-5 py-2.5 text-sm font-medium text-arena-green-900 w-full h-full flex justify-center items-center rounded-b-lg"
                       to="/registro"
                     >
                       Registrarse

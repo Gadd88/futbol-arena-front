@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useProductos } from "../../hooks"
 import { UserContext } from "../../context/UserContext"
 import { LogoReservas } from "../drawer/iconos"
@@ -10,7 +10,7 @@ export const ListaProductos = () => {
 
   const [showModal, setShowModal] = useState(false)
   const [producto, setProducto] = useState({})
-  const {productos, handleDelete} = useProductos()
+  const {productos, handleDelete, obtenerProductos} = useProductos()
 
   const {usuarioToken} = useContext(UserContext)
   
@@ -21,6 +21,9 @@ export const ListaProductos = () => {
     setProducto(producto)
     setShowModal(true)
   }
+  // useEffect(()=>{
+  //   obtenerProductos()
+  // },[productos])
   return (
     <section className="h-screen w-full p-2 md:p-8 space-y-10 overflow-y-scroll snap-y">
         <h1 className="text-text-100 font-semibold text-2xl md:text-5xl mt-10">Lista de Productos</h1>

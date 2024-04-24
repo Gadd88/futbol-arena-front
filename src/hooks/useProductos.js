@@ -2,15 +2,22 @@ import { useContext, useState } from 'react'
 import { ProductosContext } from '../context/ProductosContext'
 import { UserContext } from '../context'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
+import { useProductoImg } from './useProductoImg'
 
 export const useProductos = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(false)
     const {productos, agregarCarrito, carrito, eliminarProducto, obtenerProductos, agregarProducto} = useContext(ProductosContext)
     const {usuarioToken} = useContext(UserContext)
+    const {setProductoBlob} = useProductoImg()
 
     const handleDelete = async (id, token) => {
-        await eliminarProducto(id, token)
+        toast.promise(eliminarProducto(id, token),{
+            loading:'Eliminando',
+            success: 'Producto Eliminado',
+            error: 'Ocurrió un error'
+        })
         obtenerProductos()
     }
 
@@ -24,6 +31,13 @@ export const useProductos = () => {
             categoria: formData.get('categoria'),
             imagen: productoCloudData.url,
         }
+        const reset = () => {
+            formData.set('producto', '')
+            formData.set('detalle', '')
+            formData.set('precio', '')
+            formData.set('caterogia', '')
+            setProductoBlob('')
+        }
         const {producto, detalle, precio, categoria, imagen} = newProducto
         if(!producto || !detalle || !precio | !categoria || !imagen) {
             setError(true)
@@ -32,13 +46,25 @@ export const useProductos = () => {
             },1000)
             return 
         }
-        await agregarProducto(newProducto, token)
-        obtenerProductos()
-        navigate(0)
+        try{
+            toast.promise(agregarProducto(newProducto, token),{
+                loading: 'Agregando producto',
+                success: async ()=>{
+                    'Producto agregado',
+                    await obtenerProductos()
+                    reset()
+                    // navigate(0)
+
+                },
+                error: 'Ocurrió un error'
+            })
+        }catch(error){
+            toast.error(error)
+        }
     }
 
     const handleEditar = async (id, producto) => {
-        try{
+        const editar = async() => {
             const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${id}`, {
                 method: 'PATCH',
                 headers: {
@@ -48,18 +74,21 @@ export const useProductos = () => {
                 body:JSON.stringify(producto)
             })
             const result = await response.json()
-            await obtenerProductos()
             return result
+        }
+        try{
+            await editar()
+            await obtenerProductos()
         }catch(error){
             throw new Error(error)
         }
     }
-
     return {
         productos,
         agregarCarrito,
         carrito,
         error,
+        obtenerProductos,
         handleDelete,
         handleEditar,
         handleSubmit,

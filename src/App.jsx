@@ -13,7 +13,7 @@ function App() {
         <ProductosProvider>
           <BrowserRouter>
             <Header />
-            <Toaster position="top-center" visibleToasts={4} theme="dark" richColors duration={1000}/>
+            <Toaster position="top-center" visibleToasts={1} theme="dark" richColors duration={1000}/>
             <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/nosotros" element={<Nosotros/>}/>

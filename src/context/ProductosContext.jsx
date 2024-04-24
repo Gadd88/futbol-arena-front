@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 
 export const ProductosContext = createContext()
@@ -66,6 +66,7 @@ export const ProductosProvider = ({children}) => {
         setCarrito(newCarrito)
     }
     
+    
     useEffect(()=>{
       obtenerProductos()
     },[])
@@ -79,7 +80,7 @@ export const ProductosProvider = ({children}) => {
             obtenerProductos,
             setCarrito,
             carrito,
-            productos
+            productos,
         }}>
             {children}
         </ProductosContext.Provider>

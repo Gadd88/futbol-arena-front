@@ -3,14 +3,14 @@ import linlogo from "../../assets/linkedin.svg";
 import { Link } from "react-router-dom";
 
 
-export const AboutUsCards = ({nombre, texto, github, linkedin}) => {
+export const AboutUsCards = ({nombre, texto, github, linkedin, imagen}) => {
   return (
       <article className="flex flex-col bg-primary-100 p-4 rounded-lg h-96 w-full justify-start cursor-default ">
-        <figure className="flex justify-center justify-items-center">
+        <figure className="flex justify-center justify-items-center max-h-44">
           <img
-            src="https://picsum.photos/200/200"
+            src={imagen}
             alt=""
-            className="rounded-full mb-3"
+            className="rounded-lg mb-3 object-cover"
           />
         </figure>
         <div>
