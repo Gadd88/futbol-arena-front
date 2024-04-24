@@ -10,11 +10,7 @@ export const FieldComps = ({handleConsulta}) => {
 
   const handleClick = async (ev) => {
     await handleConsulta(ev)
-    toast.promise(consultaApi(),{
-      loading: 'Cargando turnos..',
-      success: 'Todo Ok ⚽',
-      error: 'Falta Juez! '
-    })
+    await consultaApi()
   }
 
   return (
