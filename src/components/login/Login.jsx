@@ -7,7 +7,7 @@ const modalElement = document.getElementById("modalLogin");
 
 export const Login = ({ showLogin, setShowLogin }) => {
 
-  const { handleLogin, handleInputChange, user, usuario } = useUser()
+  const { handleLogin, handleInputChange, user, usuario, error } = useUser()
 
   useEffect(()=>{
     if(usuario) setShowLogin(false)
@@ -25,6 +25,7 @@ export const Login = ({ showLogin, setShowLogin }) => {
                 Iniciar Sesión
               </h2>
               <form className="space-y-10 flex flex-col"  onSubmit={(e)=>handleLogin(e,user)}>
+                { error && <p className="p-5 rounded-lg bg-red-300 font-bold text-text-200">Todos los campos son obligatorios</p>}
                 <div className="mb-4 flex flex-col gap-10">
                   <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-arena-green-400">
                     <input

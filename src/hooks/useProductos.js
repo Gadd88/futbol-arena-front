@@ -3,22 +3,21 @@ import { ProductosContext } from '../context/ProductosContext'
 import { UserContext } from '../context'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
-import { useProductoImg } from './useProductoImg'
 
 export const useProductos = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(false)
     const {productos, agregarCarrito, carrito, eliminarProducto, obtenerProductos, agregarProducto} = useContext(ProductosContext)
     const {usuarioToken} = useContext(UserContext)
-    const {setProductoBlob} = useProductoImg()
 
     const handleDelete = async (id, token) => {
         toast.promise(eliminarProducto(id, token),{
             loading:'Eliminando',
-            success: 'Producto Eliminado',
+            success: async ()=> {
+                await obtenerProductos()
+            },
             error: 'Ocurrió un error'
         })
-        obtenerProductos()
     }
 
     const handleSubmit = async(e,token, productoCloudData) => {
@@ -31,13 +30,7 @@ export const useProductos = () => {
             categoria: formData.get('categoria'),
             imagen: productoCloudData.url,
         }
-        const reset = () => {
-            formData.set('producto', '')
-            formData.set('detalle', '')
-            formData.set('precio', '')
-            formData.set('caterogia', '')
-            setProductoBlob('')
-        }
+        
         const {producto, detalle, precio, categoria, imagen} = newProducto
         if(!producto || !detalle || !precio | !categoria || !imagen) {
             setError(true)
@@ -52,8 +45,7 @@ export const useProductos = () => {
                 success: async ()=>{
                     'Producto agregado',
                     await obtenerProductos()
-                    reset()
-                    // navigate(0)
+                    navigate(0)
 
                 },
                 error: 'Ocurrió un error'

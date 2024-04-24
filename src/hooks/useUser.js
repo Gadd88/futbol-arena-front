@@ -6,7 +6,7 @@ import { toast } from "sonner"
 export const useUser = () => {
     const navigate = useNavigate()
     const { registrarUsuario, regResult, loginUsuario, usuarioToken, usuario, setShowLogin, getUserData } = useContext(UserContext)    
-
+    const [error, setError] = useState(false)
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -15,6 +15,13 @@ export const useUser = () => {
     const handleLogin = async (e,user) => {
       e.preventDefault();
 
+      if(user.email == '' || user.password == '') {
+        setError(true)
+        setTimeout(()=>{
+          setError(false)
+        },1500)
+        return
+      }
       const userData = {
         email: user.email,
         password: user.password
@@ -50,6 +57,7 @@ export const useUser = () => {
     usuarioToken,
     user,
     usuario,
+    error,
     handleLogin,
     handleInputChange,
     getUserData,

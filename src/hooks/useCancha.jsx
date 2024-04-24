@@ -2,8 +2,10 @@ import { useContext } from 'react'
 import { CanchaContext } from '../context/CanchaContext'
 import { toast } from 'sonner'
 import { UserContext } from '../context'
+import { useNavigate } from 'react-router-dom'
 
 export const useCancha = () => {
+  const navigate = useNavigate()
     const { handleDate, listaCanchas, handleConsulta, horarios, handleTime, reservation, setReservation, addReservation, crearCancha, eliminarCancha, setListaCanchas, getCanchas } = useContext(CanchaContext)
     const {getUserData} = useContext(UserContext)
 
@@ -39,16 +41,26 @@ export const useCancha = () => {
         cancha_detalle: formData.get('cancha_detalle'),
       }
       
-      await crearCancha(nuevaCancha, token)
-      await getCanchas()
-      
+      toast.promise(crearCancha(nuevaCancha, token),{
+        loading: 'Agregando cancha',
+                success: async ()=>{
+                  await getCanchas()
+                  'Cancha agregada'
+                  navigate(0)
+                },
+                error: 'Ocurrió un error'
+              })
     }
 
     const handleDelete = async(id,user) => {
       const { isAdmin } = user
-      await eliminarCancha(id, isAdmin)
-      const newListaCanchas = listaCanchas.filter(cancha => cancha.cancha_id != id)
-      setListaCanchas(newListaCanchas)
+      toast.promise(eliminarCancha(id, isAdmin),{
+        loading: 'Eliminando cancha',
+        success: () => {
+          const newListaCanchas = listaCanchas.filter(cancha => cancha.cancha_id != id)
+          setListaCanchas(newListaCanchas)
+        }
+      })
     }
 
   return {

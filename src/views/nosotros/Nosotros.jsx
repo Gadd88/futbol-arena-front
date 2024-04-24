@@ -8,7 +8,7 @@ export const Nosotros = () => {
         <AboutUsBanner />
         <article className="my-10 bg-bg-200 p-5 rounded-md shadow-lg">
           <h2 className="font-bold text-center text-2xl my-5">Integrantes</h2>
-          <article className="grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-4 m-5 md:m-10 ">
+          <article className="grid lg:grid-cols-5 md:grid-cols-2 sm:grid-cols-1 gap-4 m-2 md:m-10 ">
             {
               groupInfo.map((integrante, idx) => (
                 <AboutUsCards key={idx} nombre={integrante.nombre} texto={integrante.texto} github={integrante.github} linkedin={integrante.linkedin} imagen={integrante.imagen}/>
