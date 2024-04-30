@@ -1,7 +1,4 @@
-import { useUser } from "../../hooks"
-
 export const DatosUsuario = ({usuario}) => {
-    
 
     if(!usuario) return null
     

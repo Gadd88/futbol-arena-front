@@ -1,16 +1,23 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/futbolarenaTiny.png";
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { Login, Carrito, DrawerMobile } from "../";
-import { UserContext } from "../../context/";
 import { useUser } from "../../hooks";
 
 
 export const Header = () => {
-  const {showLogin, setShowLogin, usuario} = useContext(UserContext)
   const [isActive, setIsActive] = useState(false)
-  const {handleLogout} = useUser()
+  const {handleLogout, showLogin, setShowLogin, usuario} = useUser()
   const [isOpen, setIsOpen] = useState(false);
+  const [isLogged, setIsLogged] = useState(false)
+
+  useEffect(()=>{
+    if(usuario.email){
+      setIsLogged(true)
+    }else{
+      setIsLogged(false)
+    }
+  },[usuario])
 
   return (
     <header className="w-full bg-bg-200 rounded-xl mx-auto my-5">
@@ -37,16 +44,6 @@ export const Header = () => {
                     Quienes Somos
                   </Link>
                 </li>
-
-                {/* <li>
-                  <Link
-                    className="text-text-200 transition hover:text-text-100"
-                    to="/contacto"
-                  >
-                    Contacto
-                  </Link>
-                </li> */}
-
                 <li>
                   <Link
                     className="text-text-200 transition hover:text-text-100"
@@ -68,6 +65,7 @@ export const Header = () => {
           </div>
           <div className="flex items-center gap-4">
             {
+              isLogged &&
               usuario.email
               ? usuario.isAdmin
                 ? <Link to='/dashboard' className="hidden lg:block rounded-md bg-arena-green-400 p-2 text-sm font-medium text-white shadow">
@@ -101,6 +99,7 @@ export const Header = () => {
             }
             <div className="lg:hidden flex items-center gap-2">
             {
+              isLogged &&
               usuario.isAdmin 
               &&  
                 <button className="px-3 py-1.5 rounded-md bg-accent-100 text-text-200 font-bold lg:hidden ms-auto" onClick={()=>setIsOpen(true)}>
@@ -159,14 +158,9 @@ export const Header = () => {
             >
               Tienda
             </Link>
-            {/* <Link
-              to="/contacto"
-              className="px-4 h-full leading-[3rem] text-arena-green-900 rounded w-full"
-            >
-              Contacto
-            </Link> */}
             <div className="flex items-center gap-4 justify-center w-full h-full overflow-hidden rounded-b-md">
               {
+                isLogged &&
                 usuario.email 
                 ? <div className="flex place-content-center place-items-center w-full h-full overflow-hidden">
                   {

@@ -11,7 +11,6 @@ export const Login = ({ showLogin, setShowLogin }) => {
 
   useEffect(()=>{
     if(usuario) setShowLogin(false)
-    
   },[usuario])  
 
   return (

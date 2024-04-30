@@ -1,7 +1,6 @@
 import {useContext} from 'react'
 import { CanchaContext } from "../../context";
 import { useCancha } from "../../hooks/useCancha";
-import { toast } from 'sonner';
 
 export const FieldComps = ({handleConsulta}) => {
 

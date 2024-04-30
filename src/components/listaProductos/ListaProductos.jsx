@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from "react"
-import { useProductos } from "../../hooks"
-import { UserContext } from "../../context/UserContext"
+import { useState } from "react"
+import { useProductos, useUser } from "../../hooks"
 import { LogoReservas } from "../drawer/iconos"
 import { ProductoModal } from "../productoModal/ProductoModal"
 import { Table } from 'flowbite-react'
@@ -10,9 +9,9 @@ export const ListaProductos = () => {
 
   const [showModal, setShowModal] = useState(false)
   const [producto, setProducto] = useState({})
-  const {productos, handleDelete, obtenerProductos} = useProductos()
+  const {productos, handleDelete} = useProductos()
 
-  const {usuarioToken} = useContext(UserContext)
+  const {usuarioToken} = useUser()
   
   const closeModal = ()=>{
     setShowModal(false)
@@ -21,9 +20,6 @@ export const ListaProductos = () => {
     setProducto(producto)
     setShowModal(true)
   }
-  // useEffect(()=>{
-  //   obtenerProductos()
-  // },[productos])
   return (
     <section className="h-screen w-full p-2 md:p-8 space-y-10 overflow-y-scroll snap-y">
         <h1 className="text-text-100 font-semibold text-2xl md:text-5xl mt-10">Lista de Productos</h1>

@@ -1,10 +1,8 @@
-import { useContext } from "react";
-import { useProductoImg, useProductos } from "../../hooks";
-import { UserContext } from "../../context/UserContext";
+import { useProductoImg, useProductos, useUser } from "../../hooks";
 import { Button } from "../button/Button";
 
 export const FormProducto = () => {
-  const {usuarioToken} = useContext(UserContext)
+  const {usuarioToken} = useUser()
   const { productoBlob, productoCloudData, handleProductoFile} = useProductoImg()
   const {handleSubmit, error} = useProductos()
 
@@ -67,14 +65,7 @@ export const FormProducto = () => {
                   : <p className="text-arena-green-950">Agregue una imagen para el producto</p>
                 }
               </div>
-                {/* Botones */}
                 <div className="flex gap-4 mt-5">
-                    {/* <button type="submit" className="bg-arena-green-300 hover:bg-arena-green-500 text-white p-3 flex-1">
-                        Agregar
-                    </button>
-                    <button type="button" className="bg-black hover:bg-white hover:text-black text-white p-3 flex-1">
-                        Borrar Formulario
-                    </button> */}
                     <Button type='submit' mode='accent' text='Agregar Producto'/>
                     <Button type='reset' mode='' text='Borrar Formulario'/>
                 </div>

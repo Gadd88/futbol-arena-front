@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export const ProductosContext = createContext()
@@ -47,10 +47,10 @@ export const ProductosProvider = ({children}) => {
 
     const agregarCarrito = (producto) => {
         const productoIdx = carrito.findIndex(item => item.producto_id === producto.producto_id)
+        toast.success('Producto Agregado...')
         if(productoIdx >= 0){
             const newCarrito = structuredClone(carrito)
             newCarrito[productoIdx].cantidad++
-            toast.success('Producto Agregado...')
             setCarrito(newCarrito)
         }else{
             producto.cantidad = 1

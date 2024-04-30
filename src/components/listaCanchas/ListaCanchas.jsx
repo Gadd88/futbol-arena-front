@@ -1,11 +1,10 @@
-import { useContext } from "react"
 import { useCancha } from "../../hooks/useCancha"
-import { UserContext } from "../../context"
+import { useUser } from "../../hooks"
 
 export const ListaCanchas = () => {
 
   const {listaCanchas, handleDelete} = useCancha()
-  const {usuario} = useContext(UserContext)
+  const {usuario} = useUser()
 
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">

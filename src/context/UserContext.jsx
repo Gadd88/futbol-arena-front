@@ -8,10 +8,10 @@ export const UserProvider = ({ children }) => {
         message:'',
         usuario:{},
     })
-    const storageUser = JSON.parse(localStorage.getItem('usuario')) || {}
-    const storageToken = localStorage.getItem('token') || ''
-    const [usuario, setUsuario] = useState(storageUser)
-    const [usuarioToken, setUsuarioToken] = useState(storageToken)
+    const storageUser = JSON.parse(localStorage.getItem('usuario'))
+    const storageToken = localStorage.getItem('token')
+    const [usuario, setUsuario] = useState(storageUser || {})
+    const [usuarioToken, setUsuarioToken] = useState(storageToken || '')
     const [showLogin, setShowLogin] = useState(false);
     const apiUrl='https://futbol-arena-back.onrender.com/api'
 
@@ -54,12 +54,17 @@ export const UserProvider = ({ children }) => {
             }
             setUsuarioToken(result.token)
             const usuarioDecode = jwtDecode(result.token)
-            localStorage.setItem('token',result.token)
-            localStorage.setItem('usuario',JSON.stringify(usuarioDecode))
+            setUsuario(usuarioDecode)
             return result
         }catch(err){
             throw new Error(err)
         }
+    }
+
+    const logout = () => {
+        localStorage.clear()
+        setUsuario({})
+        setUsuarioToken('')
     }
 
     const getUserData = async(id) => {
@@ -68,13 +73,24 @@ export const UserProvider = ({ children }) => {
         setUsuario(result)
         localStorage.setItem('usuario', JSON.stringify(result))
     }
-    
+
+    const eliminarUsuario = async(id) => {
+        const response = await fetch(`https://futbol-arena-back.onrender.com/api/users/${id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${usuarioToken}`
+            }
+        })
+        const result = await response.json()
+        return result
+    }
+
     useEffect(()=>{
-        const sesionUser = JSON.parse(localStorage.getItem('usuario'))
-        if(sesionUser){
-            setUsuario(sesionUser)
-        }
-    },[usuarioToken])
+        localStorage.setItem('usuario', JSON.stringify(usuario))
+        localStorage.setItem('token', JSON.stringify(usuarioToken))   
+    },[usuario, usuarioToken])
+
 
     return(
         <UserContext.Provider value={{
@@ -83,6 +99,8 @@ export const UserProvider = ({ children }) => {
             getUserData,
             setShowLogin,
             setUsuario,
+            logout,
+            eliminarUsuario,
             regResult,
             usuarioToken,
             usuario,

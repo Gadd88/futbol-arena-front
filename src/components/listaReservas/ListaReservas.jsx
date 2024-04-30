@@ -1,11 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import {  getReservations, eliminarReserva } from "../../utils/reservasUtil"
-import { UserContext } from "../../context/UserContext"
+import { useUser } from "../../hooks"
 
 export const ListaReservas = () => {
 
   const [reservas, setReservas] = useState([])
-  const {usuario} = useContext(UserContext)
+  const {usuario} = useUser()
   
   useEffect(()=>{
     getReservations().then(result => setReservas(result))

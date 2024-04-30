@@ -1,19 +1,14 @@
 import { useEffect } from "react"
 import { getUsers } from "../../utils/getUser"
 import { useState } from "react"
+import { useUser } from "../../hooks"
 
 export const ListaUsuarios = () => {
 
-  const [users, setUsers] = useState([])
+  const {handleDelete, usersList} = useUser()
+  
 
-  useEffect(()=>{
-    getUsers().then(result => setUsers(result))
-  },[])
-
-  const eliminarUsuario = (user_id) => {
-    console.log(user_id)
-  }
-  const listaUsuarios = users.filter(user => user.isAdmin == false)
+  const listaUsuarios = usersList.filter(user => user.isAdmin == false)
   
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">
@@ -36,7 +31,7 @@ export const ListaUsuarios = () => {
                   <td className="text-start hidden md:block">{user.email}</td>
                   <td className="text-start">{user.telefono}</td>
                   <td className="">
-                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>eliminarUsuario(user.user_id)}>X</button>
+                    <button className="bg-red-500 font-bold text-white hover:bg-red-700" onClick={()=>handleDelete(user.user_id)}>X</button>
                   </td>
                 </tr>
               ))

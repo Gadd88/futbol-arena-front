@@ -34,7 +34,7 @@ export const ProductoModal = ({ producto, closeModal }) => {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed bg-black/30 left-0 top-0 flex h-screen w-screen items-center justify-center overflow-hidden z-30"
+          className="fixed bg-black/30 left-0 top-0 flex h-screen w-screen items-center justify-center overflow-hidden z-[99999]"
         >
           <div className="relative flex max-w-md w-5/6 min-h-[400px] max-h-[600px] flex-col items-center justify-between rounded-md  bg-gray-300 font-bold shadow-md transition-all duration-300 overflow-hidden">
             <button

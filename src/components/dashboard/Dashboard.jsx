@@ -1,19 +1,12 @@
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import { LogoCanchas, LogoEcommerce, LogoProductos, LogoReservas, LogoUsuarios } from "../drawer/iconos"
 import { useUser } from "../../hooks"
-import { useEffect } from "react"
 
 export const Dashboard = () => {
     const navigate = useNavigate()
-    const user = JSON.parse(localStorage.getItem('usuario')) || ''
-    const {handleLogout} = useUser()
+    const {handleLogout, usuario} = useUser()
 
-    useEffect(()=>{
-        if(!user.isAdmin){
-            navigate('/')
-        }
-    },[])
-
+    if(!usuario.isAdmin) return navigate('/')
 
   return (
     // bg-[#f8f4f3]
