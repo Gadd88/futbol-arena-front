@@ -1,11 +1,14 @@
-import { SectionShop } from "../../components/"
-import InfoFutbol from "../../components/info/InfoFutbol"
+import { Banner, Servicios, SectionShop, InfoFutbol, Banner2, Banner3 } from "../../components/"
 
 export const Home = () => {
   return (
-    <div className="w-full mx-auto h-full xl:w-[1200px] bg-arena-green-50 rounded-xl overflow-hidden">
-      <InfoFutbol/>
-      <SectionShop/>
+    <div className="w-full mx-auto h-full max-w-6xl bg-bg-100 rounded-xl overflow-hidden p-5 space-y-5">
+      <Banner/>
+      <Banner2 />
+      <Banner3 />
+      <Servicios/>
+      <SectionShop />
+      <InfoFutbol />
     </div>
   )
 }

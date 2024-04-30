@@ -24,9 +24,6 @@ export const ProductosProvider = ({children}) => {
             throw new Error(error)
         }
     }
-    const editarProducto = async () =>{
-
-    }
     const eliminarProducto = async (prod_id, token) =>{
         try {
             const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${prod_id}`,{
@@ -50,10 +47,10 @@ export const ProductosProvider = ({children}) => {
 
     const agregarCarrito = (producto) => {
         const productoIdx = carrito.findIndex(item => item.producto_id === producto.producto_id)
+        toast.success('Producto Agregado...')
         if(productoIdx >= 0){
             const newCarrito = structuredClone(carrito)
             newCarrito[productoIdx].cantidad++
-            toast.success('Producto Agregado...')
             setCarrito(newCarrito)
         }else{
             producto.cantidad = 1
@@ -69,6 +66,7 @@ export const ProductosProvider = ({children}) => {
         setCarrito(newCarrito)
     }
     
+    
     useEffect(()=>{
       obtenerProductos()
     },[])
@@ -76,13 +74,13 @@ export const ProductosProvider = ({children}) => {
     return (
         <ProductosContext.Provider value={{
             agregarProducto,
-            editarProducto,
             eliminarProducto,
             agregarCarrito,
             eliminarCarrito,
             obtenerProductos,
+            setCarrito,
             carrito,
-            productos
+            productos,
         }}>
             {children}
         </ProductosContext.Provider>

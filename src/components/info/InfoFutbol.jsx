@@ -1,19 +1,19 @@
 import React from "react";
-import Map from "../map/Map";
+import {Map} from "../";
 import calendar from "../../assets/calendar.svg";
 import clock from "../../assets/clock.svg"
 import wp from '../../assets/wp.svg'
 import email from '../../assets/email.svg'
 import location from '../../assets/location.svg'
 
-const InfoFutbol = () => {
+export const InfoFutbol = () => {
   return (
-    <section className="w-full mx-auto h-full bg-arena-green-50 rounded-xl p-5 flex flex-wrap gap-5 lg:p-10 place-content-center">
+    <section className="w-full mx-auto h-full rounded-xl p-5 flex flex-wrap gap-5 lg:p-10 place-content-center bg-accent-100">
       <article className="lg:grid lg:grid-cols-3 lg:place-content-center justify-center space-y-10 lg:space-y-0 items-stretch gap-5">
-          <Map />
+        <Map />
         <div className="flex flex-col items-center justify-around space-y-5 p-5 bg-white border border-gray-200 rounded-lg shadow h-80 md:h-96">
           <div className="flex justify-center">
-            <h3 className="text-arena-green-700 font-semibold text-center text-xl">
+            <h3 className="text-accent-200 font-semibold text-center text-xl">
               {" "}
               Cuando abrimos?
             </h3>
@@ -52,4 +52,3 @@ const InfoFutbol = () => {
   );
 };
 
-export default InfoFutbol;

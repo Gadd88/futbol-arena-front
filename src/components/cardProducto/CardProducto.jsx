@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useProductos } from "../../hooks/";
 import PropTypes from 'prop-types'
 import { UserContext } from "../../context/";
+import { Button } from '../button/Button';
 
 export const CardProducto = ( { data } ) => {
   CardProducto.propTypes = {
@@ -24,9 +25,9 @@ export const CardProducto = ( { data } ) => {
   };
 
   return (
-    <article className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 max-w-80 snap-center min-w-52 relative overflow-hidden sm:min-h-[450px]">
+    <article className="rounded-xl bg-bg-100 p-3 shadow-md hover:shadow-xl lg:hover:scale-105 duration-300 max-w-80 snap-center min-w-52 w-52 relative overflow-hidden h-[370px]">
       {enCarrito(producto_id) && (
-        <div className="p-3 bg-arena-green-200 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
+        <div className="p-3 bg-accent-100 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -43,26 +44,25 @@ export const CardProducto = ( { data } ) => {
           </svg>
         </div>
       )}
-      <Link to="#">
-        <figure className="relative flex items-end overflow-hidden rounded-xl">
-          <img src={imagen} alt="Hotel Photo" />
-        </figure>
-      </Link>
-      <section className="mt-1 p-2 text-start">
-        <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-arena-green-300 p-1 px-3 shadow-sm my-1 cursor-default">
-          <span className="text-sm text-white font-bold">
+      
+      <figure className="relative flex items-end overflow-hidden rounded-xl h-1/2 shadow-md bg-white">
+        <img src={imagen} className='w-full h-full object-contain aspect-square' alt="Futbol arena foto producto" />
+      </figure>
+      <section className="mt-1 p-2 text-start h-1/2 flex flex-col justify-between">
+        <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-accent-100 p-1 px-3 shadow-sm my-1 cursor-default">
+          <span className="text-sm text-text-200 font-bold">
             {categoria.toUpperCase()}
           </span>
         </div>
-        <h2 className="text-slate-700 font-semibold">{producto}</h2>
-        <p className="mt-1 text-sm text-slate-400 font-semibold">{detalle}</p>
+        <h2 className="text-text-100 font-bold">{producto}</h2>
+        <p className="mt-1 text-sm text-gray-800 font-semibold">{detalle}</p>
         <article className="mt-3 flex items-end justify-between">
-          <p className="text-lg font-bold text-arena-green-600">${precio}</p>
+          <p className="text-lg font-bold text-primary-300">${precio}</p>
           {
             usuario.email &&
             <button
               onClick={() => agregarCarrito(data)}
-              className="flex items-center space-x-1.5 rounded-lg bg-arena-green-500 px-4 py-1.5 text-white duration-100 hover:bg-arena-green-700"
+              className="flex items-center space-x-1.5 rounded-lg bg-primary-100 px-2 py-1.5 text-text-100 font-semibold duration-100 hover:text-text-200"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

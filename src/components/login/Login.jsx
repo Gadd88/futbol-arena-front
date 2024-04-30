@@ -7,24 +7,24 @@ const modalElement = document.getElementById("modalLogin");
 
 export const Login = ({ showLogin, setShowLogin }) => {
 
-  const { handleLogin, handleInputChange, user, usuario } = useUser()
+  const { handleLogin, handleInputChange, user, usuario, error } = useUser()
 
   useEffect(()=>{
     if(usuario) setShowLogin(false)
-    
   },[usuario])  
 
   return (
     <div className="relative">
       {showLogin &&
         createPortal(
-          <div className="flex w-[96%] h-[30rem] sm:w-[25rem] items-center justify-around text-white rounded-md fixed top-[6.7rem] sm:top-[7rem] flex-col right-0 left-0 sm:right-[7rem] sm:left-[7rem] mx-auto backdrop-opacity-90 bg-black/85 backdrop-blur-md">
+          <div className="flex w-[96%] h-[30rem] sm:w-[25rem] items-center justify-around text-white rounded-md fixed top-[6.7rem] sm:top-[7rem] flex-col right-0 left-0 sm:right-[7rem] sm:left-[7rem] mx-auto backdrop-opacity-90 bg-black/85 backdrop-blur-md z-[99999]">
             <section className="flex w-full flex-col space-y-10 px-5 relative">
               <button className="bg-arena-green-400 rounded-sm absolute left-auto right-3 -top-4 " onClick={()=>setShowLogin(false)}>X</button>
               <h2 className="text-center text-2xl font-medium">
                 Iniciar Sesión
               </h2>
               <form className="space-y-10 flex flex-col"  onSubmit={(e)=>handleLogin(e,user)}>
+                { error && <p className="p-5 rounded-lg bg-red-300 font-bold text-text-200">Todos los campos son obligatorios</p>}
                 <div className="mb-4 flex flex-col gap-10">
                   <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-arena-green-400">
                     <input

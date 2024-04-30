@@ -1,19 +1,17 @@
-import { useContext } from "react"
-import { useCancha } from "../../hooks"
-import { UserContext } from "../../context"
+import { useCancha, useUser } from "../../hooks"
+import { Button } from "../button/Button"
 
 export const FormCancha = () => {
 
-  const {usuarioToken} = useContext(UserContext)
+  const {usuarioToken} = useUser()
   const {handleSubmit} = useCancha()
 
   return (
-    <div className="h-screen rounded-md bg-arena-green-50 space-y-5 p-10">
-        <h1 className="font-semibold text-arena-green-950 text-5xl">El Complejo</h1>
-        <p className="text-arena-green-800 font-semibold ">Administra tus Canchas</p>
-        <div className="flex flex-col w-full bg-gray-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
+    <div className="h-screen rounded-md bg-bg-100 space-y-5 p-10">
+        <h1 className="font-semibold text-text-100 text-5xl">El Complejo</h1>
+        <p className="text-text-200 font-semibold ">Administra tus Canchas</p>
+        <div className="flex flex-col w-full bg-bg-200 rounded-md p-5 h-fit justify-center space-y-10 items-center">
             <form onSubmit={(e)=> handleSubmit(e,usuarioToken)} className="flex flex-col gap-4 justify-center w-full ">
-                {/* Inputs del formulario*/}
                 <input
                     type="text"
                     name="cancha_nombre"
@@ -28,14 +26,9 @@ export const FormCancha = () => {
                     style={{resize: "none"}}
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
-                {/* Botones */}
-                <div className="flex gap-4 mt-5">
-                    <button type="submit" className="bg-arena-green-300 hover:bg-arena-green-500 text-white p-3 flex-1">
-                        Agregar Cancha
-                    </button>
-                    <button type="button" className="bg-black hover:bg-white hover:text-black text-white p-3 flex-1">
-                        Borrar Formulario
-                    </button>
+                <div className="flex gap-4 mt-5 flex-col sm:flex-row">
+                    <Button type='submit' mode='accent' text='Agregar Cancha'/>
+                    <Button type='button' mode='' text='Borrar Formulario'/>
                 </div>
             </form>
         </div>

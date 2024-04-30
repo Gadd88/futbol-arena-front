@@ -41,7 +41,8 @@ export const useProductoImg = () => {
       return {
         handleProductoFile,
         productoBlob,
-        productoCloudData
+        productoCloudData,
+        setProductoBlob
       }
 
 }
