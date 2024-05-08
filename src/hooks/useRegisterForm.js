@@ -12,6 +12,7 @@ export const useRegisterForm = () => {
     password: '',
     confirmPassword: '',
   };
+
   const {registrarUsuario} = useContext(UserContext)
 
   const [inputs, setInputs] = useState(initialState);

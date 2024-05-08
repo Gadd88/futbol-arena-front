@@ -1,6 +1,16 @@
 import { Datepicker } from "flowbite-react";
 import { theme } from "./pickerTheme";
-export const DatePicker = ({handleDate}) => {
+import { convertDate } from "../../utils/convertDate";
+export const DatePicker = ({reservation, setReservation}) => {
+
+  
+  const handleDate = (date) => {
+    const newDate = convertDate(date)
+    setReservation({
+        ...reservation,
+        reservation_date: newDate
+    })
+  }
 
   return (
     <section className="w-full max-w-sm p-4 bg-bg-300 rounded-lg shadow sm:p-6">

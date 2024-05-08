@@ -1,8 +1,13 @@
 import { useCancha } from "../../hooks";
 
-export const TurnSelector = ({handleTime}) => {
+export const TurnSelector = ({setReservation, horarios, reservation}) => {
 
-  const {horarios, reservation} = useCancha()
+  const handleTime = (horario) => {
+    setReservation({
+        ...reservation,
+        reservation_time: horario
+    })
+}
 
   return (
     <section className="w-full max-w-sm p-4 bg-bg-300 rounded-lg shadow sm:p-6">
@@ -11,7 +16,7 @@ export const TurnSelector = ({handleTime}) => {
         {
           reservation?.reservation_field_id != '' && horarios.length > 0
           ?
-            horarios.map(horario => (
+            horarios?.map(horario => (
               <div 
                 key={horario.turnoId}
                 id={horario.turnoId}

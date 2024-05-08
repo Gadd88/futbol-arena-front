@@ -1,9 +1,16 @@
-import {useRegisterForm} from '../../hooks';
+import {useRegisterForm, useUser} from '../../hooks';
 import registroImg from "../../assets/registro.png";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const Registro = () => {
-  
-  const { inputs, handleInputChange, handleSubmit, resetForm } = useRegisterForm();
+    const navigate = useNavigate()
+    const { inputs, handleInputChange, handleSubmit, resetForm } = useRegisterForm();
+    const { usuario } = useUser()
+
+    useEffect(()=>{
+        if(usuario.email) navigate('/')
+    },[usuario])
   
   return (
     <div className="w-full mx-auto h-[100dvh] max-w-6xl bg-arena-green-50 rounded-xl overflow-hidden">
@@ -20,6 +27,7 @@ export const Registro = () => {
                     onChange={handleInputChange}
                     value={inputs.fullName}
                     placeholder="Nombre Completo"
+                    maxLength={30}
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
                 <input
@@ -28,6 +36,7 @@ export const Registro = () => {
                     onChange={handleInputChange}
                     value={inputs.email}
                     placeholder="Email"
+                    maxLength={40}
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
                 <input
@@ -36,6 +45,7 @@ export const Registro = () => {
                     onChange={handleInputChange}
                     value={inputs.phone}
                     placeholder="Telefono"
+                    maxLength={12}
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
                 <input
@@ -44,6 +54,8 @@ export const Registro = () => {
                     onChange={handleInputChange}
                     value={inputs.password}
                     placeholder="Contraseña"
+                    minLength={5}
+                    maxLength={10}
                     className="p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                 />
                 <input
