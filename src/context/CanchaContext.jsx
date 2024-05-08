@@ -32,8 +32,8 @@ export const CanchaProvider = ({children}) => {
     const consultaApi = async(reservation) =>{
         const {reservation_date, reservation_field_id} = reservation
         if(reservation_date != '' && reservation_field_id != ''){
-            const responseTurnos = await fetch(`http://localhost:3001/api/canchas?fecha_buscada=${reservation_date}&cancha_id=${reservation_field_id}`)
-            // const responseTurnos = await fetch(`https://futbol-arena-back.onrender.com/api/canchas?fecha_buscada=${reservation_date}&cancha_id=${reservation_field_id}`)
+            // const responseTurnos = await fetch(`http://localhost:3001/api/canchas?fecha_buscada=${reservation_date}&cancha_id=${reservation_field_id}`)
+            const responseTurnos = await fetch(`https://futbol-arena-back.onrender.com/api/canchas?fecha_buscada=${reservation_date}&cancha_id=${reservation_field_id}`)
             const resultTurnos = await responseTurnos.json()
             // const responseReservas = await fetch('https://futbol-arena-back.onrender.com/api/reservations')
             // const resultReservas = await responseReservas.json()

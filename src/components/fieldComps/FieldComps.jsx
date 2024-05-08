@@ -1,4 +1,25 @@
-export const FieldComps = ({handleField, listaCanchas, reservation}) => {
+import { useEffect } from "react";
+import { useUser } from "../../hooks";
+import { toast } from "sonner";
+
+export const FieldComps = ({setReservation, reservation, consultaApi, listaCanchas}) => {
+  const {usuario} = useUser()
+
+  const handleField = (ev) => {  
+    setReservation({
+        ...reservation,
+        reservation_field_id: ev.target.id,
+        user_id: usuario.user_id
+    })
+  }
+  useEffect(()=>{
+    if(reservation.reservation_field_id != '' && reservation.reservation_date != ''){
+      toast.promise(consultaApi(reservation),{
+          loading: 'Cargando reservas...'
+        }
+      )
+    }
+  },[reservation])
 
   return (
       <section className="w-full max-w-sm p-4 bg-bg-300 rounded-lg shadow sm:p-6">
