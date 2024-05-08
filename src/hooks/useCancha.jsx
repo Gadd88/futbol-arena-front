@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const useCancha = () => {
   const navigate = useNavigate()
-    const { handleDate, listaCanchas, handleConsulta, horarios, handleTime, reservation, setReservation, addReservation, crearCancha, eliminarCancha, setListaCanchas, getCanchas, consultaApi } = useContext(CanchaContext)
+    const { listaCanchas, horarios, handleTime, reservation, setReservation, addReservation, crearCancha, eliminarCancha, setListaCanchas, getCanchas, consultaApi } = useContext(CanchaContext)
     const {getUserData} = useContext(UserContext)
 
     const cancelReservation = () => {
@@ -64,18 +64,16 @@ export const useCancha = () => {
     }
 
   return {
-    handleDate,
     listaCanchas,
-    handleConsulta,
     horarios,
     handleTime,
     reservation,
     eliminarCancha,
     consultaApi,
+    setReservation,
     cancelReservation,
     handleDelete,
     handleSubmit,
-    setReservation,
     sendReservation
   }
 }

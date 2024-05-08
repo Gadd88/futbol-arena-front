@@ -65,7 +65,7 @@ export const Login = ({ showLogin, setShowLogin }) => {
                   Aún no tienes cuenta?
                   <Link
                     to="/registro"
-                    onClick={()=> setShowLogin(false)}
+                    onClick={()=> setTimeout(()=>{setShowLogin(false)},500)}
                     className="font-medium ms-2 text-arena-green-300"
                   >
                     Regístrate
