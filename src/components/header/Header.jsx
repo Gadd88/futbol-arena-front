@@ -136,24 +136,28 @@ export const Header = () => {
           <div className=" flex flex-col items-center justify-around w-full h-full overflow-hidden">
             <Link
               to="/"
+              onClick={()=>setIsActive(false)}
               className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Inicio
             </Link>
             <Link
               to="/reservas"
+              onClick={()=>setIsActive(false)}
               className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Reservas
             </Link>
             <Link
               to="/nosotros"
+              onClick={()=>setIsActive(false)}
               className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Quienes Somos
             </Link>
             <Link
               to="/ecommerce"
+              onClick={()=>setIsActive(false)}
               className="px-4 h-full flex items-center justify-center text-text-100 rounded border-b-2 border-b-bg-200 w-full"
             >
               Tienda
@@ -181,6 +185,7 @@ export const Header = () => {
                 :  <Link
                       className="rounded-none bg-bg-300 px-5 py-2.5 text-sm font-medium text-arena-green-900 w-full h-full flex justify-center items-center rounded-b-lg"
                       to="/registro"
+                      onClick={()=>setIsActive(false)}
                     >
                       Registrarse
                     </Link>

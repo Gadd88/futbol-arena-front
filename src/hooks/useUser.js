@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../context/UserContext"
 import { toast } from "sonner"
 import { getUsers } from "../utils/getUser"
+import { useNavigate } from "react-router-dom"
 
 export const useUser = () => {
     const { registrarUsuario, regResult, loginUsuario, usuarioToken, usuario, setShowLogin, getUserData, showLogin, logout, eliminarUsuario } = useContext(UserContext)    
     const [error, setError] = useState(false)
     const [usersList, setUsersList] = useState([])
+    const navigate = useNavigate()
   
     const [user, setUser] = useState({
         email: "",
@@ -56,6 +58,7 @@ export const useUser = () => {
 
     const handleLogout = () => {
       toast.error('Hasta luego...')
+      navigate('/')
       logout()
     }
 
