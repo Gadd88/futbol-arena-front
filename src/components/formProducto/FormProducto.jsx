@@ -92,7 +92,7 @@ export const FormProducto = () => {
                 name="precio"
                 onChange={handleChange}
                 value={productoData.precio}
-                max={10}
+                max={20000}
                 placeholder="$2000"
                 className="sm:w-5/6 w-full p-3 focus:outline-arena-green-400 outline-none text-gray-700 sm:ms-5 rounded-md"
               />
