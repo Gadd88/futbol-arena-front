@@ -1,4 +1,3 @@
-import React from "react";
 import {Map} from "../";
 import calendar from "../../assets/calendar.svg";
 import clock from "../../assets/clock.svg"

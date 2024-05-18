@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../../assets/futbolarenaTiny2.png";
 import fb from "./icons/fb.svg";
 import gh from "./icons/gh.svg";

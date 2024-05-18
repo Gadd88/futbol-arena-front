@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
 
 export const CanchaContext = createContext(null)
 
-const apiLocalReservas = 'http://localhost:3001/api/reservations'
 const apiRenderReservas = 'https://futbol-arena-back.onrender.com/api/reservations'
 
 export const CanchaProvider = ({children}) => {
@@ -30,21 +30,9 @@ export const CanchaProvider = ({children}) => {
     const consultaApi = async(reservation) =>{
         const {reservation_date, reservation_field_id} = reservation
         if(reservation_date != '' && reservation_field_id != ''){
-            // const responseTurnos = await fetch(`http://localhost:3001/api/canchas?fecha_buscada=${reservation_date}&cancha_id=${reservation_field_id}`)
             const responseTurnos = await fetch(`https://futbol-arena-back.onrender.com/api/canchas?fecha_buscada=${reservation_date}&cancha_id=${reservation_field_id}`)
             const resultTurnos = await responseTurnos.json()
-            // const responseReservas = await fetch('https://futbol-arena-back.onrender.com/api/reservations')
-            // const resultReservas = await responseReservas.json()
-            // if(resultReservas.length < 1) return setHorarios(resultTurnos)
-            // const disponibles = await resultTurnos.map(turno => {
-            //     for(let i = 0; i<resultReservas.length ; i++){
-            //         if(turno.turnoId == resultReservas[i].reservation_time_id && resultReservas[i].reservation_field_id == reservation.reservation_field_id && resultReservas[i].reservation_date == reservation.reservation_date ){
-            //             turno.disponible = false
-            //         }
-            //         turno
-            //     }
-            //     return turno
-            // })
+            
             setHorarios(resultTurnos)
         }
     }

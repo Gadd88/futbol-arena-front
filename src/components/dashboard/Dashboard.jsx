@@ -9,7 +9,6 @@ export const Dashboard = () => {
     if(!usuario.isAdmin) return navigate('/')
 
   return (
-    // bg-[#f8f4f3]
     <section className="w-full flex items-start justify-center lg:space-x-5">
         <article className="hidden lg:block lg:w-1/3 h-screen bg-primary-100 p-4 z-50 rounded-lg" id="sidebar">
             <Link to="/" className="flex items-center pb-4 border-b border-b-gray-800">

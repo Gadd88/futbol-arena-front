@@ -25,7 +25,7 @@ export const CardProducto = ( { data } ) => {
   };
 
   return (
-    <article className="rounded-xl bg-bg-100 p-3 shadow-md hover:shadow-xl lg:hover:scale-105 duration-300 max-w-80 snap-center min-w-52 w-52 relative overflow-hidden h-[370px]">
+    <article className="rounded-xl bg-bg-100 px-3 py-5 shadow-md hover:shadow-xl lg:hover:scale-105 duration-300 max-w-80 snap-center min-w-52 w-52 relative overflow-hidden h-[370px] overflow-y-scroll">
       {enCarrito(producto_id) && (
         <div className="p-3 bg-accent-100 text-black font-semibold rotate-45 -right-9 -top-1 flex justify-center items-center absolute z-10 w-28">
           <svg
@@ -48,14 +48,14 @@ export const CardProducto = ( { data } ) => {
       <figure className="relative flex items-end overflow-hidden rounded-xl h-1/2 shadow-md bg-white">
         <img src={imagen} className='w-full h-full object-contain aspect-square' alt="Futbol arena foto producto" />
       </figure>
-      <section className="mt-1 p-2 text-start h-1/2 flex flex-col justify-between">
+      <section className="mt-1 p-2 text-start h-1/2 flex flex-col justify-between group">
         <div className="flex items-center justify-end rounded-lg w-fit ml-auto bg-accent-100 p-1 px-3 shadow-sm my-1 cursor-default">
           <span className="text-sm text-text-200 font-bold">
             {categoria.toUpperCase()}
           </span>
         </div>
-        <h2 className="text-text-100 font-bold">{producto}</h2>
-        <p className="mt-1 text-sm text-gray-800 font-semibold">{detalle}</p>
+        <h2 className="text-text-100 text-sm font-bold line-clamp-2 text-ellipsis group-hover:line-clamp-none cursor-default">{producto}</h2>
+        <p className="mt-1 text-xs text-gray-800 line-clamp-2 group-hover:line-clamp-none transition-all cursor-default">{detalle}</p>
         <article className="mt-3 flex items-end justify-between">
           <p className="text-lg font-bold text-primary-300">${precio}</p>
           {

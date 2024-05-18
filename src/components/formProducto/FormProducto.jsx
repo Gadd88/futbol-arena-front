@@ -12,7 +12,6 @@ export const FormProducto = () => {
       [e.target.name]: e.target.value,
     });
   };
-  // (e) => handleSubmit(e, productoData, usuarioToken, productoCloudData)
   return (
     <div className="h-full rounded-md bg-bg-100 space-y-5 p-3 py-10 md:p-10">
       <h1 className="font-semibold text-text-100 text-5xl">El Complejo</h1>
@@ -39,6 +38,7 @@ export const FormProducto = () => {
               name="producto"
               placeholder="Producto"
               onChange={handleChange}
+              maxLength={30}
               value={productoData.producto}
               className="sm:w-5/6 w-full sm:ms-5 p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
             />
@@ -55,6 +55,7 @@ export const FormProducto = () => {
               placeholder="Detalle de producto"
               onChange={handleChange}
               value={productoData.detalle}
+              maxLength={30}
               cols={30}
               rows={5}
               style={{ resize: "none" }}
@@ -74,6 +75,7 @@ export const FormProducto = () => {
                 name="categoria"
                 placeholder="Categoria"
                 value={productoData.categoria}
+                maxLength={15}
                 onChange={handleChange}
                 className="sm:w-5/6 p-3 w-full sm:ms-5 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
               />
@@ -90,6 +92,7 @@ export const FormProducto = () => {
                 name="precio"
                 onChange={handleChange}
                 value={productoData.precio}
+                max={10}
                 placeholder="$2000"
                 className="sm:w-5/6 w-full p-3 focus:outline-arena-green-400 outline-none text-gray-700 sm:ms-5 rounded-md"
               />

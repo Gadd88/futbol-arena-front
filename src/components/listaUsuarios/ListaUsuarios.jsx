@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useState } from "react"
 import { useUser } from "../../hooks"
 
 export const ListaUsuarios = () => {

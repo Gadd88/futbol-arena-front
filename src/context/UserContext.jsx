@@ -1,4 +1,4 @@
-import { jwtDecode } from "jwt-decode";
+/* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
 
 export const UserContext = createContext()
@@ -42,7 +42,6 @@ export const UserProvider = ({ children }) => {
 
     const loginUsuario = async (user) => {
         try{
-            // const response = await fetch(`http://localhost:3001/api/login`, {
             const response = await fetch(`${apiUrl}/login`, {
                 method: 'POST',
                 headers: {
@@ -54,7 +53,6 @@ export const UserProvider = ({ children }) => {
             if(!response.ok){
                 throw new Error(result.message)
             }
-            // const usuarioDecode = jwtDecode(result.token)
             setUsuario(result.user)
             setUsuarioToken(result.token)
             localStorage.setItem('usuario', JSON.stringify(result.user))
@@ -74,7 +72,6 @@ export const UserProvider = ({ children }) => {
         const response = await fetch(`https://futbol-arena-back.onrender.com/api/users/${id}`)
         const result = await response.json()
         setUsuario(result)
-        // localStorage.setItem('usuario', JSON.stringify(result))
     }
 
     const eliminarUsuario = async(id) => {

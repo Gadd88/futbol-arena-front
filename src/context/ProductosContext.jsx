@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export const ProductosContext = createContext()
 
-const localApi = 'http://localhost:3001/api/products'
 const renderApi = 'https://futbol-arena-back.onrender.com/api/products'
 
 export const ProductosProvider = ({children}) => {
