@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const UserContext = createContext()
 
@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
     const [usuario, setUsuario] = useState(storageUser || {})
     const [usuarioToken, setUsuarioToken] = useState(storageToken || '')
     const [showLogin, setShowLogin] = useState(false);
+    const [usersList, setUsersList] = useState([])
     const apiUrl='https://futbol-arena-back.onrender.com/api'
 
     const registrarUsuario = async (user) => {
@@ -41,6 +42,7 @@ export const UserProvider = ({ children }) => {
 
     const loginUsuario = async (user) => {
         try{
+            // const response = await fetch(`http://localhost:3001/api/login`, {
             const response = await fetch(`${apiUrl}/login`, {
                 method: 'POST',
                 headers: {
@@ -52,10 +54,11 @@ export const UserProvider = ({ children }) => {
             if(!response.ok){
                 throw new Error(result.message)
             }
+            // const usuarioDecode = jwtDecode(result.token)
+            setUsuario(result.user)
             setUsuarioToken(result.token)
-            const usuarioDecode = jwtDecode(result.token)
-            setUsuario(usuarioDecode)
-            return result
+            localStorage.setItem('usuario', JSON.stringify(result.user))
+            localStorage.setItem('token', JSON.stringify(result.token))
         }catch(err){
             throw new Error(err)
         }
@@ -71,7 +74,7 @@ export const UserProvider = ({ children }) => {
         const response = await fetch(`https://futbol-arena-back.onrender.com/api/users/${id}`)
         const result = await response.json()
         setUsuario(result)
-        localStorage.setItem('usuario', JSON.stringify(result))
+        // localStorage.setItem('usuario', JSON.stringify(result))
     }
 
     const eliminarUsuario = async(id) => {
@@ -86,11 +89,11 @@ export const UserProvider = ({ children }) => {
         return result
     }
 
-    useEffect(()=>{
-        localStorage.setItem('usuario', JSON.stringify(usuario))
-        localStorage.setItem('token', JSON.stringify(usuarioToken))   
-    },[usuario, usuarioToken])
-
+    const getUsers = async() => {
+        const response = await fetch('https://futbol-arena-back.onrender.com/api/users')
+        const result = await response.json()
+        setUsersList(result)
+    }
 
     return(
         <UserContext.Provider value={{
@@ -105,6 +108,9 @@ export const UserProvider = ({ children }) => {
             usuarioToken,
             usuario,
             showLogin,
+            usersList,
+            setUsersList,
+            getUsers
         }}>
             { children }
         </UserContext.Provider>

@@ -2,25 +2,20 @@ import { createPortal } from "react-dom";
 import { useProductoImg, useProductos } from "../../hooks";
 import { toast } from "sonner";
 
-export const ProductoModal = ({ producto, closeModal }) => {
+export const ProductoModal = ({ producto, closeModal, setProducto }) => {
   const {handleEditar} = useProductos();
-    const {handleProductoFile, productoCloudData, productoBlob} = useProductoImg()
+  const {handleProductoFile, productoCloudData, productoBlob} = useProductoImg()
 
+  const handleChange = (e) => {
+    setProducto({
+      ...producto,
+      [e.target.name]: e.target.value,
+    })
+  }
   const handleModalSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const nuevoProducto = formData.get("producto");
-    const nuevoDetalle = formData.get("detalle");
-    const nuevaCategoria = formData.get("categoria");
-    const nuevoPrecio = formData.get("precio");
-    const nuevosDatos = {  
-      producto: nuevoProducto == '' ? producto.producto : nuevoProducto,
-      detalle: nuevoDetalle == '' ? producto.detalle : nuevoDetalle,
-      precio: nuevoPrecio == '' ? producto.precio : nuevoPrecio,
-      categoria: nuevaCategoria == '' ? producto.categoria : nuevaCategoria,
-      imagen: productoCloudData.url == '' ? producto.imagen : productoCloudData.url
-    };
-    toast.promise(handleEditar(producto.producto_id, nuevosDatos),{
+    const nuevosDatos = {...producto, imagen: productoCloudData.url != '' ? productoCloudData.url : producto.imagen}
+    toast.promise(handleEditar(nuevosDatos),{
         loading: 'Actualizando.. 🕐',
         success: 'Listo!! ⚽',
         error: 'Falta Juez! ❌, ocurrió un error!'
@@ -60,6 +55,8 @@ export const ProductoModal = ({ producto, closeModal }) => {
                           type="text"
                           name="producto"
                           placeholder={producto.producto}
+                          onChange={handleChange}
+                          value={producto.producto}
                           className="font-normal w-full p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                       />
                   </article>
@@ -73,6 +70,8 @@ export const ProductoModal = ({ producto, closeModal }) => {
                   <input
                       name="detalle"
                       placeholder={producto.detalle}
+                      value={producto.detalle}
+                      onChange={handleChange}
                       cols={30}
                       rows={5}
                       style={{ resize: "none" }}
@@ -91,6 +90,8 @@ export const ProductoModal = ({ producto, closeModal }) => {
                       type="text"
                       name="categoria"
                       placeholder={producto.categoria}
+                      value={producto.categoria}
+                      onChange={handleChange}
                       className="uppercase font-normal p-3 w-full focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                       />
                   </div>
@@ -105,29 +106,26 @@ export const ProductoModal = ({ producto, closeModal }) => {
                       type="number"
                       name="precio"
                       placeholder={`$${producto.precio}`}
+                      value={producto.precio}
+                      onChange={handleChange}
                       className="font-normal w-full p-3 focus:outline-arena-green-400 outline-none text-gray-700 rounded-md"
                       />
                   </div>
                   </article>
                   <div className=" w-full flex justify-center items-center flex-col">
-                  <label htmlFor="imagen" className="py-2 px-8 inline-block cursor-pointer rounded-md bg-bg-200 font-bold text-text-200 shadow-md">Agregar Imagen</label>
+                  <label htmlFor="imagen" className="py-2 px-8 inline-block cursor-pointer rounded-md bg-bg-200 font-bold text-text-200 shadow-md">Cambiar Imagen</label>
                   <input
                       type="file"
                       id="imagen"
                       name="imagen"
                       accept="image/png image/jpg image/jpeg"
-                      className="w-0 h-0 opacity-0 outline-none text-gray-700 rounded-md"
-                      onChange={(e) => handleProductoFile(e)}
+                      className="w-0 h-0 opacity-0 outline-none text-gray-700 rounded-md my-2"
+                      onChange={handleProductoFile}
                   />
-                  {productoBlob ? (
-                      <figure className="drop-shadow-md w-1/3 mx-auto min-h-20">
-                      <img src={productoBlob} alt="producto imagen" />
-                      </figure>
-                  ) : (
-                      <p className="text-arena-green-950 text-sm font-thin">
-                      Agregue una imagen para el producto
-                      </p>
-                  )}
+                  <figure className="drop-shadow-md w-1/3 mx-auto min-h-20">
+                      <img src={productoBlob ? productoBlob : producto.imagen} alt="producto imagen" />
+                  </figure>
+                  
                   </div>
                   {/* Botones */}
                   <div className="flex gap-4 mt-5">

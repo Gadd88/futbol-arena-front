@@ -4,13 +4,16 @@ import { toast } from "sonner";
 
 export const ProductosContext = createContext()
 
+const localApi = 'http://localhost:3001/api/products'
+const renderApi = 'https://futbol-arena-back.onrender.com/api/products'
+
 export const ProductosProvider = ({children}) => {
     const [productos, setProductos] = useState([])
     const [carrito, setCarrito] = useState([])
 
     const agregarProducto = async (producto, token) =>{
         try {
-            const response = await fetch('https://futbol-arena-back.onrender.com/api/products',{
+            const response = await fetch(renderApi,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -18,15 +21,16 @@ export const ProductosProvider = ({children}) => {
                 },
                 body: JSON.stringify(producto)
             })
+            if(!response.ok) throw new Error(response.statusText)
             const result = await response.json()
-            console.log(result)
+            return result
         } catch (error) {
             throw new Error(error)
         }
     }
     const eliminarProducto = async (prod_id, token) =>{
         try {
-            const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${prod_id}`,{
+            const response = await fetch(`${renderApi}/${prod_id}`,{
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -34,14 +38,26 @@ export const ProductosProvider = ({children}) => {
                 }
             })
             const result = await response.json()
-            console.log(result)
+            await obtenerProductos()
+            return result
         } catch (error) {
             throw new Error(error)
         }
-
+    }
+    const editarProducto = async(token, producto) => {
+        const response = await fetch(`${renderApi}/${producto.producto_id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type':'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            body:JSON.stringify(producto)
+        })
+        const result = await response.json()
+        return result
     }
     const obtenerProductos = async () =>{
-        const response = await axios.get('https://futbol-arena-back.onrender.com/api/products')
+        const response = await axios.get(renderApi)
         setProductos(response.data)
     }
 
@@ -75,6 +91,7 @@ export const ProductosProvider = ({children}) => {
         <ProductosContext.Provider value={{
             agregarProducto,
             eliminarProducto,
+            editarProducto,
             agregarCarrito,
             eliminarCarrito,
             obtenerProductos,

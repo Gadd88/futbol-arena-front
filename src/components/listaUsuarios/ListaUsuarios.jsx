@@ -1,14 +1,17 @@
 import { useEffect } from "react"
-import { getUsers } from "../../utils/getUser"
 import { useState } from "react"
 import { useUser } from "../../hooks"
 
 export const ListaUsuarios = () => {
 
-  const {handleDelete, usersList} = useUser()
+  const {handleDelete, usersList, getUsers} = useUser()
   
 
   const listaUsuarios = usersList.filter(user => user.isAdmin == false)
+
+  useEffect(() => {
+    getUsers()
+  },[])
   
   return (
     <section className="h-full w-full p-3 md:p-10 space-y-10">

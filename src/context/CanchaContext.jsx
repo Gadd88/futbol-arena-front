@@ -27,8 +27,6 @@ export const CanchaProvider = ({children}) => {
         getCanchas()
     },[])
 
-    
-
     const consultaApi = async(reservation) =>{
         const {reservation_date, reservation_field_id} = reservation
         if(reservation_date != '' && reservation_field_id != ''){
@@ -102,7 +100,8 @@ export const CanchaProvider = ({children}) => {
                 body: JSON.stringify({"isAdmin":isAdmin})
             })
             const result = await response.json()
-            console.log(result)
+            await getCanchas()
+            return result
         }catch(error){
             throw new Error(error)
         }
@@ -115,7 +114,6 @@ export const CanchaProvider = ({children}) => {
                 horarios,
                 reservation,
                 setReservation,
-                setListaCanchas,
                 consultaApi,
                 addReservation,
                 crearCancha,

@@ -7,30 +7,29 @@ import { toast } from 'sonner'
 export const useProductos = () => {
     const navigate = useNavigate()
     const [error, setError] = useState(false)
-    const {productos, agregarCarrito, carrito, eliminarProducto, obtenerProductos, agregarProducto} = useContext(ProductosContext)
+    const {productos, agregarCarrito, carrito, eliminarProducto, obtenerProductos, agregarProducto, editarProducto} = useContext(ProductosContext)
     const {usuarioToken} = useContext(UserContext)
-
+    const [productoData, setProductoData] = useState({
+        producto: "",
+        detalle: "",
+        categoria: "",
+        imagen: "",
+        precio: 0,
+      });
     const handleDelete = async (id, token) => {
         toast.promise(eliminarProducto(id, token),{
             loading:'Eliminando',
-            success: async ()=> {
-                await obtenerProductos()
-            },
-            error: 'Ocurrió un error'
+            success: 'Producto Eliminado',
         })
+        await obtenerProductos()
     }
 
-    const handleSubmit = async(e,token, productoCloudData) => {
+    const handleSubmit = async (e, productoCloudData) => {
         e.preventDefault()
-        const formData = new FormData(e.target)
         const newProducto = {
-            producto: formData.get('producto'),
-            detalle: formData.get('detalle'),
-            precio: formData.get('precio'),
-            categoria: formData.get('categoria'),
-            imagen: productoCloudData.url,
+            ...productoData,
+            imagen: productoCloudData.url
         }
-        
         const {producto, detalle, precio, categoria, imagen} = newProducto
         if(!producto || !detalle || !precio | !categoria || !imagen) {
             setError(true)
@@ -39,37 +38,20 @@ export const useProductos = () => {
             },1000)
             return 
         }
+    
         try{
-            toast.promise(agregarProducto(newProducto, token),{
-                loading: 'Agregando producto',
-                success: async ()=>{
-                    'Producto agregado',
-                    await obtenerProductos()
-                    navigate(0)
-
-                },
-                error: 'Ocurrió un error'
-            })
+            await agregarProducto(newProducto, usuarioToken)
+            await obtenerProductos()
+            toast.success('Producto agregado')
+            navigate('/dashboard/listaProductos')
         }catch(error){
-            toast.error(error)
+            toast.error(error.message)
         }
     }
 
-    const handleEditar = async (id, producto) => {
-        const editar = async() => {
-            const response = await fetch(`https://futbol-arena-back.onrender.com/api/products/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type':'application/json',
-                    Authorization: `Bearer ${usuarioToken}`
-                },
-                body:JSON.stringify(producto)
-            })
-            const result = await response.json()
-            return result
-        }
+    const handleEditar = async (producto) => {
         try{
-            await editar()
+            await editarProducto(usuarioToken, producto)
             await obtenerProductos()
         }catch(error){
             throw new Error(error)
@@ -78,6 +60,8 @@ export const useProductos = () => {
     return {
         productos,
         agregarCarrito,
+        setProductoData,
+        productoData,
         carrito,
         error,
         obtenerProductos,

@@ -53,7 +53,7 @@ export const ListaProductos = () => {
         </Table>
             {
               showModal &&
-              <ProductoModal producto={producto} closeModal={closeModal} />
+              <ProductoModal producto={producto} closeModal={closeModal} setProducto={setProducto} />
             }
     </section>
   )
